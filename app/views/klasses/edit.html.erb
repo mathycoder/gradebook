@@ -1,0 +1,27 @@
+<h1>Edit this class</h1>
+
+<%= form_for(@klass) do |f| %>
+
+<div>
+  <%= f.label(:name, "Class Name") %><br>
+  <%= f.text_field(:name) %><br><br>
+</div>
+
+<div>
+  <%= f.label(:subject, "Subject") %><br>
+  <%= f.text_field(:subject) %><br><br>
+</div>
+
+<div>
+  <%= f.label(:grade, "Enter the grade (as a string for now)") %><br>
+  <%= f.text_field(:grade) %><br><br>
+</div>
+
+<div>
+  <%= f.label(:period, "Enter the class period (as an integer for now)") %><br>
+  <%= f.text_field(:period) %><br><br>
+</div>
+
+  <%= f.submit("Update Class") %>
+
+<% end %>
