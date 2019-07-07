@@ -5,8 +5,8 @@ class TeachersController < ApplicationController
 
   def create
     @teacher = Teacher.new(teacher_params)
-    binding.pry
     if @teacher.save
+      session[:user_id] = @teacher.id
       redirect_to(teacher_path(@teacher))
     else
       render 'new'
