@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     @teacher = Teacher.find_by(email: params[:teacher][:email])
     if @teacher
       session[:user_id] = @teacher.id
-      redirect_to(teacher_path(@teacher))
+      redirect_to(klasses_path)
     else
       redirect_to(login_path)
     end

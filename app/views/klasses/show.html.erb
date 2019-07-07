@@ -1,8 +1,7 @@
-<h1>Class Show Page</h1>
-
-<p>
-  <strong>Name: </strong><%= @klass.name %><br>
-  <strong>Subject: </strong><%= @klass.subject %><br>
-  <strong>Grade: </strong><%= @klass.grade %><br>
+<h1 style="display: inline"><%= @klass.name %>'s Gradebook</h1><br>
+<p style="display: inline">
+  <strong>Subject: </strong><%= @klass.subject %>
+  <strong>Grade: </strong><%= @klass.grade %>
   <strong>Period: </strong><%= @klass.period %><br>
+<h6 style="display: inline"><%= link_to("Back to My Classes", klasses_path) %></h6>
 <p>
