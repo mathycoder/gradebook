@@ -21,6 +21,15 @@ class KlassesController < ApplicationController
     @klass = Klass.find(params[:id])
   end
 
+  def update
+    @klass = Klass.find(params[:id])
+    if @klass.update(klass_params)
+      redirect_to(klass_path(@klass))
+    else
+      render 'edit'
+    end 
+  end
+
   private
 
     def klass_params
