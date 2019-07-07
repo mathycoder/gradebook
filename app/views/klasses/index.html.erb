@@ -7,7 +7,6 @@
     <th>Grade</th>
     <th>Period</th>
   </tr>
-
   <% @klasses.each do |klass| %>
     <tr>
       <td><%= klass.name %></td>
@@ -20,6 +19,6 @@
       </td>
     </tr>
   <% end %>
-
-
 </table>
+
+<p><%= link_to("Add a New Class", new_klass_path) %></p>
