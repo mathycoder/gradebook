@@ -1,1 +1,12 @@
 <h1>Log in Page</h1>
+
+<%= form_for(@teacher) do |f| %>
+
+  <div>
+    <%= f.label(:email, "Enter your email") %><br>
+    <%= f.text_field(:email) %><br><br>
+  </div>
+
+  <%= f.submit("Log in") %>
+
+<% end %>
