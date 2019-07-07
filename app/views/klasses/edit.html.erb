@@ -22,6 +22,9 @@
   <%= f.text_field(:period) %><br><br>
 </div>
 
-  <%= f.submit("Update Class") %>
+  <%= f.submit("Update Class") %><br><br>
+<% end %>
 
+<%= form_for(@klass, method: :delete) do |f| %>
+  <%= f.submit("Delete Class") %>
 <% end %>
