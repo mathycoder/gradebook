@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :students
-  resources :klasses
+  resources :klasses, :path => 'classes'
   resources :teachers
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
