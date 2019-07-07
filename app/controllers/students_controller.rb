@@ -1,8 +1,11 @@
 class StudentsController < ApplicationController
   def index
     @klass = Klass.find(params[:klass_id])
-    @students = Student.all - @klass.students
-    #Student.joins(:klass_students).where("klass_id = ?", params[:klass_id])
+    if !params[:first_name].empty?
+      @students = Student.where('first_name LIKE ?', "%#{params[:first_name]}%").all
+    else
+      @students = Student.all - @klass.students
+    end
   end
 
   def update

@@ -3,6 +3,12 @@
 <div class="student-list-container">
   <div>
     <h3>Students in the school</h3>
+
+    <%= form_tag(klass_students_path(@klass), method: "get") do %>
+        <%= text_field_tag('first_name') %>
+        <%= submit_tag("Filter by First Name") %>
+      <% end %><br>
+
     <table>
       <tr>
         <th></th>
