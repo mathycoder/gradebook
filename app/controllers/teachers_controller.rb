@@ -5,19 +5,21 @@ class TeachersController < ApplicationController
 
   def create
     @teacher = Teacher.new(teacher_params)
+    binding.pry
     if @teacher.save
-      teacher_path(@teacher)
+      redirect_to(teacher_path(@teacher))
     else
       render 'new'
     end
   end
 
   def show
-  end 
+    @teacher = Teacher.find(params[:id])
+  end
 
   private
 
     def teacher_params
-      params.require(:teacher).permit(:name, :grade, :class)
+      params.require(:teacher).permit(:name, :email)
     end
 end
