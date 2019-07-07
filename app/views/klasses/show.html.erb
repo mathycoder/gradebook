@@ -5,3 +5,7 @@
   <strong>Period: </strong><%= @klass.period %><br>
 <h6 style="display: inline"><%= link_to("Back to My Classes", klasses_path) %></h6>
 <p>
+
+<p>
+  <%= link_to("Add Students", klass_add_students_path(@klass)) %>
+</p>

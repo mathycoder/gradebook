@@ -1,5 +1,9 @@
 class KlassesController < ApplicationController
 
+  def add_students
+    @klass = Klass.find(params[:klass_id])
+  end
+
   def new
     @klass = Klass.new
   end
