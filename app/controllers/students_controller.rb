@@ -1,8 +1,8 @@
 class StudentsController < ApplicationController
   def index
     @klass = Klass.find(params[:klass_id])
-    @students = Student.joins(:klass_students).where("klass_id = ?", params[:klass_id])
-    Author.joins(:articles).where(articles: { author: author })
+    @students = Student.all - @klass.students
+    #Student.joins(:klass_students).where("klass_id = ?", params[:klass_id])
   end
 
   def update

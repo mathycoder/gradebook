@@ -10,3 +10,6 @@ Student.create(first_name: "Chairys", last_name: "Martinez", grade: 6, klass: 60
 Student.create(first_name: "Lamani", last_name: "Junious", grade: 6, klass: 602)
 Student.create(first_name: "Amara", last_name: "Tourey", grade: 6, klass: 602)
 Student.create(first_name: "John", last_name: "Jones", grade: 6, klass: 602)
+
+mrsarli = Teacher.create(name: "Mr. Sarli", email: "adam@gmail.com")
+mrsarli.klasses.create(name: "602", subject: "math", grade: "6th", period: 3)
