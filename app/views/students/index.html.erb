@@ -44,7 +44,7 @@
         <th>Grade</th>
         <th>Class</th>
       </tr>
-      <% @klass.students.each do |student| %>
+      <% @mystudents.each do |student| %>
         <tr>
           <td>
             <%= form_for([@klass, student]) do |f| %>

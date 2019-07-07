@@ -4,8 +4,9 @@ class StudentsController < ApplicationController
     if params[:query] && !params[:query].empty?
       @students = Student.where('first_name LIKE ? OR last_name LIKE ? OR klass LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").all
     else
-      @students = Student.all - @klass.students
+      @students = Student.all.order(klass: :asc).order(last_name: :asc) - @klass.students
     end
+    @mystudents = @klass.students.order(last_name: :asc)
   end
 
   def update
