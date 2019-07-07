@@ -8,7 +8,12 @@ class StudentsController < ApplicationController
   def update
     @klass = Klass.find(params[:klass_id])
     @student = Student.find(params[:id])
-    @klass.students << Student.find(params[:id]) if !@klass.students.include?(@student)
+
+    if !@klass.students.include?(@student)
+      @klass.students << @student
+    else
+      @klass.students.delete(@student)
+    end
     redirect_to(klass_students_path(@klass))
   end
 end

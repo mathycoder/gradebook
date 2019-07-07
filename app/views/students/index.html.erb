@@ -39,7 +39,11 @@
       </tr>
       <% @klass.students.each do |student| %>
         <tr>
-          <td>+</td>
+          <td>
+            <%= form_for([@klass, student]) do |f| %>
+              <%= f.submit("Remove") %>
+            <% end %>
+          </td>
           <td><%= student.last_name %></td>
           <td><%= student.first_name %></td>
           <td><%= student.grade %></td>
