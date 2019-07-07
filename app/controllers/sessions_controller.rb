@@ -9,8 +9,13 @@ class SessionsController < ApplicationController
       session[:user_id] = @teacher.id
       redirect_to(teacher_path(@teacher))
     else
-      render 'new'
+      redirect_to(login_path)
     end
+  end
+
+  def destroy
+    session.clear
+    redirect_to(login_path)
   end
 
   private
