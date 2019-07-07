@@ -5,8 +5,9 @@
     <h3>Students in the school</h3>
 
     <%= form_tag(klass_students_path(@klass), method: "get") do %>
-        <%= text_field_tag('first_name') %>
-        <%= submit_tag("Filter by First Name") %>
+        <%= text_field_tag('query', nil, placeholder: "Filter by name or class") %>
+        <%= submit_tag("Filter") %>
+        <%= submit_tag('clear') %>
       <% end %><br>
 
     <table>
