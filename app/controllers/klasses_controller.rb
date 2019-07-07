@@ -27,7 +27,13 @@ class KlassesController < ApplicationController
       redirect_to(klass_path(@klass))
     else
       render 'edit'
-    end 
+    end
+  end
+
+  def destroy
+    @klass = Klass.find(params[:id])
+    @klass.destroy
+    redirect_to(teacher_path(current_user))
   end
 
   private
