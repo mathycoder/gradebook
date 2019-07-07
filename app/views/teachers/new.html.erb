@@ -1,0 +1,22 @@
+<h1>Create a new Teacher account</h1>
+
+<%= form_for(@teacher) do |f| %>
+
+  <div>
+    <%= f.label(:name, "Enter your name") %><br>
+    <%= f.text_field(:name) %><br><br>
+  </div>
+
+  <div>
+    <%= f.label(:name, "Enter your subject") %><br>
+    <%= f.text_field(:name) %><br><br>
+  </div>
+
+  <div>
+    <%= f.label(:name, "Enter your grade") %><br>
+    <%= f.text_field(:name) %><br><br>
+  </div>
+
+  <%= f.submit %>
+
+<% end %>
