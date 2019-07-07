@@ -1,8 +1,8 @@
 class StudentsController < ApplicationController
   def index
     @klass = Klass.find(params[:klass_id])
-    #need to find all the students that don't have the current teacher id
-    @students = Student.all
+    @students = Student.joins(:klass_students).where("klass_id = ?", params[:klass_id])
+    Author.joins(:articles).where(articles: { author: author })
   end
 
   def update
