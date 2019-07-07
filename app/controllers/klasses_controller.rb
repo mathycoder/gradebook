@@ -1,12 +1,5 @@
 class KlassesController < ApplicationController
 
-  def add_students
-    @klass = Klass.find(params[:klass_id])
-
-    #need to find all the students that don't have the current teacher id
-    @students = Student.all
-  end
-
   def new
     @klass = Klass.new
   end
