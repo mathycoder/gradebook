@@ -9,15 +9,21 @@
 <table class="gradebook">
   <tr>
     <th>Student</th>
-    <th><%= @klass.assignments.first.name %></th>
-    <th><%= @klass.assignments.last.name %></th>
+    <% @klass.assignments.each do |assignment| %>
+      <th><%= assignment.name %></th>
+    <% end %>
   </tr>
 
   <% @klass.students.each do |student| %>
     <tr>
       <td><%= student.full_name %></td>
-      <td><%= student.grades.first.score %></td>
-      <td><%= student.grades.last.score %></td>
+      <% @klass.assignments.each do |assignment| %>
+        <% assignment.grades.each do |grade| %>
+          <% if grade.student == student %>
+            <td><%= grade.score %></td>
+          <% end %>
+        <% end %>
+      <% end %>
     </tr>
   <% end %>
 
