@@ -33,3 +33,47 @@ assignment = lt.assignments.create(name: "CW Integer Elevator")
 angie_grade = angie.grades.create(score: 4)
 angie_grade.assignment = assignment
 angie_grade.save
+
+helen_grade = helen.grades.create(score: 3.5)
+helen_grade.assignment = assignment
+helen_grade.save
+
+shaniya_grade = shaniya.grades.create(score: 2.5)
+shaniya_grade.assignment = assignment
+shaniya_grade.save
+
+davidd_grade = davidd.grades.create(score: 3)
+davidd_grade.assignment = assignment
+davidd_grade.save
+
+melvyn_grade = melvyn.grades.create(score: 4)
+melvyn_grade.assignment = assignment
+melvyn_grade.save
+
+jeymi_grade = jeymi.grades.create(score: 3)
+jeymi_grade.assignment = assignment
+jeymi_grade.save
+
+davidr_grade = davidr.grades.create(score: 4)
+davidr_grade.assignment = assignment
+davidr_grade.save
+
+ezequiel_grade = ezequiel.grades.create(score: 4)
+ezequiel_grade.assignment = assignment
+ezequiel_grade.save
+
+chairys_grade = chairys.grades.create(score: 3.5)
+chairys_grade.assignment = assignment
+chairys_grade.save
+
+lamani_grade = lamani.grades.create(score: 2)
+lamani_grade.assignment = assignment
+lamani_grade.save
+
+amara_grade = amara.grades.create(score: 3.5)
+amara_grade.assignment = assignment
+amara_grade.save
+
+john_grade = john.grades.create(score: 1.5)
+john_grade.assignment = assignment
+john_grade.save
