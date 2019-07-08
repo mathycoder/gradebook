@@ -18,17 +18,12 @@
     <tr>
       <td><%= student.full_name %></td>
       <% @klass.assignments.each do |assignment| %>
-        <% if assignment.students.include?(student) %>
-          <% assignment.grades.each do |grade| %>
-            <% if grade.student == student %>
-              <td><%= grade.score %></td>
-            <% end %>
-          <% end %>
+        <% scorer = assignment.grades.find_by(student_id: student.id) %>
+        <% if scorer %>
+          <td><%= scorer.score %></td>
         <% else %>
           <td></td>
         <% end %>
-
-
       <% end %>
     </tr>
   <% end %>
