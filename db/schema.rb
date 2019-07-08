@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2019_07_08_172308) do
   end
 
   create_table "learning_targets", force: :cascade do |t|
-    t.integer "name"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

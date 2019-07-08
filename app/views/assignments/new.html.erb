@@ -1,1 +1,16 @@
 <h1>Create a new assignment for <%= @klass.name %></h1>
+
+<%= form_for([@klass,@assignment]) do |f| %>
+
+  <div>
+    <%= f.label(:name, "Name of assignment") %><br>
+    <%= f.text_field(:name) %><br><br>
+  </div>
+
+  <div>
+    <%= f.collection_select :learning_target, @klass.learning_targets, :id, :name, include_blank: 'Select the Learning Target' %><br><br>
+  </div>
+
+  <%= f.submit %>
+
+<% end %>
