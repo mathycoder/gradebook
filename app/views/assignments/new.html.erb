@@ -8,7 +8,7 @@
   </div>
 
   <div>
-    <%= f.collection_select :learning_target, @klass.learning_targets, :id, :name, include_blank: 'Select the Learning Target' %><br><br>
+    <%= f.collection_select :learning_target_id, @klass.learning_targets, :id, :name, include_blank: 'Select the Learning Target' %><br><br>
   </div>
 
   <%= f.submit %>
