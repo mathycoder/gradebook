@@ -13,12 +13,12 @@
 
   <% @klass.students.each do |student| %>
     <tr>
-      <td><%= student.first_name %></td>
+      <td><%= student.full_name %></td>
     </tr>
   <% end %>
 
-</table>
+  <tr>
+    <td><%= link_to("Add Students", klass_students_path(@klass)) %></td>
+  </tr>
 
-<p>
-  <%= link_to("Add Students", klass_students_path(@klass)) %>
-</p>
+</table>
