@@ -6,6 +6,19 @@
 <h6 style="display: inline"><%= link_to("Back", klasses_path) %></h6>
 <p>
 
+<table>
+  <tr>
+    <th>Student</th>
+  </tr>
+
+  <% @klass.students.each do |student| %>
+    <tr>
+      <td><%= student.first_name %></td>
+    </tr>
+  <% end %>
+
+</table>
+
 <p>
   <%= link_to("Add Students", klass_students_path(@klass)) %>
 </p>
