@@ -18,11 +18,17 @@
     <tr>
       <td><%= student.full_name %></td>
       <% @klass.assignments.each do |assignment| %>
-        <% assignment.grades.each do |grade| %>
-          <% if grade.student == student %>
-            <td><%= grade.score %></td>
+        <% if assignment.students.include?(student) %>
+          <% assignment.grades.each do |grade| %>
+            <% if grade.student == student %>
+              <td><%= grade.score %></td>
+            <% end %>
           <% end %>
+        <% else %>
+          <td></td>
         <% end %>
+
+
       <% end %>
     </tr>
   <% end %>
