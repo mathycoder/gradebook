@@ -30,6 +30,8 @@ klass = mrsarli.klasses.create(name: "602", subject: "math", grade: "6th", perio
 lt = LearningTarget.create(name: "1.1 Adding and Subtracting Integers")
 klass.learning_targets << lt
 assignment = lt.assignments.create(name: "CW Integer Elevator")
+assignment2 = lt.assignments.create(name: "Practice Sheet")
+
 angie_grade = angie.grades.create(score: 4)
 angie_grade.assignment = assignment
 angie_grade.save
@@ -76,4 +78,55 @@ amara_grade.save
 
 john_grade = john.grades.create(score: 1.5)
 john_grade.assignment = assignment
+john_grade.save
+
+
+
+
+angie_grade = angie.grades.create(score: 3.5)
+angie_grade.assignment = assignment2
+angie_grade.save
+
+helen_grade = helen.grades.create(score: 2.5)
+helen_grade.assignment = assignment2
+helen_grade.save
+
+shaniya_grade = shaniya.grades.create(score: 1.5)
+shaniya_grade.assignment = assignment2
+shaniya_grade.save
+
+davidd_grade = davidd.grades.create(score: 4)
+davidd_grade.assignment = assignment2
+davidd_grade.save
+
+melvyn_grade = melvyn.grades.create(score: 3)
+melvyn_grade.assignment = assignment2
+melvyn_grade.save
+
+jeymi_grade = jeymi.grades.create(score: 2.5)
+jeymi_grade.assignment = assignment2
+jeymi_grade.save
+
+davidr_grade = davidr.grades.create(score: 3.5)
+davidr_grade.assignment = assignment2
+davidr_grade.save
+
+ezequiel_grade = ezequiel.grades.create(score: 3.5)
+ezequiel_grade.assignment = assignment2
+ezequiel_grade.save
+
+chairys_grade = chairys.grades.create(score: 4)
+chairys_grade.assignment = assignment2
+chairys_grade.save
+
+lamani_grade = lamani.grades.create(score: 2.5)
+lamani_grade.assignment = assignment2
+lamani_grade.save
+
+amara_grade = amara.grades.create(score: 2.5)
+amara_grade.assignment = assignment2
+amara_grade.save
+
+john_grade = john.grades.create(score: 2)
+john_grade.assignment = assignment2
 john_grade.save
