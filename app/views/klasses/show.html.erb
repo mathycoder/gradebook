@@ -6,14 +6,16 @@
 <h6 style="display: inline"><%= link_to("Back", klasses_path) %></h6>
 <p>
 
-<table>
+<table class="gradebook">
   <tr>
     <th>Student</th>
+    <th><%= @klass.assignments.first.name %></th>
   </tr>
 
   <% @klass.students.each do |student| %>
     <tr>
       <td><%= student.full_name %></td>
+      <td><%= student.grades.first.score %></td>
     </tr>
   <% end %>
 

@@ -2,3 +2,17 @@
   display: grid;
   grid-template-columns: 400px 400px
 }
+
+table.gradebook {
+  border-collapse: collapse;
+}
+
+table.gradebook, table.gradebook th, table.gradebook td {
+  border: 1px solid black;
+}
+
+table.gradebook th, table.gradebook td {
+  text-align: center;
+  height: 30px;
+  width: 100px;
+}
