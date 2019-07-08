@@ -4,6 +4,8 @@ class Student < ApplicationRecord
   has_many :teacher_klasses, through: :klasses
   has_many :teachers, through: :teacher_klasses
 
+  has_many :grades 
+
   def full_name
     "#{self.last_name}, #{self.first_name}"
   end
