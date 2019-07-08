@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   end
 
   resources :klasses, :path => 'classes' do
-    resources :students
+    resources :students, only: [:index, :update]
   end
+
+  resources :klasses, :path => 'classes' do
+    resources :assignments
+  end
+
+
 end

@@ -12,6 +12,7 @@
     <% @klass.assignments.each do |assignment| %>
       <th><%= assignment.name %></th>
     <% end %>
+    <td><%= link_to("Add Assignment", '/') %></td>
   </tr>
 
   <% @klass.students.each do |student| %>
