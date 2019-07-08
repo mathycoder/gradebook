@@ -12,7 +12,7 @@
   </div>
 
   <% @klass.students.each do |student| %>
-    <%= f.fields_for(:grades) do |br| %>
+    <%= f.fields_for(@assignment.grades.build(:student_id => student.id)) do |br| %>
       <div>
         <%= br.label(:score, student.full_name) %>
         <%= br.text_field(:score) %><br><br>
