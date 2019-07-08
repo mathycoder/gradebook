@@ -2,7 +2,7 @@ class StudentsController < ApplicationController
   def index
     @klass = Klass.find(params[:klass_id])
     if params[:query] && !params[:query].empty?
-      @students = Student.where('first_name LIKE ? OR last_name LIKE ? OR klass LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").all
+      @students = Student.where('first_name LIKE ? OR last_name LIKE ? OR klass LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").all - @klass.students
     else
       @students = Student.all.order(klass: :asc).order(last_name: :asc) - @klass.students
     end
