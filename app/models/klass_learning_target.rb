@@ -1,0 +1,2 @@
+class KlassLearningTarget < ApplicationRecord
+end
