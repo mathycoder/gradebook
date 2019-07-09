@@ -8,5 +8,4 @@ class LearningTarget < ApplicationRecord
   def chronological_assignments
     self.assignments.sort_by{|assignment| assignment.date}
   end
-
 end
