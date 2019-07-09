@@ -21,6 +21,9 @@
       </div>
     <% end %>
   <% end %>
+  <%= f.submit %><br><br>
+<% end %>
 
-  <%= f.submit %>
+<%= form_for([@klass, @assignment], method: :delete) do |f| %>
+  <%= f.submit("Delete Assignment") %>
 <% end %>

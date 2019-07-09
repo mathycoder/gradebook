@@ -21,6 +21,14 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find(params[:id])
   end
 
+  def destroy
+    @klass = Klass.find(params[:klass_id])
+    @assignment = Assignment.find(params[:id])
+    @assignment.grades.destroy_all
+    @assignment.destroy
+    redirect_to(klass_path(@klass))
+  end
+
   private
 
     def assignment_params
