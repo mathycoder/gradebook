@@ -1,9 +1,3 @@
-<h1><%= @klass.name %>'s Learning Targets</h1>
-
-<% @klass.learning_targets.each do |lt| %>
-  <h2><%= lt.name %></h2>
-<% end %>
-
 <h4>Create new Learning Target</h4>
 
 <%= form_for([@klass,@lt]) do |f| %>

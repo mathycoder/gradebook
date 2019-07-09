@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   resources :klasses, :path => 'classes' do
-    resources :learning_targets
+    resources :learning_targets, :path => 'lts'
   end
 
 

@@ -7,7 +7,6 @@ class AssignmentsController < ApplicationController
   end
 
   def create
-    binding.pry
     @klass = Klass.find(params[:klass_id])
     @assignment = Assignment.new(assignment_params)
     if @assignment.save

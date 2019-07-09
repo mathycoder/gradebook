@@ -16,6 +16,11 @@ class LearningTargetsController < ApplicationController
     end
   end
 
+  def index
+    @klass = Klass.find(params[:klass_id])
+    @lts = @klass.learning_targets
+  end
+
   private
 
     def lt_params
