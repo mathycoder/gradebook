@@ -36,3 +36,9 @@ table.gradebook .date {
   width: 100%;
   background-color: black;
 }
+
+table.gradebook .average {
+  background-color: grey;
+  width: 20px;
+
+}
