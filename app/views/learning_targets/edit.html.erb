@@ -1,0 +1,19 @@
+<h4>Edit Learning Target</h4>
+
+<div>
+  <%= form_for([@klass,@lt]) do |f| %>
+
+    <div>
+      <%= f.label(:name, "Enter a learning target name") %><br>
+      <%= f.text_field(:name) %><br><br>
+    </div>
+
+    <%= f.submit("update") %>
+  <% end %>
+</div>
+
+<div>
+  <%= form_for([@klass, @lt], method: :delete) do |f| %>
+    <%= f.submit("delete") %>
+  <% end %>
+</div>

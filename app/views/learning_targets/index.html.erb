@@ -1,7 +1,10 @@
-<h1><%= @klass.name %>'s Learning Targets</h1>
+<h1><%= link_to(@klass.name, klass_path(@klass)) %>'s Learning Targets</h1>
 
 <% @klass.learning_targets.each do |lt| %>
-  <h2><%= lt.name %></h2>
+  <h2>
+    <%= lt.name %>
+    <%= link_to("edit", edit_klass_learning_target_path(@klass, lt)) %>
+  </h2>
 <% end %>
 
 <h4><%= link_to("Create New Learning Target", new_klass_learning_target_path(@klass)) %></h4>

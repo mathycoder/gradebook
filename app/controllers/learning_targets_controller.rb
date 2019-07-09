@@ -21,6 +21,30 @@ class LearningTargetsController < ApplicationController
     @lts = @klass.learning_targets
   end
 
+  def edit
+    @klass = Klass.find(params[:klass_id])
+    @lt = LearningTarget.find(params[:id])
+  end
+
+  def update
+    @klass = Klass.find(params[:klass_id])
+    @lt = LearningTarget.find(params[:id])
+    if @lt.update(lt_params)
+      redirect_to(klass_learning_targets_path(@klass))
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @klass = Klass.find(params[:klass_id])
+    @lt = LearningTarget.find(params[:id])
+    @lt.assignments.each{|assignment| assignment.grades.destroy_all}
+    @lt.assignments.destroy_all
+    @lt.destroy
+    redirect_to(klass_learning_targets_path(@klass))
+  end
+
   private
 
     def lt_params
