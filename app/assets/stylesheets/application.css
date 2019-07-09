@@ -16,3 +16,8 @@ table.gradebook th, table.gradebook td {
   height: 30px;
   width: 100px;
 }
+
+table.gradebook th {
+  background-color: grey;
+  color: white;
+}
