@@ -13,6 +13,7 @@
     <% @klass.learning_targets.each do |lt| %>
       <td colspan="<%= lt.assignments.length %>"><%= lt.name %></td>
     <% end %>
+    <td><%= link_to("Add Learning Target", '/') %></td>
   </tr>
 
   <tr>

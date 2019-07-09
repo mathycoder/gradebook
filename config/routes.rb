@@ -18,5 +18,9 @@ Rails.application.routes.draw do
     resources :assignments
   end
 
+  resources :klasses, :path => 'classes' do
+    resources :learning_targets
+  end
+
 
 end
