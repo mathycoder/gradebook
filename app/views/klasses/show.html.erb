@@ -19,7 +19,7 @@
   <tr>
     <td>Student</td>
     <% @klass.learning_targets.each do |lt| %>
-      <% lt.assignments.each do |assignment| %>
+      <% lt.chronological_assignments.each do |assignment| %>
         <td>
           <div class="assignment-header">
             <div><%= link_to(assignment.name, edit_klass_assignment_path(@klass, assignment)) %></div>
@@ -35,7 +35,7 @@
     <tr>
       <td><%= student.full_name %></td>
       <% @klass.learning_targets.each do |lt| %>
-        <% lt.assignments.each do |assignment| %>
+        <% lt.chronological_assignments.each do |assignment| %>
           <% scorer = assignment.grades.find_by(student_id: student.id) %>
           <td><%= scorer.score if scorer %></td>
         <% end %>
