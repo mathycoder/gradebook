@@ -32,6 +32,18 @@
     <td><%= link_to("Add Assignment", new_klass_assignment_path(@klass)) if !@klass.learning_targets.empty? %></td>
   </tr>
 
+  <tr>
+    <td></td>
+    <td><p><strong>2.5</strong></p></td>
+    <td><p><strong>2.5</strong></p></td>
+    <td><p><strong>2.5</strong></p></td>
+    <td><p><strong>2.5</strong></p></td>
+    <td><p><strong>2.5</strong></p></td>
+    <td><p><strong>2.5</strong></p></td>
+    <td><p><strong>2.5</strong></p></td>
+    <td><p><strong>2.5</strong></p></td>
+  </tr>
+
   <% @klass.students.each do |student| %>
     <tr>
       <td><%= student.full_name %></td>
@@ -39,11 +51,12 @@
         <%= content_tag(:td) if lt.assignments.empty? %>
         <% lt.chronological_assignments.each do |assignment| %>
           <% scorer = assignment.grades.find_by(student_id: student.id) %>
-          <td><%= scorer.score if scorer %></td>
+          <td class="score"><%= scorer.score if scorer %></td>
         <% end %>
       <% end %>
     </tr>
   <% end %>
+
 
   <tr>
     <td><%= link_to("Add Students", klass_students_path(@klass)) %></td>
