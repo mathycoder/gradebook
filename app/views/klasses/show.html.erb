@@ -29,7 +29,7 @@
         </td>
       <% end %>
     <% end %>
-    <td><%= link_to("Add Assignment", new_klass_assignment_path(@klass)) %></td>
+    <td><%= link_to("Add Assignment", new_klass_assignment_path(@klass)) if !@klass.learning_targets.empty? %></td>
   </tr>
 
   <% @klass.students.each do |student| %>
