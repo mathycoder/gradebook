@@ -7,10 +7,18 @@
 <p>
 
 <table class="gradebook">
+
   <tr>
-    <th>Student</th>
+    <td></td>
+    <% @klass.learning_targets.each do |lt| %>
+      <td colspan="<%= lt.assignments.length %>"><%= lt.name %></td>
+    <% end %>
+  </tr>
+
+  <tr>
+    <td>Student</td>
     <% @klass.assignments.each do |assignment| %>
-      <th><%= link_to(assignment.name, edit_klass_assignment_path(@klass, assignment)) %></th>
+      <td><%= link_to(assignment.name, edit_klass_assignment_path(@klass, assignment)) %></td>
     <% end %>
     <td><%= link_to("Add Assignment", new_klass_assignment_path(@klass)) %></td>
   </tr>
