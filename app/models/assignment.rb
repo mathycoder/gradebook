@@ -15,4 +15,9 @@ class Assignment < ApplicationRecord
       end
     end
   end
+
+  def date_display
+    self.date.strftime('%b %e') if self.date
+  end
+
 end

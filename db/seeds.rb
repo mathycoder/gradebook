@@ -29,8 +29,8 @@ klass = mrsarli.klasses.create(name: "602", subject: "math", grade: "6th", perio
 
 lt = LearningTarget.create(name: "1.1 Adding and Subtracting Integers")
 klass.learning_targets << lt
-assignment = lt.assignments.create(name: "CW Integer Elevator")
-assignment2 = lt.assignments.create(name: "Practice Sheet")
+assignment = lt.assignments.create(name: "CW Integer Elevator", date: 2019-01-05)
+assignment2 = lt.assignments.create(name: "Practice Sheet", date: 2019-01-07)
 
 angie_grade = angie.grades.create(score: 4)
 angie_grade.assignment = assignment

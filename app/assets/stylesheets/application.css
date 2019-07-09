@@ -21,3 +21,18 @@ table.gradebook th {
   background-color: grey;
   color: white;
 }
+
+table.gradebook .assignment-header {
+  display: grid;
+  grid-template-rows: 60px 20px;
+}
+
+table.gradebook .assignment-header div {
+  flex: 1;
+}
+
+table.gradebook .date {
+  color: white;
+  width: 100%;
+  background-color: black;
+}
