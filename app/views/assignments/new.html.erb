@@ -1,29 +1,3 @@
 <h1>Create a new assignment for <%= @klass.name %></h1>
 
-<%= form_for([@klass,@assignment]) do |f| %>
-
-  <div>
-    <%= f.label(:name, "Name of assignment") %><br>
-    <%= f.text_field(:name) %><br><br>
-  </div>
-
-  <div>
-    <%= f.collection_select :learning_target_id, @klass.learning_targets, :id, :name, include_blank: 'Select the Learning Target' %><br><br>
-  </div>
-
-  <table>
-    <% @klass.students.each do |student| %>
-      <tr>
-        <%= f.fields_for(:grades) do |br| %>
-          <div>
-            <td><%= br.label(:score, student.full_name) %></td>
-            <td><%= br.text_field(:score) %></td>
-            <%= br.hidden_field(:student_id, :value => student.id) %>
-          </div>
-        <% end %>
-      </tr>
-    <% end %>
-  </table>
-  <br>
-  <%= f.submit %>
-<% end %>
+<%= render partial: "assignments/form", locals: {klass: @klass, assignment: @assignment} %>

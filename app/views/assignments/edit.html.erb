@@ -1,32 +1,6 @@
 <h1>Edit assignment for <%= @klass.name %></h1>
 
-<%= form_for([@klass,@assignment]) do |f| %>
-
-  <div>
-    <%= f.label(:name, "Name of assignment") %><br>
-    <%= f.text_field(:name) %><br><br>
-  </div>
-
-  <div>
-    <%= f.collection_select :learning_target_id, @klass.learning_targets, :id, :name, include_blank: 'Select the Learning Target' %><br><br>
-  </div>
-
-  <table>
-    <% @klass.students.each do |student| %>
-      <tr>
-        <% current_grade = Grade.find_by(student_id: student.id, assignment_id: @assignment.id) %>
-        <%= f.fields_for(:grades, current_grade) do |br| %>
-          <div>
-            <td><%= br.label(:score, student.full_name) %></td>
-            <td><%= br.text_field(:score) %></td>
-            <%= br.hidden_field(:student_id, :value => student.id) %>
-          </div>
-        <% end %>
-      </tr>
-    <% end %>
-  </table>
-  <%= f.submit %><br><br>
-<% end %>
+<%= render partial: "assignments/form", locals: {klass: @klass, assignment: @assignment} %>
 
 <%= form_for([@klass, @assignment], method: :delete) do |f| %>
   <%= f.submit("Delete Assignment") %>

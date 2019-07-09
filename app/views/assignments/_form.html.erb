@@ -1,0 +1,28 @@
+<%= form_for([klass,assignment]) do |f| %>
+
+  <div>
+    <%= f.label(:name, "Name of assignment") %><br>
+    <%= f.text_field(:name) %><br><br>
+  </div>
+
+  <div>
+    <%= f.collection_select :learning_target_id, klass.learning_targets, :id, :name, include_blank: 'Select the Learning Target' %><br><br>
+  </div>
+
+  <table>
+    <% klass.students.each do |student| %>
+      <tr>
+        <% current_grade = Grade.find_or_create_by(student_id: student.id, assignment_id: @assignment.id) %>
+        <%= f.fields_for(:grades, current_grade) do |br| %>
+          <div>
+            <td><%= br.label(:score, student.full_name) %></td>
+            <td><%= br.text_field(:score) %></td>
+            <%= br.hidden_field(:student_id, :value => student.id) %>
+          </div>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+  <br>
+  <%= f.submit %>
+<% end %>
