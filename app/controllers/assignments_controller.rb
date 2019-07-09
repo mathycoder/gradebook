@@ -16,6 +16,11 @@ class AssignmentsController < ApplicationController
     end
   end
 
+  def edit
+    @klass = Klass.find(params[:klass_id])
+    @assignment = Assignment.find(params[:id])
+  end
+
   private
 
     def assignment_params

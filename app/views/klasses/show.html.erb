@@ -10,7 +10,7 @@
   <tr>
     <th>Student</th>
     <% @klass.assignments.each do |assignment| %>
-      <th><%= assignment.name %></th>
+      <th><%= link_to(assignment.name, edit_klass_assignment_path(@klass, assignment)) %></th>
     <% end %>
     <td><%= link_to("Add Assignment", new_klass_assignment_path(@klass)) %></td>
   </tr>

@@ -1,4 +1,4 @@
-<h1>Create a new assignment for <%= @klass.name %></h1>
+<h1>Edit assignment for <%= @klass.name %></h1>
 
 <%= form_for([@klass,@assignment]) do |f| %>
 
@@ -12,7 +12,8 @@
   </div>
 
   <% @klass.students.each do |student| %>
-    <%= f.fields_for(@assignment.grades.build(:student_id => student.id)) do |br| %>
+    <% current_grade = Grade.find_by(student_id: student.id, assignment_id: @assignment.id) %>
+    <%= f.fields_for(current_grade) do |br| %>
       <div>
         <%= br.label(:score, student.full_name) %>
         <%= br.text_field(:score) %><br><br>
