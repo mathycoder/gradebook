@@ -7,6 +7,7 @@ class KlassesController < ApplicationController
   def create
     @klass = Klass.new(klass_params)
     if @klass.save
+      current_user.klasses << @klass
       redirect_to(klass_path(@klass))
     else
       render 'new'
@@ -14,7 +15,8 @@ class KlassesController < ApplicationController
   end
 
   def index
-    @klasses = Klass.all
+    #@klasses = Klass.all
+    @klasses = current_user.classes_sorted_by_period
   end
 
   def show
