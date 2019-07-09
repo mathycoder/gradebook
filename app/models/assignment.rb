@@ -20,4 +20,12 @@ class Assignment < ApplicationRecord
     self.date.strftime('%b %e') if self.date
   end
 
+  def average
+    if !self.grades.empty?
+      grades = self.grades.map {|grade| grade.score}.flatten.compact
+      avg = grades.sum / grades.length
+      '%.2f' % avg
+    end
+  end
+
 end
