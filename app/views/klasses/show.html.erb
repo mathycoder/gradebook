@@ -18,8 +18,10 @@
 
   <tr>
     <td>Student</td>
-    <% @klass.assignments.each do |assignment| %>
-      <td><%= link_to(assignment.name, edit_klass_assignment_path(@klass, assignment)) %></td>
+    <% @klass.learning_targets.each do |lt| %>
+      <% lt.assignments.each do |assignment| %>
+        <td><%= link_to(assignment.name, edit_klass_assignment_path(@klass, assignment)) %></td>
+      <% end %>
     <% end %>
     <td><%= link_to("Add Assignment", new_klass_assignment_path(@klass)) %></td>
   </tr>
@@ -27,9 +29,11 @@
   <% @klass.students.each do |student| %>
     <tr>
       <td><%= student.full_name %></td>
-      <% @klass.assignments.each do |assignment| %>
-        <% scorer = assignment.grades.find_by(student_id: student.id) %>
-        <td><%= scorer.score if scorer %></td>
+      <% @klass.learning_targets.each do |lt| %>
+        <% lt.assignments.each do |assignment| %>
+          <% scorer = assignment.grades.find_by(student_id: student.id) %>
+          <td><%= scorer.score if scorer %></td>
+        <% end %>
       <% end %>
     </tr>
   <% end %>
