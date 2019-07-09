@@ -15,6 +15,7 @@ class StudentsController < ApplicationController
 
     if !@klass.students.include?(@student)
       @klass.students << @student
+      @klass.assignments.each {|assignment| assignment.grades.create(student_id: @student.id) }
     else
       @klass.students.delete(@student)
     end
