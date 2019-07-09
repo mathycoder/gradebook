@@ -7,6 +7,7 @@ class AssignmentsController < ApplicationController
   end
 
   def create
+    binding.pry
     @klass = Klass.find(params[:klass_id])
     @assignment = Assignment.new(assignment_params)
     if @assignment.save
@@ -42,7 +43,7 @@ class AssignmentsController < ApplicationController
   private
 
     def assignment_params
-      params.require(:assignment).permit(:name, :learning_target_id, :grades_attributes => {})
+      params.require(:assignment).permit(:name, :learning_target_id, :date, :grades_attributes => {})
     end
 
 end

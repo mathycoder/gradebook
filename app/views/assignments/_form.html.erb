@@ -6,6 +6,11 @@
   </div>
 
   <div>
+    <%= f.label(:date, "Date of Assignment") %><br>
+    <%= f.date_field(:date) %><br><Br>
+  </div>
+
+  <div>
     <%= f.collection_select :learning_target_id, klass.learning_targets, :id, :name, include_blank: 'Select the Learning Target' %><br><br>
   </div>
 
