@@ -7,7 +7,12 @@ class Assignment < ApplicationRecord
 
   def grades_attributes=(grades_hash)
     grades_hash.each do |key, attributes|
-      self.grades.build(score: attributes[:score], student_id: attributes[:student_id])
+      current_grade = Grade.find_by(id: attributes[:id])
+      if current_grade
+        current_grade.update(score: attributes[:score])
+      else
+        self.grades.build(score: attributes[:score], student_id: attributes[:student_id])
+      end
     end
   end
 end

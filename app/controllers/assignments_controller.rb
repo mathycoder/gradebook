@@ -21,6 +21,16 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find(params[:id])
   end
 
+  def update
+    @klass = Klass.find(params[:klass_id])
+    @assignment = Assignment.find(params[:id])
+    if @assignment.update(assignment_params)
+      redirect_to(klass_path(@klass))
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     @klass = Klass.find(params[:klass_id])
     @assignment = Assignment.find(params[:id])

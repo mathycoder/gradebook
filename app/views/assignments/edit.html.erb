@@ -13,7 +13,7 @@
 
   <% @klass.students.each do |student| %>
     <% current_grade = Grade.find_by(student_id: student.id, assignment_id: @assignment.id) %>
-    <%= f.fields_for(current_grade) do |br| %>
+    <%= f.fields_for(:grades, current_grade) do |br| %>
       <div>
         <%= br.label(:score, student.full_name) %>
         <%= br.text_field(:score) %><br><br>
