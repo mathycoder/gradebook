@@ -11,15 +11,19 @@
     <%= f.collection_select :learning_target_id, @klass.learning_targets, :id, :name, include_blank: 'Select the Learning Target' %><br><br>
   </div>
 
-  <% @klass.students.each do |student| %>
-    <%= f.fields_for(:grades) do |br| %>
-      <div>
-        <%= br.label(:score, student.full_name) %>
-        <%= br.text_field(:score) %><br><br>
-        <%= br.hidden_field(:student_id, :value => student.id) %>
-      </div>
+  <table>
+    <% @klass.students.each do |student| %>
+      <tr>
+        <%= f.fields_for(:grades) do |br| %>
+          <div>
+            <td><%= br.label(:score, student.full_name) %></td>
+            <td><%= br.text_field(:score) %></td>
+            <%= br.hidden_field(:student_id, :value => student.id) %>
+          </div>
+        <% end %>
+      </tr>
     <% end %>
-  <% end %>
-
+  </table>
+  <br>
   <%= f.submit %>
 <% end %>
