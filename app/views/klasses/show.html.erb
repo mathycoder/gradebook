@@ -10,16 +10,15 @@
 
   <tr>
     <th></th>
-    <th></th>
+    <th><%= link_to("Learning Targets", klass_learning_targets_path(@klass)) %></th>
     <% @klass.learning_targets.each do |lt| %>
       <th colspan="<%= lt.assignments.length %>"><%= lt.name %></th>
     <% end %>
-    <th><%= link_to("Add Learning Target", new_klass_learning_target_path(@klass)) %></th>
   </tr>
 
   <tr>
     <td></td>
-    <td></td>
+    <td><%= link_to("New Assignment", new_klass_assignment_path(@klass)) if !@klass.learning_targets.empty? %></td>
 
     <% @klass.learning_targets.each do |lt| %>
       <%= content_tag(:td) if lt.assignments.empty? %>
@@ -32,7 +31,6 @@
         </td>
       <% end %>
     <% end %>
-    <td><%= link_to("Add Assignment", new_klass_assignment_path(@klass)) if !@klass.learning_targets.empty? %></td>
   </tr>
 
   <tr>
