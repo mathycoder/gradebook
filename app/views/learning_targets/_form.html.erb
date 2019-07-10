@@ -7,25 +7,44 @@
 
   <h3>Optional: Create a rubric</h3>
 
-  <div>
-    <%= f.label(:level4, "Level 4 Understanding") %><br>
-    <%= f.text_area(:level4) %><br><br>
-  </div>
 
-  <div>
-    <%= f.label(:level3, "Level 3 Understanding") %><br>
-    <%= f.text_area(:level3) %><br><br>
-  </div>
+  <div class="lt-form-rubric">
+    <div class="rubric-title">
+      <h2><%= link_to(lt.name, edit_klass_learning_target_path(klass, lt)) %></h2>
+    </div>
 
-  <div>
-    <%= f.label(:level2, "Level 2 Understanding") %><br>
-    <%= f.text_area(:level2) %><br><br>
-  </div>
 
-  <div>
-    <%= f.label(:level1, "Level 1 Understanding") %><br>
-    <%= f.text_area(:level1) %><br><br>
-  </div>
+    <div class="rubric-score">
+      <h2>4</h2>
+    </div>
+
+    <div class="rubric-score-desc">
+      <p><%= f.text_area(:level4) %></p>
+    </div>
+
+    <div class="rubric-score">
+      <h2>3</h2>
+    </div>
+
+    <div class="rubric-score-desc">
+      <p><%= f.text_area(:level3) %></p>
+    </div>
+
+    <div class="rubric-score">
+      <h2>2</h2>
+    </div>
+
+    <div class="rubric-score-desc">
+      <p><%= f.text_area(:level2) %></p>
+    </div>
+
+    <div class="rubric-score">
+      <h2>1</h2>
+    </div>
+
+    <div class="rubric-score-desc">
+      <p><%= f.text_area(:level1) %></p>
+    </div>
 
   <%= f.submit %>
 <% end %>

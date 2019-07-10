@@ -45,6 +45,10 @@ table.gradebook .average {
 
 
 /* LT-show page */
+
+
+
+
 .lt-show-container {
   display: grid;
   grid-template-columns: 4fr 3fr;
@@ -55,13 +59,17 @@ table.gradebook .average {
   grid-column: span 1;
 }
 
-.lt-show-container .lt-show-rubric {
+.lt-show-container .lt-show-rubric, .lt-form-rubric {
   grid-column: span 1;
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: 70px repeat(4, 100px);
   padding: 0 10px;
   border: black 1px solid;
+}
+
+.lt-form-rubric {
+  width: 40%;
 }
 
 .rubric-title {

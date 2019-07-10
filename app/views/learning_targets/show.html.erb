@@ -6,5 +6,7 @@
     <%= render partial: "klasses/table", locals: {klass: @klass, collection: [@lt], klass_or_lt: @lt} %>
   </div>
 
-  <%= render partial: "learning_targets/rubric", locals: {klass: @klass, lt: @lt} %>
+  <div class="lt-show-rubric">
+    <%= render partial: "learning_targets/rubric", locals: {klass: @klass, lt: @lt} %>
+  </div>
 </div>
