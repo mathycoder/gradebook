@@ -26,7 +26,7 @@
   </tr>
 
   <tr>
-    <td><%= link_to("Students", klass_students_path(klass)) %></td>
+    <td><%= link_to("Students", klass_students_path(klass)) if !@lt %></td>
     <td><p><strong>Overall Average</strong></p></td>
 
     <% collection.each do |lt| %>
