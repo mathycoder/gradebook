@@ -1,3 +1,13 @@
 <h1><%= @lt.name %> for class <%= link_to(@klass.name, klass_path(@klass)) %></h1>
 
-<%= render partial: "klasses/table", locals: {klass: @klass, collection: [@lt], klass_or_lt: @lt} %>
+
+<div class="lt-show-container">
+
+  <div class="lt-show-gradebook">
+    <%= render partial: "klasses/table", locals: {klass: @klass, collection: [@lt], klass_or_lt: @lt} %>
+  </div>
+
+  <div class="lt-show-rubric">
+    <h1>I will eventually be a rubric!</h1>
+  </div>
+</div>

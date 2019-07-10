@@ -40,5 +40,20 @@ table.gradebook .date {
 table.gradebook .average {
   background-color: grey;
   width: 20px;
+}
 
+
+
+/* LT-show page */
+.lt-show-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.lt-show-container .lt-show-gradebook {
+  column-span: 1;
+}
+
+.lt-show-container .lt-show-rubric {
+  column-span: 1;
 }
