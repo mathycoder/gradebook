@@ -1,16 +1,8 @@
 <%= form_for([klass,lt]) do |f| %>
 
-  <div>
-    <%= f.label(:name, "Enter a learning target name") %><br>
-    <%= f.text_field(:name) %><br><br>
-  </div>
-
-  <h3>Optional: Create a rubric</h3>
-
-
   <div class="lt-form-rubric">
     <div class="rubric-title">
-      <h2><%= link_to(lt.name, edit_klass_learning_target_path(klass, lt)) %></h2>
+      <h2><%= f.text_field(:name, size: "60", placeholder: "Enter the name of the Learning Target") %></h2>
     </div>
 
 
@@ -19,7 +11,7 @@
     </div>
 
     <div class="rubric-score-desc">
-      <p><%= f.text_area(:level4) %></p>
+      <p><%= f.text_area(:level4, size: "50x4", placeholder: "Optional: What does level 4 understanding look like?") %></p>
     </div>
 
     <div class="rubric-score">
@@ -27,7 +19,7 @@
     </div>
 
     <div class="rubric-score-desc">
-      <p><%= f.text_area(:level3) %></p>
+      <p><%= f.text_area(:level3, size: "50x4", placeholder: "Optional: What does level 3 understanding look like?") %></p>
     </div>
 
     <div class="rubric-score">
@@ -35,7 +27,7 @@
     </div>
 
     <div class="rubric-score-desc">
-      <p><%= f.text_area(:level2) %></p>
+      <p><%= f.text_area(:level2, size: "50x4", placeholder: "Optional: What does level 2 understanding look like?") %></p>
     </div>
 
     <div class="rubric-score">
@@ -43,8 +35,8 @@
     </div>
 
     <div class="rubric-score-desc">
-      <p><%= f.text_area(:level1) %></p>
+      <p><%= f.text_area(:level1, size: "50x4", placeholder: "Optional: What does level 1 understanding look like?") %></p>
     </div>
 
-  <%= f.submit %>
+  <%= f.submit(submit_text) %>
 <% end %>

@@ -1,6 +1,6 @@
 <h4>Edit Learning Target</h4>
 
-<%= render partial: "learning_targets/form", locals: {klass: @klass, lt: @lt} %>
+<%= render partial: "learning_targets/form", locals: {klass: @klass, lt: @lt, submit_text: "Update LT"} %>
 
 <div>
   <%= form_for([@klass, @lt], method: :delete) do |f| %>
