@@ -8,7 +8,7 @@ class LearningTargetsController < ApplicationController
   def create
     @klass = Klass.find(params[:klass_id])
     @lt = LearningTarget.new(lt_params)
-    if @lt.description && @lt.name && @lt.save 
+    if @lt.save 
       @klass.learning_targets << @lt
       redirect_to(klass_learning_target_path(@klass, @lt))
     else
