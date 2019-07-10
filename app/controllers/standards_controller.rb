@@ -5,9 +5,7 @@ class StandardsController < ApplicationController
 
   def create
     @standard = Standard.new(standard_params)
-    binding.pry
     render 'new'
-
   end
 
   private
