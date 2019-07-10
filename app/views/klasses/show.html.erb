@@ -35,7 +35,7 @@
 
   <tr>
     <td><%= link_to("Students", klass_students_path(@klass)) %></td>
-    <td><p><strong>Average</strong></p></td>
+    <td><p><strong>Overall Average</strong></p></td>
 
     <% @klass.learning_targets.each do |lt| %>
       <%= content_tag(:td) if lt.assignments.empty? %>
