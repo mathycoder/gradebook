@@ -19,8 +19,9 @@ class Standard < ApplicationRecord
     mstandards = array.select do |hash|
       hash["subject"] == "Common Core Mathematics"
     end
-    mstandards.sort_by{|standard| standard["title"]}
+    mstandards = mstandards.sort_by{|standard| standard["title"]}
+    mstandards.map do |item|
+      Standard.new(grade: item["title"], grade_id: item["id"] )
+    end
   end
-
-
 end

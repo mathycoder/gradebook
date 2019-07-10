@@ -4,7 +4,6 @@ class StandardsController < ApplicationController
   end
 
   def create
-    binding.pry 
     @standard = Standard.new(standard_params)
     render 'new'
 
@@ -13,6 +12,6 @@ class StandardsController < ApplicationController
   private
 
     def standard_params
-      params.require(:standard).permit(:org_id)
+      params.require(:standard).permit(:grade, :grade_id)
     end
 end
