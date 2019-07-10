@@ -21,6 +21,11 @@ class LearningTargetsController < ApplicationController
     @lts = @klass.learning_targets
   end
 
+  def show
+    @klass = Klass.find(params[:klass_id])
+    @lt = LearningTarget.find(params[:id])
+  end
+
   def edit
     @klass = Klass.find(params[:klass_id])
     @lt = LearningTarget.find(params[:id])

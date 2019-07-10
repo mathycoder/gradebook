@@ -23,8 +23,12 @@ class Assignment < ApplicationRecord
   def average
     if !self.grades.empty?
       grades = self.grades.map {|grade| grade.score}.flatten.compact
-      avg = grades.sum / grades.length
-      '%.2f' % avg
+      if !grades.empty?
+        avg = grades.sum / grades.length
+        '%.2f' % avg
+      else
+        nil
+      end
     end
   end
 

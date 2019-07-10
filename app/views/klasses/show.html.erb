@@ -12,7 +12,7 @@
     <th></th>
     <th><%= link_to("Learning Targets", klass_learning_targets_path(@klass)) %></th>
     <% @klass.learning_targets.each do |lt| %>
-      <th colspan="<%= lt.assignments.length %>"><%= lt.name %></th>
+      <th colspan="<%= lt.assignments.length %>"><%= link_to(lt.name, klass_learning_target_path(@klass, lt)) %></th>
     <% end %>
   </tr>
 

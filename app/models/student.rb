@@ -13,8 +13,12 @@ class Student < ApplicationRecord
   def average(klass)
     if !klass.grades.empty?
       grades = klass.grades.where("student_id = ?", self.id).map{|grade| grade.score}.compact
-      avg = grades.sum / grades.length
-      '%.2f' % avg
+      if !grades.empty?
+        avg = grades.sum / grades.length
+        '%.2f' % avg
+      else
+        nil
+      end 
     end
   end
 end
