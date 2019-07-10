@@ -14,6 +14,7 @@ class CreateLearningTargets < ActiveRecord::Migration[5.2]
       t.string :standard_notation
       t.string :alt_standard_notation
       t.string :description
+      t.boolean :choose_standard
 
       t.timestamps
     end

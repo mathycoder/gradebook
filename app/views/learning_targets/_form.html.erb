@@ -19,18 +19,20 @@
       <% my_standard = Standard.standard_lookup(lt.grade_id, lt.api_standard_id) %>
       <h3><%= my_standard.description %></h3>
 
+      <%= f.label(:choose_standard) %>
+      <%= f.check_box(:choose_standard) %>
+
       <%= f.hidden_field(:standard_notation, value: my_standard.standard_notation) %>
       <%= f.hidden_field(:description, value: my_standard.description) %>
       <%= f.hidden_field(:alt_standard_notation, value: my_standard.alt_standard_notation) %>
     <% end %>
   </div>
 
-  <br>
-  <br>
-  <br>
+  <%= f.submit("Submit") %>
 
-  <% binding.pry %>
-  <% if lt.description %>
+  <br><br>
+
+  <% if lt.choose_standard %>
     <div class="lt-form-rubric">
       <div class="rubric-title">
         <h2><%= f.text_field(:name, size: "60", placeholder: "Enter the name of the Learning Target") %></h2>
@@ -69,7 +71,6 @@
         <p><%= f.text_area(:level1, size: "50x4", placeholder: "Optional: What does level 1 understanding look like?") %></p>
       </div>
     </div>
+    <%= f.submit("Create LT") %>
   <% end %>
-
-  <%= f.submit("Submit") %>
 <% end %>

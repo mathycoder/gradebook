@@ -5,7 +5,7 @@ class LearningTarget < ApplicationRecord
   has_many :assignments
   has_many :grades, through: :assignments
 
-  validates :description, :name, presence: true
+  validates :description, :name, :choose_standard, presence: true
 
   def chronological_assignments
     self.assignments.sort_by{|assignment| assignment.date}
