@@ -11,11 +11,18 @@
       <div>
         <h3>Select Standard</h3>
         <% grade_standards = Standard.by_grade(@standard.grade_id) %>
+        <%= f.collection_select :api_standard_id, grade_standards, :api_standard_id, :standard_notation %>
       </div>
     <% end %>
 
+    <% if @standard.api_standard_id %>
+      <% my_standard = Standard.standard_lookup(@standard.grade_id, @standard.api_standard_id) %>
+      <h3><%= my_standard.description %></h3>
+    <% end %>
 
-
+    <%= f.hidden_field(:standard_notation, value: my_standard.standard_notation) %>
+    <%= f.hidden_field(:description, value: my_standard.description) %>
+    <%= f.hidden_field(:alt_standard_notation, value: my_standard.alt_standard_notation) %>
     <br><br>
 
     <%= submit_tag("Submit") %>

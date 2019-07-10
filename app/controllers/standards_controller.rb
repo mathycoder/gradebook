@@ -5,6 +5,7 @@ class StandardsController < ApplicationController
 
   def create
     @standard = Standard.new(standard_params)
+    binding.pry
     render 'new'
 
   end
@@ -12,6 +13,6 @@ class StandardsController < ApplicationController
   private
 
     def standard_params
-      params.require(:standard).permit(:grade, :grade_id)
+      params.require(:standard).permit(:grade, :grade_id, :standard_notation, :description, :alt_standard_notation, :api_standard_id)
     end
 end

@@ -28,8 +28,14 @@ class Standard < ApplicationRecord
   def self.by_grade(url)
     array = self.call_the_API("https://api.commonstandardsproject.com/api/v1/standard_sets/#{url}")["standards"]
     standards = array.map do |standard|
-      Standard.new(api_standard_id: standard[1]["id"], standard_notation: standard[1]["statementNotation"], alt_standard_notation: standard[1]["altStatementNotation"], description: standard[1]["description"])
+      Standard.new(api_standard_id: standard[1]["id"], standard_notation: standard[1]["statementNotation"]||standard[1]["description"], alt_standard_notation: standard[1]["altStatementNotation"], description: standard[1]["description"])
     end
+    standards.reverse
+  end
+
+  def self.standard_lookup(url, id)
+    standards = self.by_grade(url)
+    standards.find{|standard| standard.api_standard_id == id}
   end
 
 end
