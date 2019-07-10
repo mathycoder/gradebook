@@ -40,7 +40,7 @@
   <% klass.students.each do |student| %>
     <tr>
       <td><%= student.full_name %></td>
-      <td class="average"><p><strong><%= student.average(klass) %></strong></p></td>
+      <td class="average"><p><strong><%= student.average(klass_or_lt) %></strong></p></td>
       <% collection.each do |lt| %>
         <%= content_tag(:td) if lt.assignments.empty? %>
         <% lt.chronological_assignments.each do |assignment| %>
