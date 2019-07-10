@@ -22,11 +22,5 @@ Rails.application.routes.draw do
     resources :learning_targets, :path => 'lts'
   end
 
-  resources :klasses, :path => 'classes' do
-    resources :learning_targets, :path => 'lts' do
-      resources :standards 
-    end
-  end
-
-
+  resources :standards
 end

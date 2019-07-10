@@ -1,0 +1,11 @@
+<%= form_for(@standard) do |f| %>
+
+  <%= f.label("Select Standard Organization") %><br>
+  <% org_array = Standard.new.call_the_API %>
+
+  <select name="org">
+    <%=org_array.each do |org|  %>
+        <option value="<%= org["id"] %>"><%= org["title"] %></option>
+    <% end %>
+  </select>
+<% end %>

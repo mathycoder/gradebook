@@ -1,17 +1,3 @@
-<div class="find-standard">
-  <% organizations_array = Standard.new.call_the_API %>
-  <% organizations_array.each do |org| %>
-    <p><%= org["title"] %></p>
-  <% end %>
-</div>
-
-
-
-
-
-
-
-
 <%= form_for([klass,lt]) do |f| %>
 
   <div class="lt-form-rubric">

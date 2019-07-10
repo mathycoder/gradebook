@@ -9,6 +9,4 @@ class Standard < ApplicationRecord
       )
       hash = JSON.parse(response)["data"]
   end
-
-
 end

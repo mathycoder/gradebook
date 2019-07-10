@@ -1,5 +1,5 @@
 class StandardsController < ApplicationController
-  def create
-    
+  def new
+    @standard = Standard.new
   end
 end
