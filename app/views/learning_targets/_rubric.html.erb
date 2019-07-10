@@ -1,0 +1,15 @@
+<div class="lt-show-rubric">
+  <div class="rubric-title">
+    <h2><%= link_to(lt.name, edit_klass_learning_target_path(klass, lt)) %></h2>
+  </div>
+
+  <% [lt.level4, lt.level3, lt.level2, lt.level1].each_with_index do |level,index| %>
+    <div class="rubric-score">
+      <h2><%= 4-index %></h2>
+    </div>
+
+    <div class="rubric-score-desc">
+      <p><%= level %></p>
+    </div>
+  <% end %>
+</div>

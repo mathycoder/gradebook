@@ -2,25 +2,9 @@
 
 
 <div class="lt-show-container">
-
   <div class="lt-show-gradebook">
     <%= render partial: "klasses/table", locals: {klass: @klass, collection: [@lt], klass_or_lt: @lt} %>
   </div>
 
-  <div class="lt-show-rubric">
-    <div class="rubric-title">
-      <h2><%= @lt.name %></h2>
-    </div>
-
-    <% [@lt.level4, @lt.level3, @lt.level2, @lt.level1].each_with_index do |level,index| %>
-      <div class="rubric-score">
-        <h2><%= 4-index %></h2>
-      </div>
-
-      <div class="rubric-score-desc">
-        <p><%= level %></p>
-      </div>
-    <% end %>
-
-  </div>
+  <%= render partial: "learning_targets/rubric", locals: {klass: @klass, lt: @lt} %>
 </div>
