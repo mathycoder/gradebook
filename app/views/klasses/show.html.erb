@@ -6,4 +6,4 @@
 <h6 style="display: inline"><%= link_to("Back", klasses_path) %></h6>
 <p>
 
-<%= render partial: "klasses/table", locals: {klass: @klass} %>
+<%= render partial: "klasses/table", locals: {klass: @klass, collection: @klass.learning_targets} %>
