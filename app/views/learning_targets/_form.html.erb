@@ -19,7 +19,7 @@
       <% my_standard = Standard.standard_lookup(lt.grade_id, lt.api_standard_id) %>
       <h3><%= my_standard.description %></h3>
 
-      <%= f.label(:choose_standard) %>
+      <%= f.label(:choose_standard, "Check to keep this standard") %>
       <%= f.check_box(:choose_standard) %>
 
       <%= f.hidden_field(:standard_notation, value: my_standard.standard_notation) %>
