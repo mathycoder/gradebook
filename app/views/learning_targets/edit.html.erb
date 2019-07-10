@@ -1,16 +1,6 @@
 <h4>Edit Learning Target</h4>
 
-<div>
-  <%= form_for([@klass,@lt]) do |f| %>
-
-    <div>
-      <%= f.label(:name, "Enter a learning target name") %><br>
-      <%= f.text_field(:name) %><br><br>
-    </div>
-
-    <%= f.submit("update") %>
-  <% end %>
-</div>
+<%= render partial: "learning_targets/form", locals: {klass: @klass, lt: @lt} %>
 
 <div>
   <%= form_for([@klass, @lt], method: :delete) do |f| %>
