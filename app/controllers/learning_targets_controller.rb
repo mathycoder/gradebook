@@ -3,14 +3,12 @@ class LearningTargetsController < ApplicationController
   def new
     @klass = Klass.find(params[:klass_id])
     @lt = LearningTarget.new
-    @standard = Standard.new
   end
 
   def create
-    @standard = Standard.new(standard_params)
     @klass = Klass.find(params[:klass_id])
     @lt = LearningTarget.new(lt_params)
-    if @lt.save && @standard.description
+    if @lt.description && @lt.name && @lt.save 
       @klass.learning_targets << @lt
       redirect_to(klass_learning_target_path(@klass, @lt))
     else
@@ -55,7 +53,7 @@ class LearningTargetsController < ApplicationController
   private
 
     def lt_params
-      params.require(:learning_target).permit(:name, :level1, :level2, :level3, :level4)
+      params.require(:learning_target).permit(:name, :level1, :level2, :level3, :level4, :grade, :grade_id, :standard_notation, :description, :alt_standard_notation, :api_standard_id)
     end
 
 end
