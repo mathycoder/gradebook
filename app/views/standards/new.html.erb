@@ -2,8 +2,17 @@
 <div>
   <h3>Select a Standards Organization</h3>
   <%= form_tag('/standards', method: :post) do %>
-    <% org_array = Standard.new.call_the_API %>
-    <%= select_tag 'org', options_for_select(org_array.collect{|org| [org["title"], org["id"]]}) %>
+    <% org_array = Standard.new.call_the_API('https://api.commonstandardsproject.com/api/v1/jurisdictions') %>
+    <%= select_tag 'standard[org_id]', options_for_select(org_array.collect{|org| [org["title"], org["id"]]}) %>
+    <%= submit_tag("Submit") %>
+  <% end %>
+</div>
+
+<div>
+  <h3>Select Area</h3>
+  <%= form_tag('/standards', method: :post) do %>
+    <% math_standards = Standard.new.math_standards %>
+    <%= select_tag 'standard[grade_id]', options_for_select(math_standards.collect{|org| [org["title"], org["id"]]}) %>
     <%= submit_tag("Submit") %>
   <% end %>
 </div>

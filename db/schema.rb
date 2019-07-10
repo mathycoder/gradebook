@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(version: 2019_07_09_205019) do
   create_table "standards", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.string "grade"
+    t.string "grade_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
