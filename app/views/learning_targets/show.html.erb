@@ -4,7 +4,7 @@
 
   <tr>
     <th></th>
-    <th></th>
+    <th><%= link_to("Learning Targets", klass_learning_targets_path(@klass)) %></th>
     <th colspan="<%= @lt.assignments.length %>"><%= @lt.name %></th>
   </tr>
 

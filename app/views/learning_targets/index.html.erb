@@ -2,7 +2,7 @@
 
 <% @klass.learning_targets.each do |lt| %>
   <h2>
-    <%= lt.name %>
+    <%= link_to(lt.name, klass_learning_target_path(@klass, lt)) %>
     <%= link_to("edit", edit_klass_learning_target_path(@klass, lt)) %>
   </h2>
 <% end %>
