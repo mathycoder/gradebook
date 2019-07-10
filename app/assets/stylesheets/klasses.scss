@@ -1,17 +1,3 @@
 // Place all the styles related to the Klasses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-.lt-show-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.lt-show-container .lt-show-gradebook {
-  column-span: 1;
-  background-color: red;
-}
-
-.lt-show-container .lt-show-rubric {
-  column-span: 1;
-}
