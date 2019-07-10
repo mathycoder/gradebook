@@ -3,11 +3,16 @@
 
     <div>
       <h3>Select Grade</h3>
-      <% math_standards = Standard.new.math_standards %>
+      <% math_standards = Standard.math_standards %>
       <%= f.collection_select :grade_id, math_standards, :grade_id, :grade %>
     </div>
 
-
+    <% if @standard.grade_id %>
+      <div>
+        <h3>Select Standard</h3>
+        <% grade_standards = Standard.by_grade(@standard.grade_id) %>
+      </div>
+    <% end %>
 
 
 
