@@ -7,5 +7,27 @@
     <%= f.text_field(:name) %><br><br>
   </div>
 
+  <h3>Optional: Create a rubric</h3>
+
+  <div>
+    <%= f.label(:level4, "Level 4 Understanding") %><br>
+    <%= f.text_area(:level4) %><br><br>
+  </div>
+
+  <div>
+    <%= f.label(:level3, "Level 3 Understanding") %><br>
+    <%= f.text_area(:level3) %><br><br>
+  </div>
+
+  <div>
+    <%= f.label(:level2, "Level 2 Understanding") %><br>
+    <%= f.text_area(:level2) %><br><br>
+  </div>
+
+  <div>
+    <%= f.label(:level1, "Level 1 Understanding") %><br>
+    <%= f.text_area(:level1) %><br><br>
+  </div>
+
   <%= f.submit %>
 <% end %>

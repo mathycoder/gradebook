@@ -53,6 +53,10 @@ ActiveRecord::Schema.define(version: 2019_07_09_205019) do
 
   create_table "learning_targets", force: :cascade do |t|
     t.string "name"
+    t.string "level1"
+    t.string "level2"
+    t.string "level3"
+    t.string "level4"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
