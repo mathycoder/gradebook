@@ -1,3 +1,7 @@
+body {
+  font-family: "Roboto", helvetica, arial, sans-serif;
+}
+
 .big-button input[type=submit] {
   width: 150px;
   background-color: grey;
@@ -46,11 +50,20 @@ a:hover {
 .gradebook-wrapper {
   overflow-y: scroll;
   width: 100%;
-  
 }
 
 table.gradebook {
   border-collapse: collapse;
+}
+
+table.gradebook th {
+  background-color: rgb(217, 106, 94);
+  color: white;
+}
+
+table.gradebook th a {
+  text-decoration: none;
+  color: white;
 }
 
 table.gradebook, table.gradebook th, table.gradebook td {
@@ -74,11 +87,6 @@ table.gradebook tr td:first-child, table.gradebook tr th:first-child {
 
 table.gradebook tr:nth-child(3) td {
   height: 30px;
-}
-
-table.gradebook th {
-  background-color: grey;
-  color: white;
 }
 
 table.gradebook .assignment-header {
