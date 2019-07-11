@@ -43,11 +43,24 @@ table.gradebook .average {
 }
 
 
+/*LT-form page*/
+
+.lt-form-container {
+  display: flex
+}
+
+.lt-form-container div {
+  width: 80%;
+}
+
+.lt-form-container .standard-selection {
+  padding: 10px;
+}
+
+
+
 
 /* LT-show page */
-
-
-
 
 .lt-show-container {
   display: grid;
@@ -78,6 +91,15 @@ table.gradebook .average {
   text-align: center;
   margin-top: 10px;
   border-radius: 5px;
+  margin: 10px auto;
+}
+
+.rubric-title input[type=text] {
+  width: 80%;
+  margin: 0 20px;
+  height: 30px;
+  font-size: 10px;
+  text-align: center;
 }
 
 .rubric-score {
@@ -91,4 +113,9 @@ table.gradebook .average {
 .rubric-score-desc {
   align-self: center;
   margin: 15px 0;
+}
+
+.rubric-score-desc textarea {
+  width: 100%;
+  height: 50px;
 }

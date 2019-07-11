@@ -1,50 +1,52 @@
-<%= form_for([klass,lt]) do |f| %>
+<div class="lt-form-container">
 
   <div class="standard-selection">
-    <div>
-      <h3>Select Grade</h3>
-      <% math_standards = Standard.math_standards %>
-      <%= f.collection_select :grade_id, math_standards, :grade_id, :grade %>
+    <%= form_for([klass,lt]) do |f| %>
+      <div>
+        <h3>Select Grade</h3>
+        <% math_standards = Standard.math_standards %>
+        <%= f.collection_select :grade_id, math_standards, :grade_id, :grade %>
+      </div>
+
+      <div>
+        <% if lt.grade_id %>
+          <h3>Select Standard</h3>
+          <% grade_standards = Standard.by_grade(lt.grade_id) %>
+          <%= f.collection_select :api_standard_id, grade_standards, :api_standard_id, :standard_notation %>
+        <% end %>
+      </div>
+
+      <div>
+        <% if lt.api_standard_id %>
+          <% my_standard = Standard.standard_lookup(lt.grade_id, lt.api_standard_id) %>
+          <h3><%= my_standard.description %></h3>
+
+          <%= f.label(:choose_standard, "Check to keep this standard") %>
+          <%= f.check_box(:choose_standard) %>
+
+          <%= f.hidden_field(:standard_notation, value: my_standard.standard_notation) %>
+          <%= f.hidden_field(:description, value: my_standard.description) %>
+          <%= f.hidden_field(:alt_standard_notation, value: my_standard.alt_standard_notation) %>
+        <% end %>
+
+        <%= f.submit("Submit") %>
+      </div>
+
+      <br><br>
     </div>
 
-    <% if lt.grade_id %>
-      <div>
-        <h3>Select Standard</h3>
-        <% grade_standards = Standard.by_grade(lt.grade_id) %>
-        <%= f.collection_select :api_standard_id, grade_standards, :api_standard_id, :standard_notation %>
-      </div>
-    <% end %>
 
-    <% if lt.api_standard_id %>
-      <% my_standard = Standard.standard_lookup(lt.grade_id, lt.api_standard_id) %>
-      <h3><%= my_standard.description %></h3>
-
-      <%= f.label(:choose_standard, "Check to keep this standard") %>
-      <%= f.check_box(:choose_standard) %>
-
-      <%= f.hidden_field(:standard_notation, value: my_standard.standard_notation) %>
-      <%= f.hidden_field(:description, value: my_standard.description) %>
-      <%= f.hidden_field(:alt_standard_notation, value: my_standard.alt_standard_notation) %>
-    <% end %>
-  </div>
-
-  <%= f.submit("Submit") %>
-
-  <br><br>
-
-  <% if lt.choose_standard %>
     <div class="lt-form-rubric">
       <div class="rubric-title">
-        <h2><%= f.text_field(:name, size: "60", placeholder: "Enter the name of the Learning Target") %></h2>
+        <h2><%= f.text_field(:name, size: "60", placeholder: "Enter a student-friendly name for this LT") %></h2>
       </div>
-
 
       <div class="rubric-score">
         <h2>4</h2>
       </div>
 
       <div class="rubric-score-desc">
-        <p><%= f.text_area(:level4, size: "50x4", placeholder: "Optional: What does level 4 understanding look like?") %></p>
+        <p><%= f.text_area(:level4, placeholder: "Optional: What does level 4 understanding look like?") %></p>
       </div>
 
       <div class="rubric-score">
@@ -52,7 +54,7 @@
       </div>
 
       <div class="rubric-score-desc">
-        <p><%= f.text_area(:level3, size: "50x4", placeholder: "Optional: What does level 3 understanding look like?") %></p>
+        <p><%= f.text_area(:level3, placeholder: "Optional: What does level 3 understanding look like?") %></p>
       </div>
 
       <div class="rubric-score">
@@ -60,7 +62,7 @@
       </div>
 
       <div class="rubric-score-desc">
-        <p><%= f.text_area(:level2, size: "50x4", placeholder: "Optional: What does level 2 understanding look like?") %></p>
+        <p><%= f.text_area(:level2, placeholder: "Optional: What does level 2 understanding look like?") %></p>
       </div>
 
       <div class="rubric-score">
@@ -68,9 +70,9 @@
       </div>
 
       <div class="rubric-score-desc">
-        <p><%= f.text_area(:level1, size: "50x4", placeholder: "Optional: What does level 1 understanding look like?") %></p>
+        <p><%= f.text_area(:level1, placeholder: "Optional: What does level 1 understanding look like?") %></p>
       </div>
     </div>
     <%= f.submit("Create LT") %>
   <% end %>
-<% end %>
+</div>
