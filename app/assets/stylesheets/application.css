@@ -61,17 +61,23 @@ table.gradebook th {
   border-top: 1px solid black;
 }
 
-table.gradebook th:nth-child(3n+2) {
-  background-color: rgb(71, 125, 179);
+
+/* The color of LT headings */
+table.gradebook .red {
+  background-color: red;
+
 }
 
-table.gradebook th:nth-child(3n+3) {
-  background-color: rgb(217, 106, 94);
+table.gradebook .green {
+  background-color: green;
 }
 
-table.gradebook th:nth-child(3n+4) {
-  background-color: rgb(85, 170, 104);
+table.gradebook .blue {
+  background-color: blue;
 }
+
+
+
 
 table.gradebook tr:nth-child(2n+3) {
   background-color: rgb(218, 217, 224);
