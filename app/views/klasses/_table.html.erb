@@ -1,55 +1,57 @@
-<table class="gradebook">
+<div class="gradebook-wrapper">
+  <table class="gradebook">
 
-  <tr>
-    <th></th>
-    <th><%= link_to("Learning Targets", klass_learning_targets_path(klass)) %></th>
-    <% collection.each do |lt| %>
-      <th colspan="<%= lt.assignments.length %>">
-        <%= link_to(lt.name, klass_learning_target_path(klass, lt)) %>
-      </th>
-    <% end %>
-  </tr>
-
-  <tr>
-    <td></td>
-    <td><%= link_to("New Assignment", new_klass_assignment_path(klass)) if !klass.learning_targets.empty? %></td>
-
-    <% collection.each do |lt| %>
-      <%= content_tag(:td) if lt.assignments.empty? %>
-      <% lt.chronological_assignments.each do |assignment| %>
-        <td class="assignments">
-          <div class="assignment-header">
-            <div><%= link_to(assignment.name, edit_klass_assignment_path(klass, assignment)) %></div>
-            <div class="date"><%= assignment.date_display %></div>
-          </div>
-        </td>
-      <% end %>
-    <% end %>
-  </tr>
-
-  <tr>
-    <td><%= link_to("Students", klass_students_path(klass)) if !@lt %></td>
-    <td><p><strong>Overall Average</strong></p></td>
-
-    <% collection.each do |lt| %>
-      <%= content_tag(:td) if lt.assignments.empty? %>
-      <% lt.chronological_assignments.each do |assignment| %>
-        <td><p><strong><%= assignment.average %></strong></p></td>
-      <% end %>
-    <% end %>
-  </tr>
-
-  <% klass.students.each do |student| %>
     <tr>
-      <td><%= student.full_name %></td>
-      <td class="average"><p><strong><%= student.average(klass_or_lt) %></strong></p></td>
+      <th></th>
+      <th><%= link_to("Learning Targets", klass_learning_targets_path(klass)) %></th>
+      <% collection.each do |lt| %>
+        <th colspan="<%= lt.assignments.length %>">
+          <%= link_to(lt.name, klass_learning_target_path(klass, lt)) %>
+        </th>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td><%= link_to("New Assignment", new_klass_assignment_path(klass)) if !klass.learning_targets.empty? %></td>
+
       <% collection.each do |lt| %>
         <%= content_tag(:td) if lt.assignments.empty? %>
         <% lt.chronological_assignments.each do |assignment| %>
-          <% scorer = assignment.grades.find_by(student_id: student.id) %>
-          <td class="score"><%= scorer.score if scorer %></td>
+          <td class="assignments">
+            <div class="assignment-header">
+              <div><%= link_to(assignment.name, edit_klass_assignment_path(klass, assignment)) %></div>
+              <div class="date"><%= assignment.date_display %></div>
+            </div>
+          </td>
         <% end %>
       <% end %>
     </tr>
-  <% end %>
-</table>
+
+    <tr>
+      <td><%= link_to("Students", klass_students_path(klass)) if !@lt %></td>
+      <td><p><strong>Overall Average</strong></p></td>
+
+      <% collection.each do |lt| %>
+        <%= content_tag(:td) if lt.assignments.empty? %>
+        <% lt.chronological_assignments.each do |assignment| %>
+          <td><p><strong><%= assignment.average %></strong></p></td>
+        <% end %>
+      <% end %>
+    </tr>
+
+    <% klass.students.each do |student| %>
+      <tr>
+        <td><%= student.full_name %></td>
+        <td class="average"><p><strong><%= student.average(klass_or_lt) %></strong></p></td>
+        <% collection.each do |lt| %>
+          <%= content_tag(:td) if lt.assignments.empty? %>
+          <% lt.chronological_assignments.each do |assignment| %>
+            <% scorer = assignment.grades.find_by(student_id: student.id) %>
+            <td class="score"><%= scorer.score if scorer %></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
