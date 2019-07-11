@@ -78,7 +78,7 @@ table.gradebook .average {
   grid-template-columns: 1fr 3fr;
   grid-template-rows: auto repeat(4, 100px);
   padding: 0 10px;
-  border: black 1px solid;
+  align-self: start;
 }
 
 .lt-form-rubric {
@@ -92,6 +92,7 @@ table.gradebook .average {
   margin-top: 10px;
   border-radius: 5px;
   margin: 10px auto;
+  padding: 10px;
 }
 
 .rubric-title input[type=text] {
@@ -108,11 +109,13 @@ table.gradebook .average {
   align-content: center;
   margin: 15px;
   border-radius: 10px;
+  width: 70px;
 }
 
 .rubric-score-desc {
   align-self: center;
   margin: 15px 0;
+  padding: 0 10px;
 }
 
 .rubric-score-desc textarea {
