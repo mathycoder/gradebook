@@ -4,8 +4,13 @@
     <%= form_for([klass,lt]) do |f| %>
       <div>
         <h3>Select Grade</h3>
-        <% math_standards = Standard.math_standards %>
-        <%= f.collection_select :grade_id, math_standards, :grade_id, :grade %>
+          <% if !lt.grade_id %>
+            <% math_standards = Standard.math_standards %>
+            <%= f.collection_select :grade_id, math_standards, :grade_id, :grade %>
+          <% else %>
+            <%= link_to("Go back to Grade Select", new_klass_learning_target_path(klass, lt)) %>
+            <%= f.hidden_field(:grade_id, value: lt.grade_id) %>
+          <% end %>
       </div>
 
       <div>
@@ -21,8 +26,10 @@
           <% my_standard = Standard.standard_lookup(lt.grade_id, lt.api_standard_id) %>
           <h3><%= my_standard.description %></h3>
 
-          <%= f.label(:choose_standard, "Check to keep this standard") %>
-          <%= f.check_box(:choose_standard) %>
+          <div class="checkbox">
+            <%= f.check_box(:choose_standard) %>
+            <%= f.label(:choose_standard, "Use this standard") %>
+          </div><br>
 
           <%= f.hidden_field(:standard_notation, value: my_standard.standard_notation) %>
           <%= f.hidden_field(:description, value: my_standard.description) %>

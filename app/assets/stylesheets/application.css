@@ -112,6 +112,14 @@ table.gradebook .assignments {
 
 
 
+.checkbox {
+  display: grid;
+  grid-template-columns: 20px 130px;
+  justify-content: center;
+}
+
+
+
 
 /* LT-show page */
 
