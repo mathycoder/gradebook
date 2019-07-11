@@ -5,7 +5,6 @@
     <th><%= link_to("Learning Targets", klass_learning_targets_path(klass)) %></th>
     <% collection.each do |lt| %>
       <th colspan="<%= lt.assignments.length %>">
-        <%= lt.alt_standard_notation %><br>
         <%= link_to(lt.name, klass_learning_target_path(klass, lt)) %>
       </th>
     <% end %>

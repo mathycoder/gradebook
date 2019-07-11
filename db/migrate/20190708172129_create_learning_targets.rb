@@ -7,15 +7,6 @@ class CreateLearningTargets < ActiveRecord::Migration[5.2]
       t.string :level3
       t.string :level4
 
-      #for the standard
-      t.string :grade
-      t.string :grade_id
-      t.string :api_standard_id
-      t.string :standard_notation
-      t.string :alt_standard_notation
-      t.string :description
-      t.boolean :choose_standard
-
       t.timestamps
     end
   end

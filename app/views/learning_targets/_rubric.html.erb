@@ -1,8 +1,5 @@
 <div class="rubric-title">
-  <h2><%= link_to(lt.standard_notation, edit_klass_learning_target_path(klass,lt)) %></h2>
-  <p>
-    <%= lt.description %><br>
-  </p>
+  <h2><%= lt.name %></h2>
 </div>
 
 <% [lt.level4, lt.level3, lt.level2, lt.level1].each_with_index do |level,index| %>

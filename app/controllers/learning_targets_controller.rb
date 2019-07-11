@@ -54,7 +54,7 @@ class LearningTargetsController < ApplicationController
   private
 
     def lt_params
-      params.require(:learning_target).permit(:name, :level1, :level2, :level3, :level4, :grade, :grade_id, :standard_notation, :description, :alt_standard_notation, :api_standard_id, :choose_standard)
+      params.require(:learning_target).permit(:name, :level1, :level2, :level3, :level4)
     end
 
 end
