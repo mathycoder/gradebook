@@ -4,7 +4,10 @@
     <th></th>
     <th><%= link_to("Learning Targets", klass_learning_targets_path(klass)) %></th>
     <% collection.each do |lt| %>
-      <th colspan="<%= lt.assignments.length %>"><%= link_to(lt.name, klass_learning_target_path(klass, lt)) %></th>
+      <th colspan="<%= lt.assignments.length %>">
+        <%= lt.alt_standard_notation %><br>
+        <%= link_to(lt.name, klass_learning_target_path(klass, lt)) %>
+      </th>
     <% end %>
   </tr>
 
@@ -15,7 +18,7 @@
     <% collection.each do |lt| %>
       <%= content_tag(:td) if lt.assignments.empty? %>
       <% lt.chronological_assignments.each do |assignment| %>
-        <td>
+        <td class="assignments">
           <div class="assignment-header">
             <div><%= link_to(assignment.name, edit_klass_assignment_path(klass, assignment)) %></div>
             <div class="date"><%= assignment.date_display %></div>

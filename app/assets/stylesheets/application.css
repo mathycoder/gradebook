@@ -1,3 +1,12 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: green;
+}
+
 .student-list-container {
   display: grid;
   grid-template-columns: 400px 400px
@@ -41,6 +50,14 @@ table.gradebook .average {
   background-color: grey;
   width: 20px;
 }
+
+table.gradebook .assignments {
+  background-color: #D3D3D3;
+}
+
+
+
+
 
 
 /*LT-form page*/
