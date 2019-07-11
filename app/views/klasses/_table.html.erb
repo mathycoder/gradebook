@@ -1,9 +1,8 @@
 <div class="gradebook-wrapper">
   <table class="gradebook">
-
     <tr>
-      <th class="hidden"></th>
-      <th><%= link_to("Learning Targets", klass_learning_targets_path(klass)) %></th>
+      <th></th>
+      <th id="new-lt"><%= link_to("New Learning Target", new_klass_learning_target_path(klass)) if !@lt %></th>
       <% collection.each do |lt| %>
         <th colspan="<%= lt.assignments.length %>" class="<%= klass.my_color_class(lt) %> start-of-lt">
           <%= link_to(lt.name, klass_learning_target_path(klass, lt)) %>

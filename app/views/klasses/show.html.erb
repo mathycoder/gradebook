@@ -1,9 +1,11 @@
-<h1 style="display: inline"><%= @klass.name %>'s Gradebook</h1><br>
-<p style="display: inline">
-  <strong>Subject: </strong><%= @klass.subject %>
-  <strong>Grade: </strong><%= @klass.grade %>
-  <strong>Period: </strong><%= @klass.period %><br>
-<h6 style="display: inline"><%= link_to("Back", klasses_path) %></h6>
-<p>
+<div class="gradebook-title">
+  <h1 style="display: inline"><%= @klass.name %>'s Gradebook</h1><br>
+  <p style="display: inline">
+    <strong>Subject: </strong><%= @klass.subject %>
+    <strong>Grade: </strong><%= @klass.grade %>
+    <strong>Period: </strong><%= @klass.period %><br>
+  <h6 style="display: inline"><%= link_to("Back", klasses_path) %></h6>
+  <p>
+</div>
 
 <%= render partial: "klasses/table", locals: {klass: @klass, collection: @klass.learning_targets, klass_or_lt: @klass} %>

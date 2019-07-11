@@ -45,6 +45,7 @@ a:hover {
 }
 
 /* gradebook styling */
+
 .gradebook-wrapper {
   overflow-y: scroll;
   margin: 20px;
@@ -60,6 +61,7 @@ table.gradebook, table.gradebook th, table.gradebook td {
 
 table.gradebook th {
   color: white;
+  height: 35px;
   /* border-top: 1px solid black; */
 }
 
@@ -82,6 +84,11 @@ table.gradebook th a {
   color: white;
 }
 
+/* new lt and assignment links */
+#new-lt a {
+  color: black;
+  font-weight: lighter;
+}
 
 
 /* alternates white and grey for the rows */
@@ -94,7 +101,6 @@ table.gradebook th, table.gradebook td {
   text-align: center;
   min-width: 100px;
   max-width: 100px;
-
 }
 
 /* edits the first column of students */
