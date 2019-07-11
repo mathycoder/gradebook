@@ -49,7 +49,7 @@ a:hover {
 
 .gradebook-wrapper {
   overflow-y: scroll;
-  width: 100%;
+  margin: 20px;
 }
 
 table.gradebook {
@@ -57,9 +57,26 @@ table.gradebook {
 }
 
 table.gradebook th {
-  background-color: rgb(217, 106, 94);
   color: white;
+  border-top: 1px solid black;
 }
+
+table.gradebook th:nth-child(3n+2) {
+  background-color: rgb(71, 125, 179);
+}
+
+table.gradebook th:nth-child(3n+3) {
+  background-color: rgb(217, 106, 94);
+}
+
+table.gradebook th:nth-child(3n+4) {
+  background-color: rgb(85, 170, 104);
+}
+
+table.gradebook tr:nth-child(2n+3) {
+  background-color: rgb(218, 217, 224);
+}
+
 
 table.gradebook th a {
   text-decoration: none;
@@ -92,6 +109,7 @@ table.gradebook tr:nth-child(3) td {
 table.gradebook .assignment-header {
   display: grid;
   grid-template-rows: 60px 20px;
+  background-color: white;
 }
 
 table.gradebook .assignment-header div {
@@ -101,12 +119,12 @@ table.gradebook .assignment-header div {
 table.gradebook .date {
   color: white;
   width: 100%;
-  background-color: black;
+  background-color: grey;
 }
 
 table.gradebook .average {
-  background-color: grey;
-  width: 20px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 table.gradebook .assignments {
