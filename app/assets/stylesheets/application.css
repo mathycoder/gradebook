@@ -44,21 +44,23 @@ a:hover {
 
 }
 
-
 /* gradebook styling */
-
 .gradebook-wrapper {
   overflow-y: scroll;
   margin: 20px;
 }
 
 table.gradebook {
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
+}
+
+table.gradebook, table.gradebook th, table.gradebook td {
+  /* border: 1px solid black; */
 }
 
 table.gradebook th {
   color: white;
-  border-top: 1px solid black;
+  /* border-top: 1px solid black; */
 }
 
 
@@ -75,23 +77,19 @@ table.gradebook .blue, .rubric-title.blue {
   background-color: rgb(71, 125, 179);
 }
 
-
-
-
-table.gradebook tr:nth-child(2n+3) {
-  background-color: rgb(218, 217, 224);
-}
-
-
 table.gradebook th a {
   text-decoration: none;
   color: white;
 }
 
-table.gradebook, table.gradebook th, table.gradebook td {
-  border: 1px solid black;
+
+
+/* alternates white and grey for the rows */
+table.gradebook tr:nth-child(2n+3) {
+  background-color: rgb(218, 217, 224);
 }
 
+/* the width of all table cells */
 table.gradebook th, table.gradebook td {
   text-align: center;
   min-width: 100px;
@@ -99,11 +97,17 @@ table.gradebook th, table.gradebook td {
 
 }
 
+/* edits the first column of students */
 table.gradebook tr td:first-child, table.gradebook tr th:first-child {
-  min-width: 150px;
+  min-width: 130px;
   text-align: left;
   padding-left: 10px;
-  /* position: absolute; */
+
+  /* border-right: black 1px solid; */
+}
+
+.start-of-lt {
+  border-left: 20px solid white
 }
 
 
@@ -111,6 +115,7 @@ table.gradebook tr:nth-child(3) td {
   height: 30px;
 }
 
+/* Lets assignment title and date be in the same cell */
 table.gradebook .assignment-header {
   display: grid;
   grid-template-rows: 60px 20px;
@@ -119,6 +124,10 @@ table.gradebook .assignment-header {
 
 table.gradebook .assignment-header div {
   flex: 1;
+}
+
+table.gradebook .assignments {
+  background-color: #D3D3D3;
 }
 
 table.gradebook .date {
@@ -130,10 +139,6 @@ table.gradebook .date {
 table.gradebook .average {
   font-size: 16px;
   font-weight: bold;
-}
-
-table.gradebook .assignments {
-  background-color: #D3D3D3;
 }
 
 table.gradebook .hidden {
