@@ -11,9 +11,13 @@ class Klass < ApplicationRecord
   has_many :grades, through: :assignments
 
   def my_color_class(lt)
-    lt_index = 0
-    self.learning_targets.each_with_index do |learning_target, index|
-      lt_index = index if learning_target == lt
+    if lt != "new"
+      lt_index = 0
+      self.learning_targets.each_with_index do |learning_target, index|
+        lt_index = index if learning_target == lt
+      end
+    else
+      lt_index = self.learning_targets.length
     end
 
     if lt_index % 3 == 0
@@ -24,5 +28,4 @@ class Klass < ApplicationRecord
       "blue"
     end
   end
-
 end
