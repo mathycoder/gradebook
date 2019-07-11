@@ -25,7 +25,6 @@
   cursor: pointer;
 }
 
-
 a {
   text-decoration: none;
   color: black;
@@ -37,9 +36,9 @@ a:hover {
 
 .student-list-container {
   display: grid;
-  grid-template-columns: 400px 400px
-}
+  grid-template-columns: 400px 400px;
 
+}
 
 
 /* gradebook styling */
@@ -47,6 +46,7 @@ a:hover {
 .gradebook-wrapper {
   overflow-y: scroll;
   width: 100%;
+  
 }
 
 table.gradebook {
@@ -59,9 +59,21 @@ table.gradebook, table.gradebook th, table.gradebook td {
 
 table.gradebook th, table.gradebook td {
   text-align: center;
-  height: 30px;
   min-width: 100px;
   max-width: 100px;
+
+}
+
+table.gradebook tr td:first-child, table.gradebook tr th:first-child {
+  min-width: 150px;
+  text-align: left;
+  padding-left: 10px;
+  /* position: absolute; */
+}
+
+
+table.gradebook tr:nth-child(3) td {
+  height: 30px;
 }
 
 table.gradebook th {
@@ -93,6 +105,9 @@ table.gradebook .assignments {
   background-color: #D3D3D3;
 }
 
+table.gradebook .hidden {
+  visibility: collapse;
+}
 
 /*LT-form page*/
 
