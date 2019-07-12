@@ -16,7 +16,10 @@
   </div>
 
     <div>
-      <%= line_chart(@lt.graph_data, width: "400px", height: "400px", xtitle: "Date", ytitle: "Avg Score", messages: {empty: "No data"}, colors: ["#b00", "#666"], max: 4) %>
+      <%= line_chart(@lt.graph_data, width: "400px", height: "400px", xtitle: "Date",
+                     ytitle: "Avg Score", messages: {empty: "No data"},
+                     colors: ["#b00", "#666"], max: 4,
+                     library: { scales: { yAxes: [{ gridLines: { display: true },ticks: { maxTicksLimit: 5 } }]}}) %>
     </div>
 
 </div>
