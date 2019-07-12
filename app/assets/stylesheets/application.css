@@ -206,9 +206,19 @@ table.gradebook .hidden {
 }
 
 .lt-show-container .lt-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
+
+.lt-show-container .lt-stats div {
+  align-self: center;
+}
+
+.lt-show-container .lt-stats div:first-child {
+  margin-right: 50px;
+}
+
 
 .lt-show-container .lt-show-gradebook {
   overflow-x: scroll;
@@ -223,7 +233,8 @@ table.gradebook .hidden {
   padding: 10px;
   margin: 20px;
   width: 200px;
-  align-items: center;
+  margin-bottom: 40px;
+
 }
 
 .averages div:first-child {

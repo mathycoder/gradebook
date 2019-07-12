@@ -7,12 +7,11 @@
 
 
 <div class="lt-show-container">
-
   <div class="lt-stats">
     <div class="lt-graph">
       <%= line_chart(@lt.graph_data, width: "400px", xtitle: "Date",
                      ytitle: "Avg Score", messages: {empty: "No data"},
-                     colors: ["#b00", "#666"], min: 0, max: 4,
+                     colors: ["black", "black"], min: 0, max: 4,
                      library: { scales: { yAxes: [{ gridLines: { display: true },ticks: { maxTicksLimit: 5 } }]}}) %>
     </div>
 
