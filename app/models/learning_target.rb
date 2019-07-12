@@ -12,4 +12,12 @@ class LearningTarget < ApplicationRecord
     self.assignments.sort_by{|assignment| assignment.date}
   end
 
+  def graph_data
+    #(x = dates of assignments, y = average score)
+    self.assignments.map do |assignment|
+      [assignment.date.strftime('%b %d, %Y'), assignment.average]
+    end
+
+  end
+
 end
