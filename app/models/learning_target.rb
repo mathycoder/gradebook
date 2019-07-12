@@ -13,10 +13,8 @@ class LearningTarget < ApplicationRecord
   end
 
   def graph_data
-    #(x = dates of assignments, y = average score)
-    self.assignments.map do |assignment|
-      [assignment.date.strftime('%b %d, %Y'), assignment.average]
-    end
+    data = self.assignments.map {|assignment| [assignment.date.strftime('%b %d, %Y'), assignment.average]}
+    data.empty? ? [[0,0]] : data
   end
 
   def class_average
