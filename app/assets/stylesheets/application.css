@@ -90,7 +90,6 @@ table.gradebook th a {
   font-weight: lighter;
 }
 
-
 /* alternates white and grey for the rows */
 table.gradebook tr:nth-child(2n+3) {
   background-color: rgb(218, 217, 224);
@@ -103,6 +102,12 @@ table.gradebook th, table.gradebook td {
   max-width: 100px;
 }
 
+/* edits the row of assignment averages */
+table.gradebook tr:nth-child(3) td {
+  height: 20px;
+}
+
+
 /* edits the first column of students */
 table.gradebook tr td:first-child, table.gradebook tr th:first-child {
   min-width: 130px;
@@ -113,7 +118,7 @@ table.gradebook tr td:first-child, table.gradebook tr th:first-child {
 }
 
 .start-of-lt {
-  border-left: 20px solid white
+  border-left: 20px solid white;
 }
 
 

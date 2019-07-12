@@ -38,7 +38,7 @@
       <% collection.each do |lt| %>
         <%= content_tag(:td, nil, class: "start-of-lt") if lt.assignments.empty? %>
         <% lt.chronological_assignments.each_with_index do |assignment, index| %>
-          <td class="<%= "start-of-lt" if index == 0 %>"><p><strong><%= assignment.average %></strong></p></td>
+          <td class="<%= "start-of-lt" if index == 0 %>"><div><strong><%= assignment.average %></strong></div></td>
         <% end %>
       <% end %>
     </tr>
