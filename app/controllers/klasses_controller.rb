@@ -15,12 +15,12 @@ class KlassesController < ApplicationController
   end
 
   def index
-    #@klasses = Klass.all
     @klasses = current_user.classes_sorted_by_period
   end
 
   def show
     @klass = Klass.find(params[:id])
+    redirect_to(klass_learning_targets_path(@klass)) if @klass.learning_targets.empty?
   end
 
   def edit

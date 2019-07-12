@@ -12,7 +12,11 @@
 
     <tr>
       <td class="hidden"></td>
-      <td><%= link_to("New Assignment", new_klass_assignment_path(klass)) if !klass.learning_targets.empty? %></td>
+      <% if !klass.learning_targets.empty? %>
+        <td><%= link_to("New Assignment", new_klass_assignment_path(klass)) %> </td>
+      <% else %>
+        <%= link_to("Start by Creating a Learning Target", new_klass_learning_target_path(klass)) %>
+      <% end %>
 
       <% collection.each do |lt| %>
         <%= content_tag(:td) if lt.assignments.empty? %>

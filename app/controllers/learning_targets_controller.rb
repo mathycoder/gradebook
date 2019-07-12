@@ -11,7 +11,11 @@ class LearningTargetsController < ApplicationController
 
     if @lt.save
       @klass.learning_targets << @lt
-      redirect_to(klass_learning_target_path(@klass, @lt))
+      if @klass.learning_targets.length > 1
+        redirect_to(klass_learning_target_path(@klass, @lt))
+      else
+        redirect_to(klass_path(@klass))
+      end
     else
       render 'new'
     end
