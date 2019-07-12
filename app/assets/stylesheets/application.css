@@ -186,6 +186,7 @@ table.gradebook .hidden {
 
 .lt-form-container {
   text-align: center;
+  width: 700px;
 }
 
 .lt-form-container div {
@@ -198,17 +199,16 @@ table.gradebook .hidden {
 }
 
 
+
 /* LT-show page */
 
 .lt-show-container {
-  display: grid;
-  grid-template-columns: 3fr 4fr;
-  grid-template-rows: 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
   padding: 20px;
 }
 
 .lt-show-container .lt-show-gradebook {
-  grid-column: span 2;
   overflow-x: scroll;
 }
 
@@ -219,6 +219,11 @@ table.gradebook .hidden {
   grid-template-rows: auto repeat(4, 100px);
   padding: 0 10px;
   align-self: start;
+  border: black 1px solid;
+  width: 400px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 .lt-form-rubric {
