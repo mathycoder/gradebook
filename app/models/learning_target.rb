@@ -17,7 +17,16 @@ class LearningTarget < ApplicationRecord
     self.assignments.map do |assignment|
       [assignment.date.strftime('%b %d, %Y'), assignment.average]
     end
+  end
 
+  def average
+    averages = self.assignments.map{|assignment| assignment.average.to_f}
+    if !averages.empty?
+      avg = averages.sum / averages.length
+      '%.2f' % avg
+    else
+      nil
+    end
   end
 
 end

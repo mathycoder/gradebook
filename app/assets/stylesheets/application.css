@@ -199,18 +199,34 @@ table.gradebook .hidden {
 }
 
 
-
 /* LT-show page */
 
 .lt-show-container {
-  display: flex;
-  flex-wrap: wrap;
   padding: 20px;
+}
+
+.lt-show-container .lt-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr
 }
 
 .lt-show-container .lt-show-gradebook {
   overflow-x: scroll;
 }
+
+.lt-show-container .lt-stats .averages {
+  display: grid;
+  grid-template-columns: 150px 100px;
+  grid-template-rows: repeat(3, 80px);
+  border: black 1px solid;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px;
+}
+
+
+
+/* rubric styling */
 
 .lt-show-container .lt-show-rubric, .lt-form-rubric {
   grid-column: span 1;
