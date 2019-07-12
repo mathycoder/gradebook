@@ -217,7 +217,7 @@ table.gradebook .hidden {
 .lt-show-container .lt-stats .averages {
   display: grid;
   grid-template-columns: 150px 100px;
-  grid-template-rows: repeat(3, 80px);
+  grid-template-rows: repeat(4, 60px);
   border: black 1px solid;
   border-radius: 10px;
   padding: 10px;

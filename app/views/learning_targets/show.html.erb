@@ -18,11 +18,13 @@
 
     <div class="averages">
       <div>LT Average: </div>
-      <div><%= @lt.average %></div>
-      <div>Percent on Grade Level: </div>
-      <div></div>
-      <div>Percent Failing: </div>
-      <div></div>
+      <div><%= @lt.class_average %></div>
+      <div>Level 3s and up: </div>
+      <div><%= @lt.percent_of_students_on_level(@klass, 3.0)%></div>
+      <div>Level 2s: </div>
+      <div><%= @lt.percent_of_students_on_level(@klass, 2.0)%></div>
+      <div>Level 1s: </div>
+      <div><%= @lt.percent_of_students_on_level(@klass, 1.0)%></div>
     </div>
 
     <div>
