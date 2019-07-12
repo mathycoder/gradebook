@@ -49,8 +49,31 @@ a:hover {
 .gradebook-wrapper {
   overflow-y: scroll;
   margin: 20px;
+  margin-left: 137px;
 }
 
+/* edits the first column of students */
+table.gradebook tr td:first-child, table.gradebook tr th:first-child {
+  min-width: 130px;
+  text-align: left;
+  padding-left: 10px;
+  position: absolute;
+  left: 0;
+  height: 42px;
+  padding-top: 10px;
+  /* border-right: black 1px solid;  */
+}
+
+table.gradebook tr:nth-child(2n+3) td:first-child {
+  background-color: rgb(218, 217, 224);
+}
+
+table.gradebook tr:nth-child(2n+4) td:first-child {
+  background-color: white;
+}
+
+
+/* original border */
 table.gradebook {
   /* border-collapse: collapse; */
 }
@@ -107,15 +130,6 @@ table.gradebook tr:nth-child(3) td {
   height: 20px;
 }
 
-
-/* edits the first column of students */
-table.gradebook tr td:first-child, table.gradebook tr th:first-child {
-  min-width: 130px;
-  text-align: left;
-  padding-left: 10px;
-
-  /* border-right: black 1px solid; */
-}
 
 .start-of-lt {
   border-left: 20px solid white;
