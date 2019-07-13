@@ -4,7 +4,7 @@ class LearningTargetsController < ApplicationController
     @klass = Klass.find(params[:klass_id])
     @lt = LearningTarget.new
     if !params[:query]
-      @standards = Standard.all.limit(12)
+      @standards = []
     else
       @standards = Standard.by_grade(params[:query][:grade])
     end

@@ -13,22 +13,23 @@
     <%= form_for([klass,lt]) do |f| %>
     <%= fields_for :standard do |s| %>
 
-      <table>
-        <tr>
-          <th></th>
-          <th>Standard</th>
-          <th>Description</th>
-        </tr>
-
-        <% @standards.each do |standard| %>
+      <div class="standards-table">
+        <table>
           <tr>
-            <td><%= s.check_box(:standard_notation) %></td>
-            <td><%= standard.standard_notation_clean %></td>
-            <td><%= standard.description %></td>
+            <th></th>
+            <th>Standard</th>
+            <th>Description</th>
           </tr>
-        <% end %>
 
-      </table>
+          <% @standards.each do |standard| %>
+            <tr>
+              <td><%= s.check_box(:standard_notation) %></td>
+              <td><%= standard.standard_notation_clean %></td>
+              <td><%= standard.description %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
 
     <% end %>
   </div>
