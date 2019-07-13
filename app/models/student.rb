@@ -22,8 +22,4 @@ class Student < ApplicationRecord
     end
   end
 
-  # def lt_average(klass, lt)
-  #   binding.pry
-  #   grades = lt.grades.where("student_id = ?", self.id).map{|grade| grade.score}.compact
-  # end
 end

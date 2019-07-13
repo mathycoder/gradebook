@@ -5,7 +5,11 @@ class Standard < ApplicationRecord
   end
 
   def self.by_grade(grade)
-    self.where("grade = ?", grade).reverse
+    self.where("grade = ? AND standard_notation LIKE ?", grade, "%Math.Content%").reverse
+  end
+
+  def standard_notation_clean
+    self.standard_notation.split("CCSS.Math.Content.")[1]
   end
 
 end

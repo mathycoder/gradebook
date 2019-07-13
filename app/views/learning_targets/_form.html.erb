@@ -3,7 +3,8 @@
   <div class="lt-form-standard">
 
     <%= form_tag(new_klass_learning_target_path(@klass), method: "get") do %>
-        <%= text_field_tag('query', nil, placeholder: "Filter by grade") %>
+        <%= select_tag "query[grade]", options_from_collection_for_select(Standard.grades, :grade, :grade, @standard.try("id")), prompt: "Select a Grade" %>
+        <br><br>
         <%= submit_tag("Filter") %>
         <%= submit_tag('clear') %>
       <% end %><br>
@@ -12,8 +13,23 @@
     <%= form_for([klass,lt]) do |f| %>
     <%= fields_for :standard do |s| %>
 
-      <%= s.collection_select :grade, Standard.grades, :grade, :grade %>
-      <%= s.collection_select :standard_notation, @standards, :standard_notation, :standard_notation %>
+      <table>
+        <tr>
+          <th></th>
+          <th>Standard</th>
+          <th>Description</th>
+        </tr>
+
+        <% @standards.each do |standard| %>
+          <tr>
+            <td><%= s.check_box(:standard_notation) %></td>
+            <td><%= standard.standard_notation_clean %></td>
+            <td><%= standard.description %></td>
+          </tr>
+        <% end %>
+
+      </table>
+
     <% end %>
   </div>
 

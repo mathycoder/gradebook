@@ -6,7 +6,7 @@ class LearningTargetsController < ApplicationController
     if !params[:query]
       @standards = Standard.all.limit(12)
     else
-      @standards = Standard.by_grade(params[:query])
+      @standards = Standard.by_grade(params[:query][:grade])
     end
   end
 
