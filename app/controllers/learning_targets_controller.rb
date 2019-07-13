@@ -3,6 +3,11 @@ class LearningTargetsController < ApplicationController
   def new
     @klass = Klass.find(params[:klass_id])
     @lt = LearningTarget.new
+    if !params[:query]
+      @standards = Standard.all.limit(12)
+    else
+      @standards = Standard.by_grade(params[:query])
+    end
   end
 
   def create

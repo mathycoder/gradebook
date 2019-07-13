@@ -186,13 +186,12 @@ table.gradebook .hidden {
 /*LT-form page*/
 
 .lt-form-container {
-  text-align: center;
-  width: 700px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .lt-form-container div {
-  width: 70%;
-  align-self: center;
+  width: 80%;
 }
 
 .lt-form-container .standard-selection {

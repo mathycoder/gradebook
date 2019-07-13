@@ -1,10 +1,19 @@
 <div class="lt-form-container">
-  <%= form_for([klass,lt]) do |f| %>
 
   <div class="lt-form-standard">
-    <%= fields_for :standards do |s| %>
+
+    <%= form_tag(new_klass_learning_target_path(@klass), method: "get") do %>
+        <%= text_field_tag('query', nil, placeholder: "Filter by grade") %>
+        <%= submit_tag("Filter") %>
+        <%= submit_tag('clear') %>
+      <% end %><br>
+
+
+    <%= form_for([klass,lt]) do |f| %>
+    <%= fields_for :standard do |s| %>
 
       <%= s.collection_select :grade, Standard.grades, :grade, :grade %>
+      <%= s.collection_select :standard_notation, @standards, :standard_notation, :standard_notation %>
     <% end %>
   </div>
 
@@ -46,8 +55,9 @@
     <div class="rubric-score-desc">
       <p><%= f.text_area(:level1, placeholder: "Optional: What does level 1 understanding look like?") %></p>
     </div>
+    <%= f.submit %>
   </div>
 
-  <%= f.submit %>
+
 
 <% end %>
