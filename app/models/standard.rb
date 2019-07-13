@@ -1,7 +1,7 @@
 class Standard < ApplicationRecord
 
-  def grades
-    binding.pry
+  def self.grades
+    self.select('distinct grade')
   end
 
 end
