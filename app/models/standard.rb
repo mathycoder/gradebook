@@ -1,4 +1,7 @@
 class Standard < ApplicationRecord
-  #https://commonstandardsproject.com/developers
+
+  def grades
+    binding.pry
+  end
 
 end

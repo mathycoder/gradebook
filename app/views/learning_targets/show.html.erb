@@ -8,28 +8,7 @@
 
 <div class="lt-show-container">
   <div class="lt-stats">
-    <div class="lt-graph">
-      <%= line_chart(@lt.graph_data, width: "400px", xtitle: "Date",
-                     ytitle: "Avg Score", messages: {empty: "No data"},
-                     colors: [@klass.my_color_class(@lt), @klass.my_color_class(@lt)], min: 0, max: 4,
-                     library: { scales: { yAxes: [{ gridLines: { display: true },ticks: { maxTicksLimit: 5 } }]}}) %>
-    </div>
-
-    <div class="averages">
-      <div class="rubric-title <%= @klass.my_color_class(@lt) %>">Class LT Stats</div>
-      <div>LT Average: </div>
-      <div><strong><%= @lt.class_average %></strong></div>
-      <div>Level 3s and up: </div>
-      <div><strong><%= @lt.percent_of_students_on_level(@klass, 3.0)%></strong></div>
-      <div>Level 2s: </div>
-      <div><strong><%= @lt.percent_of_students_on_level(@klass, 2.0)%></strong></div>
-      <div>Level 1s: </div>
-      <div><strong><%= @lt.percent_of_students_on_level(@klass, 1.0)%></strong></div>
-    </div>
-
-    <div>
-    </div>
-
+    <%= render partial: "learning_targets/stats", locals: {klass: @klass, lt: @lt} %>
   </div>
 
 
@@ -40,5 +19,4 @@
   <div class="lt-show-rubric">
     <%= render partial: "learning_targets/rubric", locals: {klass: @klass, lt: @lt} %>
   </div>
-
 </div>

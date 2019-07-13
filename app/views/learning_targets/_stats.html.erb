@@ -1,0 +1,21 @@
+<div class="lt-graph">
+  <%= line_chart(@lt.graph_data, width: "400px", xtitle: "Date",
+                 ytitle: "Avg Score", messages: {empty: "No data"},
+                 colors: [@klass.my_color_class(@lt), @klass.my_color_class(@lt)], min: 0, max: 4,
+                 library: { scales: { yAxes: [{ gridLines: { display: true },ticks: { maxTicksLimit: 5 } }]}}) %>
+</div>
+
+<div class="averages">
+  <div class="rubric-title <%= @klass.my_color_class(@lt) %>"><strong>Class LT Stats</strong></div>
+  <div>LT Average: </div>
+  <div><strong><%= @lt.class_average %></strong></div>
+  <div>Level 3s and up: </div>
+  <div><strong><%= @lt.percent_of_students_on_level(@klass, 3.0)%></strong></div>
+  <div>Level 2s: </div>
+  <div><strong><%= @lt.percent_of_students_on_level(@klass, 2.0)%></strong></div>
+  <div>Level 1s: </div>
+  <div><strong><%= @lt.percent_of_students_on_level(@klass, 1.0)%></strong></div>
+</div>
+
+<div>
+</div>
