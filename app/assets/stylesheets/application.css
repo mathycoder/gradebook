@@ -186,20 +186,23 @@ table.gradebook .hidden {
 /*LT-form page*/
 
 .lt-form-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
 
 }
 
-.lt-form-container div {
-  width: 80%;
+.lt-form-container .lt-form-rubric {
+  width: 450px;
+  margin: 0 auto;
 }
 
 .lt-form-container .lt-form-standard {
   margin: 0 auto;
+  width: 480px;
 }
 
 .lt-form-container .lt-form-standard .standards-table {
+
   overflow-y: scroll;
   height: 480px;
   width: 100%;
