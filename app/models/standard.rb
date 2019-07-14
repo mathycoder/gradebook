@@ -10,7 +10,7 @@ class Standard < ApplicationRecord
   end
 
   def standard_notation_clean
-    self.standard_notation.split("CCSS.Math.Content.")[1]
+    self.standard_notation.split("CCSS.Math.Content.")[1] if self.standard_notation
   end
 
 end
