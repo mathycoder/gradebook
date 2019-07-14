@@ -93,15 +93,29 @@
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
-
-    <%= f.submit %>
-  <% end %>
-
-    <% if lt.id %>
-      <%= form_for([klass, lt], method: :delete) do |f| %>
-        <%= f.submit("delete") %>
+    <% else %>
+      <% if lt.klasses.length > 1 %>
+        <p>This Learning Target is connect to these classes: <br><br>
+          <% lt.klasses.each do |kl| %>
+            <%= kl.name if kl != klass %>
+          <% end %>
+        </p>
       <% end %>
     <% end %>
+
+    <div class="lt-form-submit">
+      <div>
+        <%= f.submit %>
+        <% end %>
+      </div>
+      <% if lt.id %>
+        <div>
+          <%= form_for([klass, lt], method: :delete) do |d| %>
+            <%= d.submit("delete") %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
+
 </div>
