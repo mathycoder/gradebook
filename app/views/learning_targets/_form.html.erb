@@ -1,85 +1,87 @@
-<div class="lt-form-container">
+<div class="lt-form-container-full">
+  <div class="lt-form-container">
+    <div class="lt-form-standard">
 
-  <div class="lt-form-standard">
-
-    <% if !@lt.name %>
-      <%= form_tag(new_klass_learning_target_path(@klass), method: "get") do %>
-        <%= select_tag "query[grade]", options_from_collection_for_select(Standard.grades, :grade, :grade, @standard.try("id")), prompt: "Select a Grade" %>
-        <br><br>
-        <%= submit_tag("Filter") %>
-        <%= submit_tag('clear') %><br>
+      <% if !@lt.name %>
+        <%= form_tag(new_klass_learning_target_path(@klass), method: "get") do %>
+          <%= select_tag "query[grade]", options_from_collection_for_select(Standard.grades, :grade, :grade, @standard.try("id")), prompt: "Select a Grade" %>
+          <br><br>
+          <%= submit_tag("Filter") %>
+          <%= submit_tag('clear') %><br>
+        <% end %>
+      <% else %>
+        <%= form_tag(edit_klass_learning_target_path(@klass, @lt), method: "get") do %>
+          <%= select_tag "query[grade]", options_from_collection_for_select(Standard.grades, :grade, :grade, @standard.try("id")), prompt: "Select a Grade" %>
+          <br><br>
+          <%= submit_tag("Filter") %>
+          <%= submit_tag('clear') %><br>
+        <% end %>
       <% end %>
-    <% else %>
-      <%= form_tag(edit_klass_learning_target_path(@klass, @lt), method: "get") do %>
-        <%= select_tag "query[grade]", options_from_collection_for_select(Standard.grades, :grade, :grade, @standard.try("id")), prompt: "Select a Grade" %>
-        <br><br>
-        <%= submit_tag("Filter") %>
-        <%= submit_tag('clear') %><br>
-      <% end %>
-    <% end %>
 
-    <%= form_for([klass,lt]) do |f| %>
-      <%= f.fields_for :standard do |s| %>
-        <div class="standards-table">
-          <table>
-            <tr>
-              <th></th>
-              <th>Standard</th>
-              <th>Description</th>
-            </tr>
-            <% @standards.each do |standard| %>
+      <%= form_for([klass,lt]) do |f| %>
+        <%= f.fields_for :standard do |s| %>
+          <div class="standards-table">
+            <table>
               <tr>
-                <td><%= s.radio_button(:id, standard.id)%></td>
-                <td><%= s.label(:standard_notation, standard.standard_notation_clean) %></td>
-                <td><%= standard.description %></td>
+                <th></th>
+                <th>Standard</th>
+                <th>Description</th>
               </tr>
-            <% end %>
-          </table>
-        </div>
-      <% end %>
+              <% @standards.each do |standard| %>
+                <tr>
+                  <td><%= s.radio_button(:id, standard.id)%></td>
+                  <td><%= s.label(:standard_notation, standard.standard_notation_clean) %></td>
+                  <td><%= standard.description %></td>
+                </tr>
+              <% end %>
+            </table>
+          </div>
+        <% end %>
+      </div>
+
+
+
+    <div class="lt-form-rubric">
+      <div class="rubric-title <%= color %>">
+        <h2><%= f.text_field(:name, size: "40", placeholder: "Enter a student-friendly name for this LT") %></h2>
+      </div>
+
+      <div class="rubric-score">
+        <h2>4</h2>
+      </div>
+
+      <div class="rubric-score-desc">
+        <p><%= f.text_area(:level4, placeholder: "Optional: What does level 4 understanding look like?") %></p>
+      </div>
+
+      <div class="rubric-score">
+        <h2>3</h2>
+      </div>
+
+      <div class="rubric-score-desc">
+        <p><%= f.text_area(:level3, placeholder: "Optional: What does level 3 understanding look like?") %></p>
+      </div>
+
+      <div class="rubric-score">
+        <h2>2</h2>
+      </div>
+
+      <div class="rubric-score-desc">
+        <p><%= f.text_area(:level2, placeholder: "Optional: What does level 2 understanding look like?") %></p>
+      </div>
+
+      <div class="rubric-score">
+        <h2>1</h2>
+      </div>
+
+      <div class="rubric-score-desc">
+        <p><%= f.text_area(:level1, placeholder: "Optional: What does level 1 understanding look like?") %></p>
+      </div>
     </div>
-
-
-
-  <div class="lt-form-rubric">
-    <div class="rubric-title <%= color %>">
-      <h2><%= f.text_field(:name, size: "40", placeholder: "Enter a student-friendly name for this LT") %></h2>
-    </div>
-
-    <div class="rubric-score">
-      <h2>4</h2>
-    </div>
-
-    <div class="rubric-score-desc">
-      <p><%= f.text_area(:level4, placeholder: "Optional: What does level 4 understanding look like?") %></p>
-    </div>
-
-    <div class="rubric-score">
-      <h2>3</h2>
-    </div>
-
-    <div class="rubric-score-desc">
-      <p><%= f.text_area(:level3, placeholder: "Optional: What does level 3 understanding look like?") %></p>
-    </div>
-
-    <div class="rubric-score">
-      <h2>2</h2>
-    </div>
-
-    <div class="rubric-score-desc">
-      <p><%= f.text_area(:level2, placeholder: "Optional: What does level 2 understanding look like?") %></p>
-    </div>
-
-    <div class="rubric-score">
-      <h2>1</h2>
-    </div>
-
-    <div class="rubric-score-desc">
-      <p><%= f.text_area(:level1, placeholder: "Optional: What does level 1 understanding look like?") %></p>
-    </div>
-    <%= f.submit %>
   </div>
 
-
-
-<% end %>
+  <div class="lt-form-submit">
+    <%= f.submit %>
+    <% end %>
+  </div>
+</div>
