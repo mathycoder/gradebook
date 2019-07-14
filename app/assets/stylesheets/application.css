@@ -196,8 +196,9 @@ table.gradebook .hidden {
 }
 
 .lt-form-container-full .lt-form-submit {
-  margin: 0 auto;
+  margin: 20px auto;
 }
+
 
 
 .lt-form-container .lt-form-rubric {
@@ -213,8 +214,10 @@ table.gradebook .hidden {
 .lt-form-container .lt-form-standard .standards-table {
 
   overflow-y: scroll;
-  height: 400px;
+  min-height: 100px;
+  max-height: 400px;
   width: 100%;
+  margin: 20px 0;
 }
 
 

@@ -59,7 +59,6 @@ class LearningTargetsController < ApplicationController
   end
 
   def update
-    binding.pry
     @klass = Klass.find(params[:klass_id])
     @lt = LearningTarget.find(params[:id])
     if @lt.update(lt_params)
