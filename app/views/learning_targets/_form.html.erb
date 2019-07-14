@@ -19,7 +19,7 @@
       <% end %>
 
       <%= form_for([klass,lt]) do |f| %>
-        <%= f.fields_for :standard do |s| %>
+        <%= f.fields_for(:standard, include_id: false) do |s| %>
           <div class="standards-table">
             <table>
               <tr>
@@ -27,11 +27,11 @@
                 <th>Standard</th>
                 <th>Description</th>
               </tr>
-              <% @standards.each do |standard| %>
+              <% @standards.each do |st| %>
                 <tr>
-                  <td><%= s.radio_button(:id, standard.id)%></td>
-                  <td><%= s.label(:standard_notation, standard.standard_notation_clean) %></td>
-                  <td><%= standard.description %></td>
+                  <td><%= s.radio_button(:id, st.id)%></td>
+                  <td><%= s.label(:standard_notation, st.standard_notation_clean) %></td>
+                  <td><%= st.description %></td>
                 </tr>
               <% end %>
             </table>

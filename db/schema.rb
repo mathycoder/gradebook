@@ -57,13 +57,6 @@ ActiveRecord::Schema.define(version: 2019_07_14_120623) do
     t.string "level2"
     t.string "level3"
     t.string "level4"
-    t.string "grade"
-    t.string "grade_id"
-    t.string "api_standard_id"
-    t.string "standard_notation"
-    t.string "alt_standard_notation"
-    t.string "description"
-    t.boolean "choose_standard"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "standard_id"

@@ -187,7 +187,7 @@ table.gradebook .hidden {
 
 .lt-form-container-full {
   display: grid;
-  grid-template-rows: 500px 100px;
+  grid-template-rows: auto 100px;
 }
 
 .lt-form-container {

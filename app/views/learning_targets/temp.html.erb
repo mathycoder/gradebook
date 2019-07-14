@@ -1,0 +1,26 @@
+
+
+
+
+
+      <%= form_for([klass,lt]) do |f| %>
+        <%= f.fields_for(:standard, @standard) do |s| %>
+          <div class="standards-table">
+            <table>
+              <tr>
+                <th></th>
+                <th>Standard</th>
+                <th>Description</th>
+              </tr>
+
+              <% @standards.each do |st| %>
+                <tr>
+                  <td><%= s.radio_button(:id, st.id, include_hidden: false)%></td>
+                  <td><%= s.label(:standard_notation, st.standard_notation_clean) %></td>
+                  <td><%= st.description %></td>
+                </tr>
+              <% end %>
+            </table>
+          </div>
+        <% end %>
+      </div>

@@ -1,4 +1,4 @@
-
+ApiScraper.scrape_math_standards
 
 angie = Student.create(first_name: "Angelyse", last_name: "Rosado", grade: 6, klass: 602)
 helen = Student.create(first_name: "Helen", last_name: "Cordero", grade: 6, klass: 602)
