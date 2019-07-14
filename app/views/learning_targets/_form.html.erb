@@ -18,9 +18,8 @@
       <% end %>
     <% end %>
 
-
     <%= form_for([klass,lt]) do |f| %>
-      <%= f.fields_for @standard do |s| %>
+      <%= f.fields_for :standard do |s| %>
         <div class="standards-table">
           <table>
             <tr>
