@@ -5,6 +5,7 @@
       <th id="new-lt"><%= link_to("New Learning Target", new_klass_learning_target_path(klass)) if !@lt %></th>
       <% collection.each do |lt| %>
         <th colspan="<%= lt.assignments.length %>" class="<%= klass.my_color_class(lt) %> start-of-lt">
+          <%= lt.standard.standard_notation_clean %><br>
           <%= link_to(lt.name, klass_learning_target_path(klass, lt)) %>
         </th>
       <% end %>
