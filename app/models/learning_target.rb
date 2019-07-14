@@ -1,14 +1,15 @@
 class LearningTarget < ApplicationRecord
   has_many :klass_learning_targets
   has_many :klasses, through: :klass_learning_targets
-
   has_many :assignments
   has_many :grades, through: :assignments
-
   belongs_to :standard
+  accepts_nested_attributes_for :standard
 
-  #accepts_nested_attributes_for :standards
 
+  def standard_attributes=(standard_hash)
+    self.standard = Standard.find_by(id: standard_hash["id"])
+  end
 
   def chronological_assignments
     self.assignments.sort_by{|assignment| assignment.date}

@@ -3,6 +3,9 @@ class LearningTargetsController < ApplicationController
   def new
     @klass = Klass.find(params[:klass_id])
     @lt = LearningTarget.new
+    @standard = Standard.new
+    @standard.learning_targets << @lt
+
     if !params[:query]
       @standards = []
     else
@@ -63,7 +66,7 @@ class LearningTargetsController < ApplicationController
   private
 
     def lt_params
-      params.require(:learning_target).permit(:name, :level1, :level2, :level3, :level4)
+      params.require(:learning_target).permit(:name, :level1, :level2, :level3, :level4, :standard_attributes => {})
     end
 
 end

@@ -11,28 +11,25 @@
 
 
     <%= form_for([klass,lt]) do |f| %>
-    <%= fields_for :standard do |s| %>
-
-      <div class="standards-table">
-        <table>
-          <tr>
-            <th></th>
-            <th>Standard</th>
-            <th>Description</th>
-          </tr>
-
-          <% @standards.each do |standard| %>
+      <%= f.fields_for :standard do |s| %>
+        <div class="standards-table">
+          <table>
             <tr>
-              <td><%= s.check_box(:standard_notation) %></td>
-              <td><%= standard.standard_notation_clean %></td>
-              <td><%= standard.description %></td>
+              <th></th>
+              <th>Standard</th>
+              <th>Description</th>
             </tr>
-          <% end %>
-        </table>
-      </div>
-
-    <% end %>
-  </div>
+            <% @standards.each do |standard| %>
+              <tr>
+                <td><%= s.radio_button(:id, standard.id)%></td>
+                <td><%= s.label(:standard_notation, standard.standard_notation_clean) %></td>
+                <td><%= standard.description %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      <% end %>
+    </div>
 
 
 
