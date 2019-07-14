@@ -2,15 +2,15 @@
   <div class="lt-form-container">
     <div class="lt-form-standard">
 
-      <% if !lt.name %>
-        <%= form_tag(new_klass_learning_target_path(klass), method: "get") do %>
+      <% if !@lt.name %>
+        <%= form_tag(new_klass_learning_target_path(@klass), method: "get") do %>
           <%= select_tag "query[grade]", options_from_collection_for_select(Standard.grades, :grade, :grade, @standard.try("id")), prompt: "Select a Grade" %>
           <br><br>
           <%= submit_tag("Filter") %>
           <%= submit_tag('clear') %><br>
         <% end %>
       <% else %>
-        <%= form_tag(edit_klass_learning_target_path(klass, lt), method: "get") do %>
+        <%= form_tag(edit_klass_learning_target_path(@klass, @lt), method: "get") do %>
           <%= select_tag "query[grade]", options_from_collection_for_select(Standard.grades, :grade, :grade, @standard.try("id")), prompt: "Select a Grade" %>
           <br><br>
           <%= submit_tag("Filter") %>
@@ -18,7 +18,7 @@
         <% end %>
       <% end %>
 
-<%= form_for([klass,lt]) do |f| %>
+      <%= form_for([klass,lt]) do |f| %>
         <%= f.fields_for(:standard, include_id: false) do |s| %>
           <div class="standards-table">
             <table>
@@ -82,7 +82,7 @@
 
   <div class="lt-form-submit">
     <% if !lt.id %>
-      <p>Add this Learning Target to your other classes: </p>
+      <p>Add this learning target to another class: </p>
       <% current_user.klasses.each do |kl| %>
         <% if kl != klass %>
           <%= f.fields_for(:klasses, kl) do |k| %>
@@ -95,14 +95,13 @@
       <% end %>
     <% end %>
 
-    <div class="lt-form-submit-or-delete">
-      <%= f.submit %>
-      <% if lt.id %>
-        <%= form_for([@klass, @lt], method: :delete) do |f| %>
-          <%= f.submit("delete") %>
-        <% end %>
-      <% end %>
-    </div>
+    <%= f.submit %>
   <% end %>
+
+    <% if lt.id %>
+      <%= form_for([klass, lt], method: :delete) do |f| %>
+        <%= f.submit("delete") %>
+      <% end %>
+    <% end %>
   </div>
 </div>
