@@ -4,8 +4,15 @@ class LearningTarget < ApplicationRecord
   has_many :assignments
   has_many :grades, through: :assignments
   belongs_to :standard
-  accepts_nested_attributes_for :standard
+  accepts_nested_attributes_for :standard, :klasses
 
+
+  def klasses_attributes=(klasses_ids)
+    klasses_ids.each do |klass_id|
+      self.klasses << Klass.find_by(id: klass_id[1]["id"])
+    end
+
+  end
 
   def standard_attributes=(standard_hash)
     self.standard = Standard.find_by(id: standard_hash["id"])

@@ -81,7 +81,17 @@
   </div>
 
   <div class="lt-form-submit">
-    <%= f.submit %>
+    <% current_user.klasses.each do |kl| %>
+      <% if kl != klass %>
+        <%= f.fields_for(:klasses, kl) do |k| %>
+          <p>
+            <%= f.check_box(:id) %>
+            <%= f.label(kl.name) %>
+          </p>
+        <% end %>
+      <% end %>
     <% end %>
+    <%= f.submit %>
+  <% end %>
   </div>
 </div>
