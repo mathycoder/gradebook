@@ -42,6 +42,12 @@ class LearningTargetsController < ApplicationController
   def edit
     @klass = Klass.find(params[:klass_id])
     @lt = LearningTarget.find(params[:id])
+    @standard = @lt.standard
+    if !params[:query]
+      @standards = [@standard]
+    else
+      @standards = Standard.by_grade(params[:query][:grade])
+    end
   end
 
   def update

@@ -2,16 +2,25 @@
 
   <div class="lt-form-standard">
 
-    <%= form_tag(new_klass_learning_target_path(@klass), method: "get") do %>
+    <% if !@lt.name %>
+      <%= form_tag(new_klass_learning_target_path(@klass), method: "get") do %>
         <%= select_tag "query[grade]", options_from_collection_for_select(Standard.grades, :grade, :grade, @standard.try("id")), prompt: "Select a Grade" %>
         <br><br>
         <%= submit_tag("Filter") %>
-        <%= submit_tag('clear') %>
-      <% end %><br>
+        <%= submit_tag('clear') %><br>
+      <% end %>
+    <% else %>
+      <%= form_tag(edit_klass_learning_target_path(@klass, @lt), method: "get") do %>
+        <%= select_tag "query[grade]", options_from_collection_for_select(Standard.grades, :grade, :grade, @standard.try("id")), prompt: "Select a Grade" %>
+        <br><br>
+        <%= submit_tag("Filter") %>
+        <%= submit_tag('clear') %><br>
+      <% end %>
+    <% end %>
 
 
     <%= form_for([klass,lt]) do |f| %>
-      <%= f.fields_for :standard do |s| %>
+      <%= f.fields_for @standard do |s| %>
         <div class="standards-table">
           <table>
             <tr>
