@@ -5,6 +5,8 @@ class LearningTarget < ApplicationRecord
   has_many :assignments
   has_many :grades, through: :assignments
 
+  belongs_to :standard
+
   #accepts_nested_attributes_for :standards
 
 

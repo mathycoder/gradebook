@@ -1,4 +1,5 @@
 class Standard < ApplicationRecord
+  has_many :learning_targets
 
   def self.grades
     self.select('distinct grade')
