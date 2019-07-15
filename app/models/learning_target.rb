@@ -5,6 +5,7 @@ class LearningTarget < ApplicationRecord
   has_many :grades, through: :assignments
   belongs_to :standard
   accepts_nested_attributes_for :standard, :klasses
+  validates :name, :standard_id, presence: true
 
 
   def klasses_attributes=(klasses_ids)

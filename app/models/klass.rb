@@ -10,6 +10,9 @@ class Klass < ApplicationRecord
   has_many :assignments, through: :learning_targets
   has_many :grades, through: :assignments
 
+  validates :name, :subject, :grade, :period, presence: true
+
+
   def my_color_class(lt)
     if lt != "new"
       lt_index = 0

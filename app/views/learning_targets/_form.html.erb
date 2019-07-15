@@ -3,6 +3,7 @@
     <div class="lt-form-standard">
       <%= generate_standard_filter_form(lt, klass, standard) %>
       <%= form_for([klass,lt]) do |f| %>
+        <%= error_display(lt) %>
         <%= f.fields_for(:standard, include_id: false) do |s| %>
           <%= render partial: "learning_targets/standards_table", locals: {klass: klass, lt: lt, standard: standard, s: s } %>
         <% end %>

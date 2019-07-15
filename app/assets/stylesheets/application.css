@@ -12,6 +12,14 @@ body {
   text-decoration: none;
 }
 
+.field_with_errors {
+  display: inline;
+}
+
+.field_with_errors input {
+  border: red 1px solid;
+}
+
 .big-button input[type=submit] {
   width: 150px;
   background-color: grey;
