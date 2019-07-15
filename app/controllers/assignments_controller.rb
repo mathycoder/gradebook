@@ -10,7 +10,7 @@ class AssignmentsController < ApplicationController
     @klass = Klass.find(params[:klass_id])
     @assignment = Assignment.new(assignment_params)
     if @assignment.save
-      redirect_to(klass_path(@klass))
+      redirect_to(klass_path(@klass), alert: "Assignment successfully added")
     else
       render 'new'
     end
@@ -25,7 +25,7 @@ class AssignmentsController < ApplicationController
     @klass = Klass.find(params[:klass_id])
     @assignment = Assignment.find(params[:id])
     if @assignment.update(assignment_params)
-      redirect_to(klass_path(@klass))
+      redirect_to(klass_path(@klass), alert: "Assignment successfully updated")
     else
       render 'edit'
     end
@@ -36,7 +36,7 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find(params[:id])
     @assignment.grades.destroy_all
     @assignment.destroy
-    redirect_to(klass_path(@klass))
+    redirect_to(klass_path(@klass), alert: "Assignment deleted")
   end
 
   private

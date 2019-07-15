@@ -20,9 +20,9 @@ class LearningTargetsController < ApplicationController
     if @lt.save
       @klass.learning_targets << @lt
       if @klass.learning_targets.length > 1
-        redirect_to(klass_learning_target_path(@klass, @lt))
+        redirect_to(klass_learning_target_path(@klass, @lt), alert: "Learning Target successfully created")
       else
-        redirect_to(klass_path(@klass))
+        redirect_to(klass_path(@klass), alert: "Learning Target successfully created")
       end
     else
       render 'new'
@@ -62,7 +62,7 @@ class LearningTargetsController < ApplicationController
     @klass = Klass.find(params[:klass_id])
     @lt = LearningTarget.find(params[:id])
     if @lt.update(lt_params)
-      redirect_to(klass_learning_target_path(@klass, @lt))
+      redirect_to(klass_learning_target_path(@klass, @lt), alert: "Learning Target successfully updated")
     else
       render 'edit'
     end
@@ -74,7 +74,7 @@ class LearningTargetsController < ApplicationController
     @lt.assignments.each{|assignment| assignment.grades.destroy_all}
     @lt.assignments.destroy_all
     @lt.destroy
-    redirect_to(klass_learning_targets_path(@klass))
+    redirect_to(klass_learning_targets_path(@klass), alert: "Learning Target successfully deleted")
   end
 
   private

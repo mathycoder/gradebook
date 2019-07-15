@@ -2,6 +2,16 @@ body {
   font-family: "Roboto", helvetica, arial, sans-serif;
 }
 
+.flash {
+  background-color: rgb(55, 190, 204);
+  width: 100%;
+  color: white;
+  padding: 20px;
+  margin-left: -20px;
+  margin-top: -20px;
+  text-decoration: none;
+}
+
 .big-button input[type=submit] {
   width: 150px;
   background-color: grey;

@@ -8,7 +8,7 @@ class KlassesController < ApplicationController
     @klass = Klass.new(klass_params)
     if @klass.save
       current_user.klasses << @klass
-      redirect_to(klass_path(@klass))
+      redirect_to(klass_path(@klass), alert: "Class successfully created")
     else
       render 'new'
     end
@@ -30,7 +30,7 @@ class KlassesController < ApplicationController
   def update
     @klass = Klass.find(params[:id])
     if @klass.update(klass_params)
-      redirect_to(klass_path(@klass))
+      redirect_to(klass_path(@klass), alert: "Class successfully updated")
     else
       render 'edit'
     end
@@ -39,7 +39,7 @@ class KlassesController < ApplicationController
   def destroy
     @klass = Klass.find(params[:id])
     @klass.destroy
-    redirect_to(klasses_path)
+    redirect_to(klasses_path, alert: "Class successfully deleted")
   end
 
   private

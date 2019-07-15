@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <% flash.keys.each do |type| %>
+      <div onclick="style.display='none';" data-alert class="flash <%= type %> alert-box radius">
+        <a href="#" class="close">&times;</a>
+        <span><%= flash[type] %></span>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
