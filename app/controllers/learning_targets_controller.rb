@@ -1,7 +1,8 @@
 class LearningTargetsController < ApplicationController
+  before_action :find_klass
+  before_action :find_lt, only: [:show, :edit, :update, :destroy]
 
   def new
-    @klass = Klass.find(params[:klass_id])
     @lt = LearningTarget.new
     @standard = Standard.new
     @standard.learning_targets << @lt
@@ -9,7 +10,6 @@ class LearningTargetsController < ApplicationController
   end
 
   def create
-    @klass = Klass.find(params[:klass_id])
     @lt = LearningTarget.new(lt_params)
 
     if @lt.save
@@ -26,18 +26,13 @@ class LearningTargetsController < ApplicationController
   end
 
   def index
-    @klass = Klass.find(params[:klass_id])
     @lts = @klass.learning_targets
   end
 
   def show
-    @klass = Klass.find(params[:klass_id])
-    @lt = LearningTarget.find(params[:id])
   end
 
   def edit
-    @klass = Klass.find(params[:klass_id])
-    @lt = LearningTarget.find(params[:id])
     if @lt.standard
       @standard = @lt.standard
     else
@@ -55,8 +50,6 @@ class LearningTargetsController < ApplicationController
   end
 
   def update
-    @klass = Klass.find(params[:klass_id])
-    @lt = LearningTarget.find(params[:id])
     if @lt.update(lt_params)
       redirect_to(klass_learning_target_path(@klass, @lt), alert: "Learning Target successfully updated")
     else
@@ -65,8 +58,6 @@ class LearningTargetsController < ApplicationController
   end
 
   def destroy
-    @klass = Klass.find(params[:klass_id])
-    @lt = LearningTarget.find(params[:id])
     @lt.assignments.each{|assignment| assignment.grades.destroy_all}
     @lt.assignments.destroy_all
     @lt.destroy
@@ -74,6 +65,14 @@ class LearningTargetsController < ApplicationController
   end
 
   private
+
+    def find_klass
+      @klass = Klass.find(params[:klass_id])
+    end
+
+    def find_lt
+      @lt = LearningTarget.find(params[:id])
+    end
 
     def lt_params
       params.require(:learning_target).permit(:name, :level1, :level2, :level3, :level4, :standard_attributes => {}, :klasses_attributes => {})
