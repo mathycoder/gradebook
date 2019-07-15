@@ -44,6 +44,65 @@ a:hover {
 
 }
 
+/* klass schedule styling */
+
+.klass-schedule {
+  background-image: url('lined-paper.png');
+  width: 550px;
+  height: 568px;
+}
+
+.klass-schedule h1, .klass-schedule table, .klass-schedule-links {
+  transform: rotate(-3.5deg);
+  margin-left: 80px;
+  padding-top: 40px;
+}
+
+.klass-schedule-title {
+  height: 100px;
+}
+
+.klass-schedule h1 {
+  background-color: rgb(217, 106, 94);
+  width: 70%;
+  text-align: center;
+  color: white;
+  padding-top: 20px;
+}
+
+.klass-schedule table {
+  font-size: 27px;
+}
+
+.klass-schedule-links {
+  font-size: 26px;
+}
+
+.klass-schedule table tr td:first-child, .klass-schedule table tr th:first-child {
+  min-width: 80px;
+  max-width: 80px;
+  text-align: left;
+  font-size: 20px;
+
+}
+
+
+
+.klass-schedule table tr td:nth-child(2), .klass-schedule table tr th:nth-child(2) {
+  min-width: 200px;
+  max-width: 200px;
+  text-align: left;
+  font-size: 20px;
+}
+
+.klass-schedule table tr td a {
+  font-size: 16px;
+}
+
+
+
+
+
 /* gradebook styling */
 
 .gradebook-wrapper {

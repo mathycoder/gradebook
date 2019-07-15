@@ -1,25 +1,26 @@
-<h1><%= current_user.name %>'s classes</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Subject</th>
-    <th>Grade</th>
-    <th>Period</th>
-  </tr>
-  <% @klasses.each do |klass| %>
+<div class="klass-schedule">
+  <div class="klass-schedule-title">
+    <h1><%= current_user.name %>'s classes</h1>
+  </div>
+  <table>
     <tr>
-      <td><%= klass.name %></td>
-      <td><%= klass.subject %></td>
-      <td><%= klass.grade %></td>
-      <td><%= klass.period %></td>
-      <td>
-        <%= link_to("View", klass_path(klass)) %>
-        <%= link_to("Edit", edit_klass_path(klass)) %>
-      </td>
+      <th>Period</th>
+      <th>Class</th>
     </tr>
-  <% end %>
-</table>
+    <% @klasses.each do |klass| %>
+      <tr>
+        <td><%= klass.period %></td>
+        <td><%= klass.name %></td>
+        <td>
+          <%= link_to("View", klass_path(klass)) %>
+          <%= link_to("Edit", edit_klass_path(klass)) %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 
-<p><%= link_to("Add a New Class", new_klass_path) %></p>
-<p><%= link_to("Log Out", logout_path) %></p>
+  <div class="klass-schedule-links">
+    <p><%= link_to("Add a New Class", new_klass_path) %></p>
+    <p><%= link_to("Log Out", logout_path) %></p>
+  </div>
+</div>
