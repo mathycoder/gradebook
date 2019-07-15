@@ -4,7 +4,7 @@
 
   <div>
     <%= f.label(:name, "Name of assignment") %><br>
-    <%= f.text_field(:name) %><br><br>
+    <%= f.text_field(:name, class: "text-field") %><br><br>
   </div>
 
   <div>
@@ -13,7 +13,7 @@
   </div>
 
   <div>
-    <%= f.collection_select :learning_target_id, klass.learning_targets, :id, :name, include_blank: 'Select the Learning Target' %><br><br>
+    <%= f.collection_select :learning_target_id, klass.learning_targets, :id, :name, {include_blank: 'Select the Learning Target'}, {class: "select-css"} %><br><br>
   </div>
 
   <table>
@@ -22,7 +22,7 @@
         <%= f.fields_for(:grades, student.current_grade(@assignment)) do |br| %>
           <div>
             <td><%= br.label(:score, student.full_name) %></td>
-            <td><%= br.text_field(:score) %></td>
+            <td><%= br.text_field(:score, class: "text-field-grade") %></td>
             <%= br.hidden_field(:student_id, :value => student.id) %>
           </div>
         <% end %>
@@ -30,5 +30,7 @@
     <% end %>
   </table>
   <br>
-  <%= f.submit %>
+  <div class="big-button">
+    <%= f.submit %>
+  </div>
 <% end %>
