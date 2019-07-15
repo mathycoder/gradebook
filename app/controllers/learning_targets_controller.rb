@@ -20,7 +20,7 @@ class LearningTargetsController < ApplicationController
         redirect_to(klass_path(@klass), alert: "Learning Target successfully created")
       end
     else
-      params[:query] ? @standards = Standard.by_grade(params[:query][:grade]) : @standards = [@lt.standard]
+      params[:query] ? @standards = Standard.by_grade(params[:query][:grade]) : @standards = [@lt.try(standard)]
       render 'new'
     end
   end
