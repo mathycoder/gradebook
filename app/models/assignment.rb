@@ -20,9 +20,13 @@ class Assignment < ApplicationRecord
     self.date.strftime('%b %e') if self.date
   end
 
-  def average
+  def klass_grades(klass)
+    self.grades.select{|grade| klass.students.include?(grade.student) }
+  end
+
+  def average(klass)
     if !self.grades.empty?
-      grades = self.grades.map {|grade| grade.score}.flatten.compact
+      grades = self.klass_grades(klass).map {|grade| grade.score}.flatten.compact
       if !grades.empty?
         avg = grades.sum / grades.length
         '%.2f' % avg

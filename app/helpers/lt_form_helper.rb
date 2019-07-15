@@ -64,9 +64,7 @@ module LtFormHelper
       html_string = form_for([klass, lt], method: :delete) do |d|
         d.submit("delete")
       end
-    end
     html_string.html_safe
+    end
   end
-
-
 end
