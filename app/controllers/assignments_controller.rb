@@ -1,13 +1,13 @@
 class AssignmentsController < ApplicationController
 
+  before_action :find_klass
+
   def new
-    @klass = Klass.find(params[:klass_id])
     @assignment = Assignment.new
     @assignment.grades.build()
   end
 
   def create
-    @klass = Klass.find(params[:klass_id])
     @assignment = Assignment.new(assignment_params)
     if @assignment.save
       redirect_to(klass_path(@klass), alert: "Assignment successfully added")
@@ -17,12 +17,10 @@ class AssignmentsController < ApplicationController
   end
 
   def edit
-    @klass = Klass.find(params[:klass_id])
     @assignment = Assignment.find(params[:id])
   end
 
   def update
-    @klass = Klass.find(params[:klass_id])
     @assignment = Assignment.find(params[:id])
     if @assignment.update(assignment_params)
       redirect_to(klass_path(@klass), alert: "Assignment successfully updated")
@@ -32,7 +30,6 @@ class AssignmentsController < ApplicationController
   end
 
   def destroy
-    @klass = Klass.find(params[:klass_id])
     @assignment = Assignment.find(params[:id])
     @assignment.grades.destroy_all
     @assignment.destroy
@@ -40,6 +37,10 @@ class AssignmentsController < ApplicationController
   end
 
   private
+
+    def find_klass
+      @klass = Klass.find(params[:klass_id])
+    end
 
     def assignment_params
       params.require(:assignment).permit(:name, :learning_target_id, :date, :grades_attributes => {})
