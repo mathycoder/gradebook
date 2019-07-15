@@ -1,7 +1,5 @@
 <h1>Edit this class</h1>
-
 <%= render partial: "klasses/form", locals: {klass: @klass, submit_text: "Update Class"} %>
-
 <%= form_for(@klass, method: :delete) do |f| %>
   <div class="big-button">
     <%= f.submit("Delete Class") %>
