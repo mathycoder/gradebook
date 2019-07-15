@@ -23,13 +23,13 @@ class LearningTarget < ApplicationRecord
     self.assignments.sort_by{|assignment| assignment.date}
   end
 
-  def graph_data
-    data = self.assignments.map {|assignment| [assignment.date.strftime('%b %d, %Y'), assignment.average]}
+  def graph_data(klass)
+    data = self.assignments.map {|assignment| [assignment.date.strftime('%b %d, %Y'), assignment.average(klass)]}
     data.empty? ? [[0,0]] : data
   end
 
-  def class_average
-    averages = self.assignments.map{|assignment| assignment.average.to_f}.compact
+  def class_average(klass)
+    averages = self.assignments.map{|assignment| assignment.average(klass).to_f}.compact
     if !averages.empty?
       avg = averages.sum / averages.length
       '%.2f' % avg
