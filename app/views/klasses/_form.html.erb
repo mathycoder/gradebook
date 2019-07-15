@@ -4,23 +4,27 @@
 
   <div>
     <%= f.label(:name, "Class Name") %><br>
-    <%= f.text_field(:name) %><br><br>
+    <%= f.text_field(:name, class: "text-field") %><br><br>
   </div>
 
   <div>
     <%= f.label(:subject, "Subject") %><br>
-    <%= f.text_field(:subject) %><br><br>
+    <%= f.text_field(:subject, class: "text-field") %><br><br>
   </div>
 
   <div>
     <%= f.label(:grade, "Enter the grade (as a string for now)") %><br>
-    <%= f.text_field(:grade) %><br><br>
+    <%= f.text_field(:grade, class: "text-field") %><br><br>
   </div>
 
   <div>
     <%= f.label(:period, "Enter the class period (as an integer for now)") %><br>
-    <%= f.text_field(:period) %><br><br>
+    <%= f.text_field(:period, class: "text-field") %><br><br>
   </div>
 
-  <%= f.submit(submit_text) %><br><br>
+  <div class="big-button">
+    <%= f.submit(submit_text) %>
+    <br><br>
+  </div>
+
 <% end %>

@@ -3,5 +3,7 @@
 <%= render partial: "klasses/form", locals: {klass: @klass, submit_text: "Update Class"} %>
 
 <%= form_for(@klass, method: :delete) do |f| %>
-  <%= f.submit("Delete Class") %>
+  <div class="big-button">
+    <%= f.submit("Delete Class") %>
+  </div>
 <% end %>
