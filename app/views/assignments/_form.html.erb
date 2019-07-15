@@ -1,5 +1,4 @@
 <%= form_for([klass,assignment]) do |f| %>
-
   <div>
     <%= f.label(:name, "Name of assignment") %><br>
     <%= f.text_field(:name) %><br><br>
@@ -17,8 +16,7 @@
   <table>
     <% klass.students.each do |student| %>
       <tr>
-        <% current_grade = Grade.find_or_create_by(student_id: student.id, assignment_id: @assignment.id) %>
-        <%= f.fields_for(:grades, current_grade) do |br| %>
+        <%= f.fields_for(:grades, student.current_grade(@assignment)) do |br| %>
           <div>
             <td><%= br.label(:score, student.full_name) %></td>
             <td><%= br.text_field(:score) %></td>

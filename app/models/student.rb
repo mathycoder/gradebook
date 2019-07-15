@@ -10,6 +10,10 @@ class Student < ApplicationRecord
     "#{self.last_name}, #{self.first_name}"
   end
 
+  def current_grade(assignment)
+    Grade.find_or_create_by(student_id: self.id, assignment_id: assignment.id)
+  end
+
   def average(klass)
     if !klass.grades.empty?
       grades = klass.grades.where("student_id = ?", self.id).map{|grade| grade.score}.compact
