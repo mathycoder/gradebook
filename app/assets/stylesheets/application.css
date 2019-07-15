@@ -195,6 +195,14 @@ table.gradebook .hidden {
   flex-wrap: wrap;
 }
 
+.lt-form-submit-area {
+  margin: 20px auto;
+}
+
+.lt-form-klasses {
+  margin: 20px auto;
+}
+
 .lt-form-container-full .lt-form-submit {
   margin: 20px auto;
 }

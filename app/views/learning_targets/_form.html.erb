@@ -10,34 +10,15 @@
         <% end %>
       </div>
 
-
     <div class="lt-form-rubric">
       <%= render partial: "learning_targets/rubric_form", locals: {f: f, color: color} %>
     </div>
   </div>
 
-  <div class="lt-form-submit">
-    <% if !lt.id %>
-      <p>Add this learning target to another class: </p>
-      <% current_user.klasses.each do |kl| %>
-        <% if kl != klass %>
-          <%= f.fields_for(:klasses, kl) do |k| %>
-            <p>
-              <%= f.check_box(:id) %>
-              <%= f.label(kl.name) %>
-            </p>
-          <% end %>
-        <% end %>
-      <% end %>
-    <% else %>
-      <% if lt.klasses.length > 1 %>
-        <p>This Learning Target is connect to these classes: <br><br>
-          <% lt.klasses.each do |kl| %>
-            <%= kl.name if kl != klass %>
-          <% end %>
-        </p>
-      <% end %>
-    <% end %>
+  <div class="lt-form-submit-area">
+    <div class="lt-form-klasses">
+      <%= lt_klass_connector_form(klass, lt, f) %>
+    </div>
 
     <div class="lt-form-submit">
       <div>
