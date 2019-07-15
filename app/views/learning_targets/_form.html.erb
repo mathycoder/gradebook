@@ -25,13 +25,11 @@
         <%= f.submit %>
         <% end %>
       </div>
-      <% if lt.id %>
-        <div>
-          <%= form_for([klass, lt], method: :delete) do |d| %>
-            <%= d.submit("delete") %>
-          <% end %>
-        </div>
-      <% end %>
+
+      <div>
+        <%= delete_button(klass, lt) %>
+      </div>
+
     </div>
   </div>
 
