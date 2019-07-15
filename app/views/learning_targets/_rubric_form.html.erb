@@ -1,0 +1,13 @@
+<div class="rubric-title <%= color %>">
+  <h2><%= f.text_field(:name, size: "40", placeholder: "Enter a student-friendly name for this LT") %></h2>
+</div>
+
+<% [4,3,2,1].each do |score| %>
+  <div class="rubric-score">
+    <h2><%= score %></h2>
+  </div>
+
+  <div class="rubric-score-desc">
+    <p><%= f.text_area("level#{score}", placeholder: "Optional: What does level #{score} understanding look like?") %></p>
+  </div>
+<% end %>

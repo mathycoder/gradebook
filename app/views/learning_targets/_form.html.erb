@@ -11,43 +11,8 @@
       </div>
 
 
-
     <div class="lt-form-rubric">
-      <div class="rubric-title <%= color %>">
-        <h2><%= f.text_field(:name, size: "40", placeholder: "Enter a student-friendly name for this LT") %></h2>
-      </div>
-
-      <div class="rubric-score">
-        <h2>4</h2>
-      </div>
-
-      <div class="rubric-score-desc">
-        <p><%= f.text_area(:level4, placeholder: "Optional: What does level 4 understanding look like?") %></p>
-      </div>
-
-      <div class="rubric-score">
-        <h2>3</h2>
-      </div>
-
-      <div class="rubric-score-desc">
-        <p><%= f.text_area(:level3, placeholder: "Optional: What does level 3 understanding look like?") %></p>
-      </div>
-
-      <div class="rubric-score">
-        <h2>2</h2>
-      </div>
-
-      <div class="rubric-score-desc">
-        <p><%= f.text_area(:level2, placeholder: "Optional: What does level 2 understanding look like?") %></p>
-      </div>
-
-      <div class="rubric-score">
-        <h2>1</h2>
-      </div>
-
-      <div class="rubric-score-desc">
-        <p><%= f.text_area(:level1, placeholder: "Optional: What does level 1 understanding look like?") %></p>
-      </div>
+      <%= render partial: "learning_targets/rubric_form", locals: {f: f, color: color} %>
     </div>
   </div>
 
