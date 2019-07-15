@@ -2,15 +2,15 @@ module LtFormHelper
 
   def generate_standard_filter_form(lt, klass, standard)
     if lt.new_record?
-      f = form_tag(new_klass_learning_target_path(klass), method: "get") do
+      html_string = form_tag(new_klass_learning_target_path(klass), method: "get") do
         generate_standard_filter_form_block(lt, klass, standard)
       end
     else
-      f = form_tag(edit_klass_learning_target_path(klass, lt), method: "get") do
+      html_string = form_tag(edit_klass_learning_target_path(klass, lt), method: "get") do
         generate_standard_filter_form_block(lt, klass, standard)
       end
     end
-    f.html_safe
+    html_string.html_safe
   end
 
   def generate_standard_filter_form_block(lt, klass, standard)
