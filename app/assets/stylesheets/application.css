@@ -274,6 +274,12 @@ table.gradebook .hidden {
 
 .lt-form-submit-area {
   margin: 20px auto;
+  display: flex;
+  align-items: center;
+}
+
+.lt-form-submit-area div {
+  padding: 0 30px;
 }
 
 .lt-form-klasses {
@@ -299,7 +305,7 @@ table.gradebook .hidden {
 
   overflow-y: scroll;
   min-height: 100px;
-  max-height: 400px;
+  max-height: 350px;
   width: 100%;
   margin: 20px 0;
 }
@@ -378,6 +384,7 @@ table.gradebook .hidden {
 
 .lt-form-rubric {
   width: 40%;
+  grid-template-rows: auto repeat(4, 80px);
 }
 
 .rubric-title {
