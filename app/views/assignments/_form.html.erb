@@ -1,4 +1,7 @@
 <%= form_for([klass,assignment]) do |f| %>
+
+  <%= error_display(assignment) %>
+
   <div>
     <%= f.label(:name, "Name of assignment") %><br>
     <%= f.text_field(:name) %><br><br>
