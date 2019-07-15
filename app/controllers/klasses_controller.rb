@@ -1,4 +1,5 @@
 class KlassesController < ApplicationController
+  before_action :find_klass, only: [:show, :edit, :update, :destroy]
 
   def new
     @klass = Klass.new
@@ -19,17 +20,14 @@ class KlassesController < ApplicationController
   end
 
   def show
-    @klass = Klass.find(params[:id])
     redirect_to(klass_learning_targets_path(@klass)) if @klass.learning_targets.empty?
   end
 
   def edit
-    @klass = Klass.find(params[:id])
   end
 
   def update
     @klass = Klass.find(params[:id])
-    if @klass.update(klass_params)
       redirect_to(klass_path(@klass), alert: "Class successfully updated")
     else
       render 'edit'
@@ -37,12 +35,15 @@ class KlassesController < ApplicationController
   end
 
   def destroy
-    @klass = Klass.find(params[:id])
     @klass.destroy
     redirect_to(klasses_path, alert: "Class successfully deleted")
   end
 
   private
+
+    def find_klass
+      @klass = Klass.find(params[:id])
+    end
 
     def klass_params
       params.require(:klass).permit(:name, :subject, :grade, :period)
