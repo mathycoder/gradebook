@@ -4,13 +4,13 @@ class Assignment < ApplicationRecord
   has_many :students, through: :grades
   accepts_nested_attributes_for :grades
   validates :name, presence: true
-  validates :date, presence: true 
+  validates :date, presence: true
   validates_associated :grades
 
 
   def grades_attributes=(grades_hash)
     grades_hash.each do |key, attributes|
-      current_grade = Grade.find_by(id: attributes[:id])
+      current_grade = Grade.find_by(student_id: attributes[:student_id])
       if current_grade
         current_grade.update(score: attributes[:score])
       else

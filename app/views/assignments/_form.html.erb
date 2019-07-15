@@ -19,7 +19,7 @@
   <table>
     <% klass.students.each do |student| %>
       <tr>
-        <%= f.fields_for(:grades, student.current_grade(@assignment)) do |br| %>
+        <%= f.fields_for(:grades, student.current_grade(@assignment), include_id: false) do |br| %>
           <div>
             <td><%= br.label(:score, student.full_name) %></td>
             <td><%= br.text_field(:score, class: "text-field-grade") %></td>

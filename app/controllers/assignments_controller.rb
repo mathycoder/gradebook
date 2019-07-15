@@ -1,6 +1,6 @@
 class AssignmentsController < ApplicationController
-
   before_action :find_klass
+  before_action :find_assignment, only: [:edit, :update, :destroy]
 
   def new
     @assignment = Assignment.new
@@ -9,19 +9,13 @@ class AssignmentsController < ApplicationController
 
   def create
     @assignment = Assignment.new(assignment_params)
-    if @assignment.save
-      redirect_to(klass_path(@klass), alert: "Assignment successfully added")
-    else
-      render 'new'
-    end
+    @assignment.save ? (redirect_to(klass_path(@klass), alert: "Assignment successfully added")) : (render 'new')
   end
 
   def edit
-    @assignment = Assignment.find(params[:id])
   end
 
   def update
-    @assignment = Assignment.find(params[:id])
     if @assignment.update(assignment_params)
       redirect_to(klass_path(@klass), alert: "Assignment successfully updated")
     else
@@ -30,7 +24,6 @@ class AssignmentsController < ApplicationController
   end
 
   def destroy
-    @assignment = Assignment.find(params[:id])
     @assignment.grades.destroy_all
     @assignment.destroy
     redirect_to(klass_path(@klass), alert: "Assignment deleted")
@@ -40,6 +33,10 @@ class AssignmentsController < ApplicationController
 
     def find_klass
       @klass = Klass.find(params[:klass_id])
+    end
+
+    def find_assignment
+      @assignment = Assignment.find(params[:id])
     end
 
     def assignment_params
