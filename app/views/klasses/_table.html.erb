@@ -1,7 +1,6 @@
 <div class="gradebook-wrapper">
   <table class="gradebook">
     <tr>
-
       <th></th>
       <th id="new-lt"><%= link_to("New Learning Target", new_klass_learning_target_path(klass)) if !lt %></th>
       <% collection.each do |target| %>
