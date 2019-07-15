@@ -13,7 +13,7 @@
 
 
   <div class="lt-show-gradebook">
-    <%= render partial: "klasses/table", locals: {klass: @klass, collection: [@lt], klass_or_lt: @lt} %>
+    <%= render partial: "klasses/table", locals: {klass: @klass, lt: @lt, collection: [@lt], klass_or_lt: @lt} %>
   </div>
 
   <div class="lt-show-rub-st-container">

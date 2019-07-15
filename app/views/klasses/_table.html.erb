@@ -1,12 +1,13 @@
 <div class="gradebook-wrapper">
   <table class="gradebook">
     <tr>
+
       <th></th>
-      <th id="new-lt"><%= link_to("New Learning Target", new_klass_learning_target_path(klass)) if !@lt %></th>
-      <% collection.each do |lt| %>
-        <th colspan="<%= lt.assignments.length %>" class="<%= klass.my_color_class(lt) %> start-of-lt">
-          <%= lt.standard.standard_notation_clean if lt.standard %><br>
-          <%= link_to(lt.name, klass_learning_target_path(klass, lt)) %>
+      <th id="new-lt"><%= link_to("New Learning Target", new_klass_learning_target_path(klass)) if !lt %></th>
+      <% collection.each do |target| %>
+        <th colspan="<%= target.assignments.length %>" class="<%= klass.my_color_class(target) %> start-of-lt">
+          <%= target.standard.standard_notation_clean if target.standard %><br>
+          <%= link_to(target.name, klass_learning_target_path(klass, target)) %>
         </th>
       <% end %>
     </tr>
