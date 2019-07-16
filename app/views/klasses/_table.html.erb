@@ -56,10 +56,12 @@
         <td class="average"><p><strong><%= student.average(klass_or_lt) %></strong></p></td>
         <% collection.each do |lt| %>
           <%= content_tag(:td, nil, class: "start-of-lt") if lt.assignments.empty? %>
+
           <% lt.chronological_assignments.each_with_index do |assignment, index| %>
             <% scorer = assignment.grades.find_by(student_id: student.id) %>
             <td class="score <%= "start-of-lt" if index == 0 %>"><%= scorer.score if scorer %></td>
           <% end %>
+
         <% end %>
       </tr>
     <% end %>

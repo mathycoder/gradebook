@@ -24,20 +24,16 @@ class Assignment < ApplicationRecord
   end
 
   def klass_grades(klass)
-    #self.grades.includes(:student).select{|grade| klass.students.include?(grade.student) }
-    binding.pry 
     self.grades.joins(student: :klasses).where("klass_id = ?", klass.id)
   end
 
   def average(klass)
-    if !self.grades.empty?
-      grades = self.klass_grades(klass).map {|grade| grade.score}.flatten.compact
-      if !grades.empty?
-        avg = grades.sum / grades.length
-        '%.2f' % avg
-      else
-        nil
-      end
+    grades = self.klass_grades(klass).map {|grade| grade.score}.flatten.compact
+    if !grades.empty?
+      avg = grades.sum / grades.length
+      '%.2f' % avg
+    else
+      nil
     end
   end
 

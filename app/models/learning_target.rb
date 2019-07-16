@@ -25,6 +25,10 @@ class LearningTarget < ApplicationRecord
     self.assignments.sort_by{|assignment| assignment.date}
   end
 
+  def students_chronological_grades(student)
+    self.grades.includes(:assignment).where("student_id = ?", student.id).order(date: :asc)
+  end
+
   def graph_data(klass)
     data = self.assignments.map {|assignment| [assignment.date.strftime('%b %d, %Y'), assignment.average(klass)]}
     data.empty? ? [[0,0]] : data
