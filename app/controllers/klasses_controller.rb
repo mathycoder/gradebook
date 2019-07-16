@@ -27,11 +27,7 @@ class KlassesController < ApplicationController
   end
 
   def update
-    if @klass.update(klass_params)
-      redirect_to(klass_path(@klass), alert: "Class successfully updated")
-    else
-      render 'edit'
-    end
+    @klass.update(klass_params) ? (redirect_to(klass_path(@klass), alert: "Class successfully updated")) : (render 'edit')
   end
 
   def destroy
