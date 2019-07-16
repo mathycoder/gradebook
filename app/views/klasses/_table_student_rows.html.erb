@@ -1,0 +1,16 @@
+<% klass.students.each do |student| %>
+  <tr>
+    <td>
+      <div class="student-column"><%= student.full_name %></div>
+    </td>
+    <td class="average"><p><strong><%= student.average(klass_or_lt) %></strong></p></td>
+    <% collection.each do |lt| %>
+      <%= content_tag(:td, nil, class: "start-of-lt") if lt.assignments.empty? %>
+
+      <% lt.students_chronological_grades(student).each_with_index do |grade, index| %>
+        <td class="score <%= "start-of-lt" if index == 0 %>"><%= grade.score if grade %></td>
+      <% end %>
+
+    <% end %>
+  </tr>
+<% end %>
