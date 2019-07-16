@@ -18,9 +18,4 @@ class SessionsController < ApplicationController
     redirect_to(login_path)
   end
 
-  private
-
-    # def teacher_params
-    #   params.require(:teacher).permit(:email)
-    # end
 end

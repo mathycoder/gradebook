@@ -5,7 +5,7 @@ class Assignment < ApplicationRecord
   accepts_nested_attributes_for :grades
   validates :name, presence: true
   validates :date, presence: true
-  #validates_associated :grades
+  validates_associated :grades
 
 
   def grades_attributes=(grades_hash)
@@ -24,7 +24,7 @@ class Assignment < ApplicationRecord
   end
 
   def klass_grades(klass)
-    self.grades.select{|grade| klass.students.include?(grade.student) }
+    self.grades.includes(:student).select{|grade| klass.students.include?(grade.student) }
   end
 
   def average(klass)
