@@ -24,7 +24,9 @@ class Assignment < ApplicationRecord
   end
 
   def klass_grades(klass)
-    self.grades.includes(:student).select{|grade| klass.students.include?(grade.student) }
+    #self.grades.includes(:student).select{|grade| klass.students.include?(grade.student) }
+    binding.pry 
+    self.grades.joins(student: :klasses).where("klass_id = ?", klass.id)
   end
 
   def average(klass)
