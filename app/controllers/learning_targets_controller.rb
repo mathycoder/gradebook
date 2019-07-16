@@ -4,23 +4,17 @@ class LearningTargetsController < ApplicationController
 
   def new
     @lt = LearningTarget.new
-    @standard = Standard.new
-    @standard.learning_targets << @lt
-    params[:query] ? @standards = Standard.by_grade(params[:query][:grade]) : @standards = []
+    @standard = @lt.build_standard()
+    set_standards_based_on_search_query([])
   end
 
   def create
     @lt = LearningTarget.new(lt_params)
-
     if @lt.save
       @klass.learning_targets << @lt
-      if @klass.learning_targets.length > 1
-        redirect_to(klass_learning_target_path(@klass, @lt), alert: "Learning Target successfully created")
-      else
-        redirect_to(klass_path(@klass), alert: "Learning Target successfully created")
-      end
+      @klass.learning_targets.length > 1 ? redirect_to(klass_learning_target_path(@klass, @lt), alert: "Learning Target successfully created") : redirect_to(klass_path(@klass), alert: "Learning Target successfully created")
     else
-      params[:query] ? @standards = Standard.by_grade(params[:query][:grade]) : @standards = [@lt.try(standard)]
+      set_standards_based_on_search_query([@lt])
       render 'new'
     end
   end
@@ -65,6 +59,10 @@ class LearningTargetsController < ApplicationController
   end
 
   private
+
+    def set_standards_based_on_search_query(current_standard)
+      params[:query] ? @standards = Standard.by_grade(params[:query][:grade]) : @standards = current_standard
+    end
 
     def find_klass
       @klass = Klass.find(params[:klass_id])
