@@ -10,7 +10,10 @@ class Klass < ApplicationRecord
   has_many :assignments, through: :learning_targets
   has_many :grades, through: :assignments
 
-  validates :name, :subject, :grade, :period, presence: true
+  validates :name, presence: true, length: {maximum: 35}
+  validates :grade, presence: true, length: {maximum: 20}
+  validates :subject, presence: true, length: {maximum: 20}
+  validates :period, presence: true, numericality: true, length: {maximum: 2}
 
 
   def my_color_class(lt)

@@ -10,10 +10,9 @@
     <% @klasses.each do |klass| %>
       <tr>
         <td><%= klass.period %></td>
-        <td><%= klass.name %></td>
-        <td>
-          <%= link_to("View", klass_path(klass)) %>
-          <%= link_to("Edit", edit_klass_path(klass)) %>
+        <td><%= link_to(klass.name, klass_path(klass)) %></td>
+        <td class="klass-schedule-edit">
+          <%= link_to("edit", edit_klass_path(klass)) %>
         </td>
       </tr>
     <% end %>
