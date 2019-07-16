@@ -231,7 +231,6 @@ table.gradebook, table.gradebook th, table.gradebook td {
 /* height of data cells */
 table.gradebook th{
   color: white;
-  height: 45px;
 }
 
 table.gradebook td {
@@ -252,6 +251,7 @@ table.gradebook .green, .rubric-title.green {
 table.gradebook .blue, .rubric-title.blue {
   background-color: rgb(71, 125, 179);
 }
+
 
 table.gradebook th a {
   text-decoration: none;
