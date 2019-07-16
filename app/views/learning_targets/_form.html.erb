@@ -17,9 +17,16 @@
 
   <div class="lt-form-submit-area">
     <div class="lt-form-klasses">
-      <%# lt_klass_connector_form(klass, lt, f) %>
-      <%= f.fields_for(:klasses, lt.klasses.build) do |k| %>
-        <%= k.collection_check_boxes(:id, current_user.klasses, :id, :name) %>
+      <% if lt.new_record? %>
+        <%= f.fields_for(:klasses, lt.klasses.build) do |k| %>
+          <p>Add LT to another class:<p>
+          <%= k.collection_check_boxes(:id, current_user.all_klasses_except(klass), :id, :name) %>
+        <% end %>
+      <% elsif current_user.all_klasses_except(klass).length > 0 %>
+        <p>This LT also includes: <p>
+        <% current_user.all_klasses_except(klass).each do |kl| %>
+          <%= "#{kl.name} " %>
+        <% end %>
       <% end %>
     </div>
 

@@ -45,7 +45,6 @@ class LearningTargetsController < ApplicationController
 
   def update
     if @lt.update(lt_params)
-      binding.pry
       redirect_to(klass_learning_target_path(@klass, @lt), alert: "Learning Target successfully updated")
     else
       render 'edit'

@@ -7,4 +7,8 @@ class Teacher < ApplicationRecord
   def classes_sorted_by_period
     self.klasses.sort_by{|klass| klass.period}
   end
+
+  def all_klasses_except(klass)
+    self.klasses.where("klass_id != ?", klass.id)
+  end
 end

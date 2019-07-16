@@ -41,10 +41,9 @@ module LtFormHelper
   # end
   #
   # def choose_connected_klasses(klass, lt, f)
-  #   f.fields_for(:klasses) do |k|
+  #   f.fields_for(:klasses, lt.klasses.build) do |k|
   #     k.collection_check_boxes(:id, current_user.klasses, :id, :name)
   #   end
-  #   html_string.html_safe
   # end
 
   def delete_button(klass, lt)
