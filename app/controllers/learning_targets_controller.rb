@@ -9,7 +9,7 @@ class LearningTargetsController < ApplicationController
   end
 
   def create
-    @lt = LearningTarget.new(lt_params)
+    @lt = @klass.learning_targets.build(lt_params)
     if @lt.save
       @klass.learning_targets << @lt
       @klass.learning_targets.length > 1 ? redirect_to(klass_learning_target_path(@klass, @lt), alert: "Learning Target successfully created") : redirect_to(klass_path(@klass), alert: "Learning Target successfully created")

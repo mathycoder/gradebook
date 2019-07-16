@@ -22,9 +22,9 @@
           <p>Add LT to another class:<p>
           <%= k.collection_check_boxes(:id, current_user.all_klasses_except(klass), :id, :name) %>
         <% end %>
-      <% elsif current_user.all_klasses_except(klass).length > 0 %>
-        <p>This LT also includes: <p>
-        <% current_user.all_klasses_except(klass).each do |kl| %>
+      <% elsif lt.klasses.length > 1 %>
+        <p>This LT is attached to these classes: <p>
+        <% lt.klasses.each do |kl| %>
           <%= "#{kl.name} " %>
         <% end %>
       <% end %>
