@@ -14,7 +14,7 @@ class LearningTargetsController < ApplicationController
       @klass.learning_targets << @lt
       @klass.learning_targets.length > 1 ? redirect_to(klass_learning_target_path(@klass, @lt), alert: "Learning Target successfully created") : redirect_to(klass_path(@klass), alert: "Learning Target successfully created")
     else
-      set_standards_based_on_search_query([@lt])
+      set_standards_based_on_search_query([@lt.standard])
       render 'new'
     end
   end
@@ -27,26 +27,14 @@ class LearningTargetsController < ApplicationController
   end
 
   def edit
-    if @lt.standard
-      @standard = @lt.standard
-    else
-      @standard = Standard.new
-      @lt.standard = @standard
-    end
-
-    if !params[:query] && @standard.id
-      @standards = [@standard]
-    elsif !params[:query]
-      @standards = []
-    else
-      @standards = Standard.by_grade(params[:query][:grade])
-    end
+    set_standards_based_on_search_query([@lt.standard])
   end
 
   def update
     if @lt.update(lt_params)
       redirect_to(klass_learning_target_path(@klass, @lt), alert: "Learning Target successfully updated")
     else
+      set_standards_based_on_search_query([@lt.standard])
       render 'edit'
     end
   end
