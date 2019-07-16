@@ -17,7 +17,10 @@
 
   <div class="lt-form-submit-area">
     <div class="lt-form-klasses">
-      <%= lt_klass_connector_form(klass, lt, f) %>
+      <%# lt_klass_connector_form(klass, lt, f) %>
+      <%= f.fields_for(:klasses, lt.klasses.build) do |k| %>
+        <%= k.collection_check_boxes(:id, current_user.klasses, :id, :name) %>
+      <% end %>
     </div>
 
     <div class="lt-form-submit">

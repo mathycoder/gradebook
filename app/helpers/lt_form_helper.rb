@@ -22,42 +22,30 @@ module LtFormHelper
     b
   end
 
-  def lt_klass_connector_form(klass, lt, f)
-    if lt.new_record?
-      html_string = choose_connected_klasses(klass, lt, f)
-    else
-      if lt.klasses.length > 1
-        html_string = content_tag(:p) do
-          display_connected_klasses_block(klass, lt)
-        end
-      end
-      html_string.html_safe
-    end
-  end
-
-  def display_connected_klasses_block(klass, lt)
-    b = content_tag(:p, "This Learning Target is connect to these classes:")
-    lt.klasses.each do |kl|
-      b << kl.name if kl != klass
-    end
-    b
-  end
-
-  def choose_connected_klasses(klass, lt, f)
-    html_string = content_tag(:p, "Add this learning target to another class:")
-    current_user.klasses.each do |kl|
-      if kl != klass
-        html_string << f.fields_for(:klasses, kl) do |k|
-          content_tag(:p) do
-            b = f.check_box(:id)
-            b << f.label(kl.name)
-            b
-          end
-        end
-      end
-    end
-    html_string.html_safe
-  end
+  # def lt_klass_connector_form(klass, lt, f)
+  #   if lt.new_record?
+  #     html_string = choose_connected_klasses(klass, lt, f).html_safe
+  #   else
+  #     html_string = content_tag(:p) do
+  #       display_connected_klasses(klass, lt).html_safe
+  #     end
+  #   end
+  # end
+  #
+  # def display_connected_klasses(klass, lt)
+  #   b = content_tag(:p, "This Learning Target is connect to these classes:")
+  #   lt.klasses.each do |kl|
+  #     b << kl.name if kl != klass
+  #   end
+  #   b
+  # end
+  #
+  # def choose_connected_klasses(klass, lt, f)
+  #   f.fields_for(:klasses) do |k|
+  #     k.collection_check_boxes(:id, current_user.klasses, :id, :name)
+  #   end
+  #   html_string.html_safe
+  # end
 
   def delete_button(klass, lt)
     if !lt.new_record?

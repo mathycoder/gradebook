@@ -9,11 +9,12 @@ class LearningTarget < ApplicationRecord
 
 
   def klasses_attributes=(klasses_ids)
-    klasses_ids.each do |klass_id|
-      new_klass = Klass.find_by(id: klass_id[1]["id"])
-      self.klasses << new_klass if !self.klasses.include?(new_klass)
+    klasses_ids["0"]["id"].each do |klass_id|
+      new_klass = Klass.find_by(id: klass_id)
+      if new_klass
+        self.klasses << new_klass if !self.klasses.include?(new_klass)
+      end
     end
-
   end
 
   def standard_attributes=(standard_hash)
