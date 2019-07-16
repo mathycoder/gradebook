@@ -4,7 +4,7 @@
 
   <div>
     <%= f.label(:name, "Name of assignment") %><br>
-    <%= f.text_field(:name, class: "text-field") %><br><br>
+    <%= f.text_field(:name, {class: "text-field", maxlength: "40"}) %><br><br>
   </div>
 
   <div>
@@ -22,7 +22,7 @@
         <%= f.fields_for(:grades, student.current_grade(@assignment), include_id: false) do |br| %>
           <div>
             <td><%= br.label(:score, student.full_name) %></td>
-            <td><%= br.text_field(:score, class: "text-field-grade") %></td>
+            <td><%= br.text_field(:score, {class: "text-field-grade", maxlength: "3"}) %></td>
             <%= br.hidden_field(:student_id, :value => student.id) %>
           </div>
         <% end %>

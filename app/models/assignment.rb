@@ -3,7 +3,7 @@ class Assignment < ApplicationRecord
   has_many :grades, validate: true, :dependent => :delete_all
   has_many :students, through: :grades
   accepts_nested_attributes_for :grades
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 40 }
   validates :date, presence: true
   validates_associated :grades
 

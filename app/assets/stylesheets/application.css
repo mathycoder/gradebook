@@ -92,14 +92,14 @@ input[type=text].text-field  {
   cursor: pointer;
 }
 
-.big-button input[type=submit]:hover {
+.big-button input[type=submit]:hover, .little-button input[type=submit]:hover, input[type=submit].little-button:hover  {
   background-color: black;
   color: white;
 }
 
-.little-button input[type=submit] {
+.little-button input[type=submit], input[type=submit].little-button  {
   width: auto;
-  background-color: rgb(124, 166, 147);
+  background-color: grey;
   color: white;
   padding: 2px 4px;
   margin-left: 5px;
@@ -300,6 +300,7 @@ table.gradebook .assignment-header {
 
 table.gradebook .assignment-header div {
   flex: 1;
+  overflow-y: scroll;
 }
 
 table.gradebook .assignments {

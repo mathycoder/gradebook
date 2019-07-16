@@ -14,10 +14,10 @@ module LtFormHelper
   end
 
   def generate_standard_filter_form_block(lt, klass, standard)
-    b = select_tag "query[grade]", options_from_collection_for_select(Standard.grades, :grade, :grade, standard.try("id")), prompt: "Select a Grade"
+    b = select_tag "query[grade]", options_from_collection_for_select(Standard.grades, :grade, :grade, standard.try("id")), class: "select-css", prompt: "Select a Grade"
     b << tag(:br) + tag(:br)
-    b << submit_tag("Filter")
-    b << submit_tag('clear')
+    b << submit_tag("Filter", class: "little-button")
+    b << submit_tag('clear', class: "little-button")
     b << tag(:br)
     b
   end
