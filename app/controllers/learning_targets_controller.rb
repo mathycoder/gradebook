@@ -40,7 +40,6 @@ class LearningTargetsController < ApplicationController
   end
 
   def destroy
-    @lt.assignments.each{|assignment| assignment.grades.destroy_all}
     @lt.assignments.destroy_all
     @lt.destroy
     redirect_to(klass_learning_targets_path(@klass), alert: "Learning Target successfully deleted")

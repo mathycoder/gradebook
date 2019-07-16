@@ -1,7 +1,7 @@
 class LearningTarget < ApplicationRecord
   has_many :klass_learning_targets
   has_many :klasses, through: :klass_learning_targets
-  has_many :assignments
+  has_many :assignments, :dependent => :delete_all
   has_many :grades, through: :assignments
   belongs_to :standard
   accepts_nested_attributes_for :standard, :klasses
