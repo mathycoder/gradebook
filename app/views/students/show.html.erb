@@ -15,7 +15,7 @@
   <div class="student-show averages">
     <div class="rubric-title"><strong>Student Stats</strong></div>
     <div>Overall Grade </div>
-    <div><strong>blah</strong></div>
+    <div><strong><%= @student.average(@klass) %></strong></div>
     <div>Top LT </div>
     <div><strong>blah</strong></div>
     <div>Bottom LT </div>
@@ -57,7 +57,7 @@
 
   <div class="student-show-lt-graph">
     <%= line_chart(lt.graph_data(@klass, @student), width: "400px", xtitle: "Date",
-                   ytitle: "Avg Score", messages: {empty: "No data"},
+                   ytitle: "Assignment Score", messages: {empty: "No data"},
                    colors: [@klass.my_color_class(lt), @klass.my_color_class(lt)], min: 0, max: 4,
                    library: { scales: { yAxes: [{ gridLines: { display: true },ticks: { maxTicksLimit: 5 } }]}}) %>
   </div>
