@@ -30,8 +30,11 @@ class LearningTarget < ApplicationRecord
     self.grades.includes(:assignment).where("student_id = ?", student.id).order(date: :asc)
   end
 
-  def graph_data(klass)
-    data = self.assignments.map {|assignment| [assignment.date.strftime('%b %d, %Y'), assignment.average(klass)]}
+  def graph_data(klass, student=nil)
+    data = self.assignments.map do |assignment|
+      student ? score = (assignment.grades.where("student_id = ?", student.id).limit(1).first.score) : (assignment.average(klass))
+      [assignment.date.strftime('%b %d, %Y'), score]
+    end
     data.empty? ? [[0,0]] : data
   end
 
