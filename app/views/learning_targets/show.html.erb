@@ -4,6 +4,9 @@
     <%= f.collection_select(:id, @klass.learning_targets, :id, :name, {}, {class: "select-css"}) %>
     <%= f.submit("Switch Learning Target", class: "little-button") %>
   <% end %>
+  <p>
+    <%= link_to("Edit Learning Target", edit_klass_learning_target_path(@klass, @lt)) %>
+  </p>
 </div>
 
 

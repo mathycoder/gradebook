@@ -3,6 +3,8 @@ class LearningTarget < ApplicationRecord
   has_many :klasses, through: :klass_learning_targets
   has_many :assignments, :dependent => :delete_all
   has_many :grades, through: :assignments
+  #has_many :students, through: :grades
+  has_many :students, through: :klasses
   belongs_to :standard
   accepts_nested_attributes_for :standard, :klasses
   validates :name, presence: true, length: { maximum: 50 }
@@ -70,5 +72,4 @@ class LearningTarget < ApplicationRecord
     percentage = '%.1f' % percentage
     "#{percentage}\%"
   end
-
 end

@@ -9,12 +9,24 @@ class Assignment < ApplicationRecord
 
 
   def grades_attributes=(grades_hash)
+    #For a new record, I need to set all of the grades for all klasses attached to this assignment/LT
+    #to nil.  Then, I can put the grades inputted on this form.
     grades_hash.each do |key, attributes|
       current_grade = Grade.find_by(student_id: attributes[:student_id], assignment_id: self.id)
       if current_grade
         current_grade.update(score: attributes[:score])
       else
         self.grades.build(score: attributes[:score], student_id: attributes[:student_id])
+      end
+    end
+    set_remaining_scores_to_nil()
+  end
+
+  def set_remaining_scores_to_nil
+    self.learning_target.students.each do |student|
+      #binding.pry
+      if !self.grades.find{|grade| grade.student == student} && !Grade.find_by(student_id: attributes[:student_id], assignment_id: self.id)
+        self.grades.build(score: nil, student_id: student.id)
       end
     end
   end
