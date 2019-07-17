@@ -1,4 +1,4 @@
-<h1>Edit assignment for <%= @klass.name %></h1>
+<h1>Edit assignment for <%= link_to(@klass.name, klass_path(@klass)) %></h1>
 
 <%= render partial: "assignments/form", locals: {klass: @klass, assignment: @assignment} %>
 

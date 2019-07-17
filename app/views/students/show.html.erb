@@ -1,13 +1,10 @@
-<h1><%= @klass.name %>'s Students</h1>
+<h1><%= link_to(@klass.name, klass_path(@klass)) %>'s Students</h1>
 <div class="show-navigator">
   <%= form_for(:student, :url => {:controller => "students", :action => "redirect"}) do |f| %>
     <%= f.collection_select(:id, @klass.students, :id, :full_name, {}, {class: "select-css"}) %>
     <%= f.submit("Switch Students", class: "little-button") %>
   <% end %>
 </div>
-<p>
-  <%= link_to("back to class", klass_path(@klass)) %>
-</p>
 
 <div class="student-show-container">
   <div class="student-show-studentbox">
