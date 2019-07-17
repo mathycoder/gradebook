@@ -1,7 +1,7 @@
 <% klass.students.each do |student| %>
   <tr>
     <td>
-      <div class="student-column"><%= student.full_name %></div>
+      <div class="student-column"><%= link_to(student.full_name, klass_student_path(klass, student)) %></div>
     </td>
     <td class="average"><p><strong><%= student.average(klass_or_lt) %></strong></p></td>
     <% collection.each do |lt| %>

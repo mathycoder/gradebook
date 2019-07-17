@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :klasses, :path => 'classes' do
-    resources :students, only: [:index, :update]
+    resources :students, only: [:index, :update, :show]
   end
 
   resources :klasses, :path => 'classes' do

@@ -1,4 +1,10 @@
 class StudentsController < ApplicationController
+
+  def show
+    @klass = Klass.find(params[:klass_id])
+    @student = Student.find(params[:id])
+  end
+
   def index
     @klass = Klass.find(params[:klass_id])
     if params[:query] && !params[:query].empty?
