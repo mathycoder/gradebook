@@ -1,5 +1,5 @@
 <h1>
-  <%= form_for(:student) do |f| %>
+  <%= form_for(:student, :url => {:controller => "students", :action => "redirect"}) do |f| %>
     <%= f.collection_select(:id, @klass.students, :id, :full_name, {}, {class: "select-css"}) %>
     <%= f.submit("Switch Students", class: "little-button") %>
   <% end %>
