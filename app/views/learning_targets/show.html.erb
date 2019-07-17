@@ -1,6 +1,6 @@
 <h1>Learning Targets</h1>
 <div class="show-navigator">
-  <%= form_for(:learning_target, :url => {:controller => "learning_targets", :action => "redirect"}) do |f| %>
+  <%= form_for(@lt, url: lt_redirect_path(@klass), method: :get) do |f| %>
     <%= f.collection_select(:id, @klass.learning_targets, :id, :name, {}, {class: "select-css"}) %>
     <%= f.submit("Switch Learning Target", class: "little-button") %>
   <% end %>

@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     resources :students, only: [:index, :update, :show]
   end
 
-  post '/classes/:klass_id/students/redirect', to: "students#redirect"
+  #can't get this to work without post request
+  post '/classes/:klass_id/students/redirect', to: "students#redirect", as: "switch_student"
 
   resources :klasses, :path => 'classes' do
     resources :assignments
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
     resources :learning_targets, :path => 'lts'
   end
 
-  post '/classes/:klass_id/learning_targets/redirect', to: "learning_targets#redirect", as: "redirect"
+  get '/classes/:klass_id/learning_targets/redirect', to: "learning_targets#redirect", as: "lt_redirect"
 
   resources :standards
 end

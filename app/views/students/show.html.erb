@@ -1,4 +1,4 @@
-<h1>Students</h1>
+<h1><%= @klass.name %>'s Students</h1>
 <div class="show-navigator">
   <%= form_for(:student, :url => {:controller => "students", :action => "redirect"}) do |f| %>
     <%= f.collection_select(:id, @klass.students, :id, :full_name, {}, {class: "select-css"}) %>
