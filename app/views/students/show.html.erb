@@ -48,7 +48,7 @@
     </table>
   </div>
 
-  <div class="lt-graph">
+  <div class="student-show-lt-graph">
     <%= line_chart(lt.graph_data(@klass, @student), width: "400px", xtitle: "Date",
                    ytitle: "Avg Score", messages: {empty: "No data"},
                    colors: [@klass.my_color_class(lt), @klass.my_color_class(lt)], min: 0, max: 4,

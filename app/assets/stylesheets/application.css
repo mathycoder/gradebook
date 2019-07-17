@@ -184,9 +184,6 @@ a:hover {
 }
 
 
-
-
-
 /* gradebook styling */
 
 .gradebook-wrapper {
@@ -500,7 +497,19 @@ table.gradebook .hidden {
 
 /* student show styling */
 .student-show-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
+  display: flex;
+  flex-wrap: wrap;
   padding: 20px;
+  justify-content: space-around;
+}
+
+.student-show-container .gradebook {
+  max-width: 500px;
+  overflow-y: scroll;
+}
+
+.student-show-lt-graph {
+  margin: 20px;
 }
