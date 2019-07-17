@@ -257,6 +257,12 @@ table.gradebook .blue, .rubric-title.blue {
   background-color: rgb(71, 125, 179);
 }
 
+/* The color of Student headings  */
+.student-show .rubric-title {
+  background-color: rgb(217, 106, 94);
+  height: 15px;
+}
+
 
 table.gradebook th a {
   text-decoration: none;
@@ -403,10 +409,10 @@ table.gradebook .hidden {
   overflow-x: scroll;
 }
 
-.lt-show-container .lt-stats .averages {
+.lt-show-container .lt-stats .averages, .averages {
   display: grid;
   grid-template-columns: 150px 100px;
-  grid-template-rows: repeat(5, 50px);
+  grid-template-rows: 70px repeat(4, 50px);
   border: black 1px solid;
   border-radius: 10px;
   padding: 10px;
@@ -490,4 +496,11 @@ table.gradebook .hidden {
 .rubric-score-desc textarea {
   width: 100%;
   height: 50px;
+}
+
+/* student show styling */
+.student-show-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 20px;
 }
