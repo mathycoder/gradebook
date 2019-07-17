@@ -426,6 +426,8 @@ table.gradebook .hidden {
 
 .lt-show-standard {
   width: 300px;
+  align-self: center;
+  padding: 20px;
 }
 
 /* LT index styling */

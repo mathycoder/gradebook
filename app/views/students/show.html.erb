@@ -1,7 +1,7 @@
-<h1><%= @student.first_last_name %></h1>
+<h1><%= @klass.name %>'s Students</h1>
 <div class="show-navigator">
-  <%= form_for(@klass.students.build(), :url => {:controller => "students", :action => "redirect"}) do |f| %>
-    <%= f.collection_select(:id, @klass.students, :id, :full_name, {include_blank: "#{@klass.name}'s Students"}, {class: "select-css"}) %>
+  <%= form_for(:student, :url => {:controller => "students", :action => "redirect"}) do |f| %>
+    <%= f.collection_select(:id, @klass.students, :id, :first_last_name, {}, {class: "select-css"}) %>
     <%= f.submit("Switch Students", class: "little-button") %>
   <% end %>
   <p>
