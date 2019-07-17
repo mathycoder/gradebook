@@ -10,7 +10,6 @@
       <% lt.students_chronological_grades(student).each_with_index do |grade, index| %>
         <td class="score <%= "start-of-lt" if index == 0 %>"><%= grade.score if grade %></td>
       <% end %>
-
     <% end %>
   </tr>
 <% end %>

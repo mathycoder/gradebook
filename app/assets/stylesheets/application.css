@@ -196,7 +196,7 @@ a:hover {
 }
 
 /* edits the first column of students */
-table.gradebook tr td:first-child, table.gradebook tr th:first-child {
+.gradebook-wrapper table.gradebook tr td:first-child, .gradebook-wrapper table.gradebook tr th:first-child {
   min-width: 130px;
   text-align: left;
   padding-left: 10px;
@@ -214,7 +214,7 @@ table.gradebook tr:nth-child(2n+4) td:first-child {
 }
 
 /* edits the second column of students  */
-table.gradebook tr td:nth-child(2), table.gradebook tr th:nth-child(2) {
+.gradebook-wrapper table.gradebook tr td:nth-child(2), .gradebook-wrapper table.gradebook tr th:nth-child(2) {
   position: absolute;
   left: 160px;
   height: 47px;

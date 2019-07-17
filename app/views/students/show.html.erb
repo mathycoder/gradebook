@@ -17,9 +17,40 @@
     <div><strong>blah</strong></div>
   </div>
 
-  <div class="student-show-lt-gradebook">
+<% @klass.learning_targets.each do |lt| %>
+  <div>
+    <table class="gradebook">
+      <tr>
+        <th colspan="<%= lt.assignments.length %>" class="<%= @klass.my_color_class(lt) %> start-of-lt">
+          <%= lt.standard.standard_notation_clean if lt.standard %><br>
+          <%= link_to(lt.name, klass_learning_target_path(@klass, lt)) %>
+        </th>
+      </tr>
 
+      <tr>
+        <%= content_tag(:td) if lt.assignments.empty? %>
+        <% lt.chronological_assignments.each_with_index do |assignment, index| %>
+          <td class="assignments <%= "start-of-lt" if index == 0 %>">
+            <div class="assignment-header">
+              <div><%= link_to(assignment.name, edit_klass_assignment_path(@klass, assignment)) %></div>
+              <div class="date"><%= assignment.date_display %></div>
+            </div>
+          </td>
+        <% end %>
+      </tr>
+
+      <tr>
+        <%= content_tag(:td, nil, class: "start-of-lt") if lt.assignments.empty? %>
+        <% lt.students_chronological_grades(@student).each_with_index do |grade, index| %>
+          <td class="score <%= "start-of-lt" if index == 0 %>"><%= grade.score if grade %></td>
+        <% end %>
+      </tr>
+    </table>
   </div>
 
+  <div>
+    <h1>I'm a graph!</h1>
+  </div>
+<% end %>
 
 </div>
