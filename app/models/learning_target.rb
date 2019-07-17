@@ -32,9 +32,12 @@ class LearningTarget < ApplicationRecord
 
   def graph_data(klass, student=nil)
     data = self.assignments.map do |assignment|
-      student_score = assignment.grades.where("student_id = ?", student.id).limit(1).first
-      score = student_score.score if student_score
-      student ? (score) : (score = assignment.average(klass))
+      if student
+        student_score = assignment.grades.where("student_id = ?", student.id).limit(1).first
+        score = student_score.score if student_score
+      else
+        score = assignment.average(klass)
+      end
       [assignment.date.strftime('%b %d, %Y'), score]
     end
     data.empty? ? [[0,0]] : data
