@@ -2,8 +2,8 @@ class StudentsController < ApplicationController
 
   def redirect
     @klass = Klass.find(params[:klass_id])
-    @student = Student.find(params[:student][:id])
-    redirect_to(klass_student_path(@klass, @student))
+    @student = Student.find_by(id: params[:student][:id])
+    @student ? redirect_to(klass_student_path(@klass, @student)) : redirect_to(klass_students_path(@klass))
   end
 
   def show
