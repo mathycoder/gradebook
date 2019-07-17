@@ -2,6 +2,11 @@ class LearningTargetsController < ApplicationController
   before_action :find_klass
   before_action :find_lt, only: [:show, :edit, :update, :destroy]
 
+  def redirect
+    @lt = LearningTarget.find(params[:learning_target][:id])
+    redirect_to(klass_learning_target_path(@klass, @lt))
+  end
+
   def new
     @lt = LearningTarget.new
     @standard = @lt.build_standard()

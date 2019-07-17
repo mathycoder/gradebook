@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :students, only: [:index, :update, :show]
   end
 
-  post '/classes/:klass_id/students/redirect', to: "students#redirect", as: "redirect"
+  post '/classes/:klass_id/students/redirect', to: "students#redirect"
 
   resources :klasses, :path => 'classes' do
     resources :assignments
@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   resources :klasses, :path => 'classes' do
     resources :learning_targets, :path => 'lts'
   end
+
+  post '/classes/:klass_id/learning_targets/redirect', to: "learning_targets#redirect", as: "redirect"
 
   resources :standards
 end
