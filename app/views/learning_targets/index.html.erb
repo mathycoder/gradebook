@@ -1,17 +1,23 @@
 <h1><%= link_to(@klass.name, klass_path(@klass)) %>'s Learning Targets</h1>
+<p><%= link_to("Create New Learning Target", new_klass_learning_target_path(@klass), data: { turbolinks: false }) %></p>
 
 <% if !@klass.learning_targets.empty? %>
-  <% @klass.learning_targets.each do |lt| %>
-    <h2>
-      <%= link_to(lt.name, klass_learning_target_path(@klass, lt)) %>
-      <%= link_to("edit", edit_klass_learning_target_path(@klass, lt), data: { turbolinks: false }) %>
-    </h2>
-  <% end %>
+  <div class="lt-index">
+    <% @klass.learning_targets.each do |lt| %>
+      <div class="lt-index-lt">
+        <h2>
+          <%= link_to(lt.name, klass_learning_target_path(@klass, lt)) %>
+          <%= link_to("edit", edit_klass_learning_target_path(@klass, lt), data: { turbolinks: false }) %>
+        </h2>
+      </div>
+
+      <%= render partial: "learning_targets/stats", locals: {klass: @klass, lt: lt} %>
+    <% end %>
+  </div>
+
 <% else %>
   <p>
     Welcome to your new class!  To get started, add your first Learning Target
     by clicking below.
   </p>
 <% end %>
-
-<h4><%= link_to("Create New Learning Target", new_klass_learning_target_path(@klass), data: { turbolinks: false }) %></h4>

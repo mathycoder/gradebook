@@ -428,7 +428,18 @@ table.gradebook .hidden {
   width: 300px;
 }
 
+/* LT index styling */
+.lt-index {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
 
+.lt-index-lt {
+  width: 100%;
+  margin-left: 20px;
+}
 
 /* rubric styling */
 
