@@ -50,7 +50,7 @@ class LearningTarget < ApplicationRecord
 
   def student_average(student)
     grades = self.grades.where("student_id = ?", student.id)
-    grades = grades.map {|grade| grade.score}
+    grades = grades.map {|grade| grade.score}.compact
     if !grades.empty?
       avg = grades.sum / grades.length
       '%.2f' % avg

@@ -18,21 +18,9 @@ class Klass < ApplicationRecord
 
   def student_bar_graph_data(student)
     data = self.learning_targets.map do |lt|
-      lt.student_average(student)
-      #score = (assignment.grades.where("student_id = ?", student.id).limit(1).first.score)
+      [lt.name, lt.student_average(student)]
     end
   end
-
-  def graph_data(klass, student=nil)
-    data = self.assignments.map do |assignment|
-      student ? score = (assignment.grades.where("student_id = ?", student.id).limit(1).first.score) : (assignment.average(klass))
-      [assignment.date.strftime('%b %d, %Y'), score]
-    end
-    data.empty? ? [[0,0]] : data
-  end
-
-
-
 
   def my_color_class(lt)
     if lt != "new"
