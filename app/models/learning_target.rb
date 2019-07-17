@@ -48,6 +48,15 @@ class LearningTarget < ApplicationRecord
     end
   end
 
+  def student_average(student)
+    grades = self.grades.where("student_id = ?", student.id)
+    grades = grades.map {|grade| grade.score}
+    if !grades.empty?
+      avg = grades.sum / grades.length
+      '%.2f' % avg
+    end
+  end
+
   def percent_of_students_on_level(klass, level)
     level == 3.0? level_up = 1.1 : level_up = 1.0
     averages = klass.students.map{|student| student.average(self).to_f}.compact

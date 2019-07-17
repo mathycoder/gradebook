@@ -1,8 +1,11 @@
+<h1>
+  <%= @student.first_last_name %> from class <%= @klass.name %>
+</h1>
+
 <div class="student-show-container">
   <div class="student-show-studentbox">
-    <h1>
-      <%= @student.first_last_name %> from class <%= @klass.name %>
-    </h1>
+    <%= column_chart @klass.student_bar_graph_data(@student) %>
+    <h1>There will be a graph here!</h1>
   </div>
 
   <div class="student-show averages">
