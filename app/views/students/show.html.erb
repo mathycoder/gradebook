@@ -1,5 +1,8 @@
 <h1>
-  <%= @student.first_last_name %> from class <%= @klass.name %>
+  <%= form_for(:student) do |f| %>
+    <%= f.collection_select(:id, @klass.students, :id, :full_name, {}, {class: "select-css"}) %>
+    <%= f.submit("Switch Students", class: "little-button") %>
+  <% end %>
 </h1>
 
 <div class="student-show-container">
