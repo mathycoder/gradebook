@@ -254,12 +254,6 @@ table.gradebook .blue, .rubric-title.blue {
   background-color: rgb(71, 125, 179);
 }
 
-/* The color of Student headings  */
-.student-show .rubric-title {
-  background-color: rgb(217, 106, 94);
-  height: 15px;
-}
-
 
 table.gradebook th a {
   text-decoration: none;
@@ -510,6 +504,12 @@ table.gradebook .hidden {
   overflow-y: scroll;
 }
 
+
 .student-show-lt-graph {
   margin: 20px;
+}
+
+.student-show .rubric-title {
+  background-color: rgb(217, 106, 94);
+  height: 15px;
 }

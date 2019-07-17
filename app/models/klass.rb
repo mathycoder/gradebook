@@ -18,8 +18,17 @@ class Klass < ApplicationRecord
 
   def student_bar_graph_data(student)
     data = self.learning_targets.map do |lt|
-      [lt.name, lt.student_average(student)]
+      {name: lt.name, data: {"Learning Targets": lt.student_average(student)}}
     end
+  end
+
+  def student_bar_graph_colors
+    colors = ["rgb(217, 106, 94)", "rgb(85, 170, 104)", "rgb(71, 125, 179)"]
+    graph_colors = []
+    self.learning_targets.length.times do |index|
+      graph_colors << colors[index % 3]
+    end
+    graph_colors
   end
 
   def my_color_class(lt)
