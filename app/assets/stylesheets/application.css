@@ -497,11 +497,16 @@ table.gradebook .hidden {
   flex-wrap: wrap;
   padding: 20px;
   justify-content: space-around;
+  align-items: center;
 }
 
-.student-show-container .gradebook {
-  max-width: 500px;
-  overflow-y: scroll;
+.student-show-gradebook-container {
+  width: 600px;
+  overflow-x: scroll;
+}
+
+.student-show-gradebook-container .gradebook {
+  margin: 0 auto;
 }
 
 
