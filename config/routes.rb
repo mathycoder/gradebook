@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   #can't get this to work without post request
-  post '/classes/:klass_id/students/redirect', to: "students#redirect", as: "switch_student"
+  get '/classes/:klass_id/students/redirect', to: "students#redirect", as: "student_redirect"
 
   resources :klasses, :path => 'classes' do
     resources :assignments

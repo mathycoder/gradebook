@@ -41,12 +41,28 @@ header, footer {
 header{
   display: flex;
   align-items: center;
+  justify-content: space-around;
 }
 
 header div {
   font-size: 18px;
-  margin-left: 30px;
+  margin-left: 10px;
 }
+
+.select-blend {
+  width: 135px;
+  font-size: 18px;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-weight: 400;
+  border: none;
+  background-color: inherit;
+  -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+  outline:0px;
+}
+
 
 main {
   padding: 20px;
@@ -126,19 +142,7 @@ footer {
 	background-size: .65em auto, 100%;
 }
 
-.select-blend {
-  font-size: 18px;
-  font-family: "Roboto", helvetica, arial, sans-serif;
-  font-weight: 400;
-  width: 200px;
-  border: none;
-  background-color: inherit;
-  -webkit-appearance: none;
-    -moz-appearance: none;
-    text-indent: 1px;
-    text-overflow: '';
-  outline:0px;
-}
+
 
 /* got this next part off https://www.filamentgroup.com/lab/select-css.html */
 .select-css {
