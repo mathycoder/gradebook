@@ -11,14 +11,22 @@
       </th>
       <% collection.each do |target| %>
         <th colspan="<%= target.assignments.length %>" class="<%= klass.my_color_class(target) %> start-of-lt">
-          <%= target.standard.standard_notation_clean if target.standard %><br>
-          <%= link_to(target.name, klass_learning_target_path(klass, target)) %>
+          <div class="lt-target-label-container">
+            <div class="lt-target-label">
+              <%= target.standard.standard_notation_clean if target.standard %><br>
+              <%= link_to(target.name, klass_learning_target_path(klass, target)) %><br>
+            </div>
+            <div class="assignment-label">
+              Assignments
+            </div>
+          </div>
         </th>
       <% end %>
     </tr>
 
     <tr>
-      <td class="hidden"></td>
+      <td>
+      </td>
       <% if !klass.learning_targets.empty? %>
         <td>
           <%= form_tag(new_klass_assignment_path(klass), method: :get) do %>
@@ -44,15 +52,9 @@
 
     <tr>
       <td>
-        <div class="student-column">
-          <% if !@lt %>
-            <%= form_tag(klass_students_path(klass), method: :get) do %>
-              <%= submit_tag("+Students", class: "fancy-button") %>
-            <% end %>
-          <% end %>
-        </div>
+
       </td>
-      <td><div><strong>Average</strong></div></td>
+      <td id="average"><div><strong>Average</strong></div></td>
 
       <% collection.each do |lt| %>
         <%= content_tag(:td, nil, class: "start-of-lt") if lt.assignments.empty? %>

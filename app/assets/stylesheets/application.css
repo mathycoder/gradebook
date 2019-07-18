@@ -28,6 +28,28 @@ input[type=text], textarea, input[type=date], input[type=select] {
 }
 
 
+.assignment-buttons {
+  font-size: 14px;
+	font-family: "Roboto", helvetica, arial, sans-serif;
+	font-weight: 400;
+	color: #444;
+	line-height: 1.3;
+	padding: .6em 1.4em .5em .8em;
+	width: 300px;
+	max-width: 100%;
+	box-sizing: border-box;
+	margin: 0;
+	border: 1px solid #aaa;
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	border-radius: .5em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+	background-position: right .7em top 50%, 0 0;
+	background-size: .65em auto, 100%;
+}
+
 
 .fancy-button input[type=submit], input[type=submit].fancy-button  {
   font-size: 14px;
@@ -46,7 +68,6 @@ input[type=text], textarea, input[type=date], input[type=select] {
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
-	background-color: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
   background-image: url("white.png"),
 	  linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
 	background-repeat: no-repeat, repeat;
@@ -139,6 +160,13 @@ input[type=text].text-field  {
   color: white;
 }
 
+.student-button {
+  position: absolute;
+  width: 120px;
+  margin-top: 30px;
+  z-index: 5;
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -193,9 +221,7 @@ a:hover {
   max-width: 80px;
   text-align: left;
   font-size: 20px;
-
 }
-
 
 
 .klass-schedule table tr td:nth-child(2), .klass-schedule table tr th:nth-child(2) {
@@ -246,6 +272,10 @@ table.gradebook tr:nth-child(2n+4) td:first-child {
   position: absolute;
   left: 160px;
   height: 47px;
+}
+
+#average {
+  height: 30px;
 }
 
 
@@ -319,6 +349,23 @@ table.gradebook tr:nth-child(3) td {
   border-left: 20px solid white;
 }
 
+.lt-target-label-container{
+  display: grid;
+  grid-template-rows: auto 20px;
+}
+
+.lt-target-label-container .assignment-label {
+  background-color: white;
+  padding: 3px;
+  color: black;
+  margin: -2px;
+  font-weight: bold;
+}
+
+.lt-target-label {
+  margin: 10px 0;
+}
+
 
 table.gradebook tr:nth-child(3) td {
   height: 30px;
@@ -330,6 +377,8 @@ table.gradebook .assignment-header {
   grid-template-rows: 60px 20px;
   background-color: white;
 }
+
+
 
 table.gradebook .assignment-header div {
   flex: 1;
