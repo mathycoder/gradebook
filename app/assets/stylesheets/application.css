@@ -10,16 +10,48 @@ body {
 
   font-family: "Roboto", helvetica, arial, sans-serif;
   display: grid;
-  grid-template-rows: 70px auto 100px;
+  grid-template-rows: 50px auto 100px;
 }
 
-header {
-  background-color: purple;
+header, footer {
+  font-size: 14px;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-weight: 400;
+  color: #444;
+  line-height: 1.3;
+  padding: .6em 1.4em .5em .8em;
+  width: 120%;
+  max-width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  border: 1px solid #aaa;
+  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+  /* border-radius: .5em; */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  background-image: url(''), linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+  background-repeat: no-repeat, repeat;
+  background-position: right .7em top 50%, 0 0;
+  background-size: .65em auto, 100%;
+}
+
+header{
+  display: flex;
+  align-items: center;
+}
+
+header div {
+  font-size: 18px;
+  margin-left: 30px;
 }
 
 main {
   padding: 20px;
   overflow-y: scroll;
+
 }
 
 footer {
@@ -94,7 +126,19 @@ footer {
 	background-size: .65em auto, 100%;
 }
 
-
+.select-blend {
+  font-size: 18px;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-weight: 400;
+  width: 200px;
+  border: none;
+  background-color: inherit;
+  -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+  outline:0px;
+}
 
 /* got this next part off https://www.filamentgroup.com/lab/select-css.html */
 .select-css {
