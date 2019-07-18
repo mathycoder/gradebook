@@ -36,8 +36,15 @@
     <table class="gradebook">
       <tr>
         <th colspan="<%= lt.assignments.length %>" class="<%= @klass.my_color_class(lt) %> start-of-lt">
-          <%= lt.standard.standard_notation_clean if lt.standard %><br>
-          <%= link_to(lt.name, klass_learning_target_path(@klass, lt)) %>
+          <div class="lt-target-label-container">
+            <div class="lt-target-label">
+              <%= lt.standard.standard_notation_clean if lt.standard %><br>
+              <%= link_to(lt.name, klass_learning_target_path(@klass, lt)) %><br>
+            </div>
+            <div class="assignment-label">
+              Assignments
+            </div>
+          </div>
         </th>
       </tr>
 
