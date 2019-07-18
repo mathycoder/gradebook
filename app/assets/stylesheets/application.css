@@ -1,3 +1,13 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+
+}
+
+
 
 
 input[type=text], textarea, input[type=date], input[type=select] {
@@ -154,7 +164,6 @@ footer {
 }
 
 
-
 /* got this next part off https://www.filamentgroup.com/lab/select-css.html */
 .select-css {
 	font-size: 14px;
@@ -245,14 +254,6 @@ input[type=text].text-field  {
   z-index: 5;
 }
 
-a {
-  text-decoration: none;
-  color: black;
-}
-
-a:hover {
-  color: green;
-}
 
 .student-list-container {
   display: grid;
@@ -336,8 +337,27 @@ a:hover {
   padding-left: 10px;
   position: absolute;
   left: 10px;
-  padding-top: 10px;
+  padding-top: 9px;
 }
+
+.student-name {
+  height: 100%;
+}
+
+.student-name a {
+  padding-bottom: 10px;
+
+}
+
+.student-name div:hover {
+  border: rgb(128, 128, 128) 0.5px solid;
+  height: 100%;
+  margin-left: -10px;
+  margin-top: -10px;
+  padding-top: 9px;
+  padding-left: 9.5px;
+}
+
 
 table.gradebook tr:nth-child(2n+3) td:first-child, table.gradebook tr:nth-child(2n+3) td:nth-child(2) {
   background-color: rgb(218, 217, 224);
@@ -347,7 +367,7 @@ table.gradebook tr:nth-child(2n+4) td:first-child {
   background-color: white;
 }
 
-/* edits the second column of students  */
+/* edits the second column of student averages  */
 .gradebook-wrapper table.gradebook tr td:nth-child(2), .gradebook-wrapper table.gradebook tr th:nth-child(2) {
   /* position: absolute;
   left: 160px;
@@ -456,6 +476,14 @@ table.gradebook .assignment-header {
   display: grid;
   grid-template-rows: 60px 20px;
   background-color: white;
+  padding: 5px;
+  border: rgb(206, 206, 206) 0.5px solid;
+  font-size: 14px;
+
+}
+
+table.gradebook .assignment-header:hover {
+  border: rgb(128, 128, 128) 0.5px solid;
 }
 
 
