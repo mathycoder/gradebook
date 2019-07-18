@@ -47,10 +47,11 @@ header{
 header div {
   font-size: 18px;
   margin-left: 10px;
+  width: auto;
 }
 
 .select-blend {
-  width: 135px;
+  width: 137px;
   font-size: 18px;
   font-family: "Roboto", helvetica, arial, sans-serif;
   font-weight: 400;

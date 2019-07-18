@@ -1,13 +1,5 @@
-<h1><%= @klass.name %>'s Students</h1>
-<div class="show-navigator">
-  <%= form_for(:student, :url => {:controller => "students", :action => "redirect"}) do |f| %>
-    <%= f.collection_select(:id, @klass.students, :id, :first_last_name, {}, {class: "select-css"}) %>
-    <%= f.submit("Switch Students", class: "little-button") %>
-  <% end %>
-  <p>
-    <%= link_to("back to class page", klass_path(@klass)) %>
-  </p>
-</div>
+<h1><%= @student.first_last_name %></h1>
+
 
 <div class="student-show-container">
   <div class="student-show-studentbox">

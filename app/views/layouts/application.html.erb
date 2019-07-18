@@ -14,7 +14,6 @@
     <header>
 
       <% if @klass %>
-
         <div>
           <strong><%= link_to("Class #{@klass.name}", klass_path(@klass)) %></strong>
         </div>
@@ -22,7 +21,7 @@
         <div>
           <% @lt ? (current_lt = @lt) : (current_lt = LearningTarget.new) %>
           <%= form_for([:learning_target, current_lt], url: lt_redirect_path(@klass), method: :get) do |f| %>
-            <%= f.collection_select(:id, @klass.learning_targets, :id, :name, {include_blank: "Learning Targets"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
+            <%= f.collection_select(:id,  [LearningTarget.new(name: "View Learning Targets")] + @klass.learning_targets + [LearningTarget.new(name: "Add Learning Target")], :id, :name, {include_blank: "Learning Targets"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
           <% end %>
         </div>
 
@@ -36,7 +35,6 @@
             <%= f.collection_select(:id, @klass.students, :id, :first_last_name, {include_blank: "Students"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
           <% end %>
         </div>
-
       <% end %>
     </header>
 

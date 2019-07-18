@@ -1,18 +1,10 @@
 <h1>
-  <%= @klass.name %>'s Learning Targets
+  <%= @lt.name %>
   <div style="display: inline">
     <%= link_to("edit", edit_klass_learning_target_path(@klass, @lt), data: { turbolinks: false } ) %>
   </div>
 </h1>
-<div class="show-navigator">
-  <%= form_for(@lt, url: lt_redirect_path(@klass), method: :get) do |f| %>
-    <%= f.collection_select(:id, @klass.learning_targets, :id, :name, {}, {class: "select-css"}) %>
-    <%= f.submit("Switch Learning Target", class: "little-button") %>
-  <% end %>
-  <p>
-    <%= link_to("back to class page", klass_path(@klass)) %>
-  </p>
-</div>
+
 
 
 <div class="lt-show-container">
