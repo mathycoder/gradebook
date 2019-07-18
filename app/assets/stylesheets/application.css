@@ -405,13 +405,26 @@ table.gradebook .red, .rubric-title.red {
   background-color: rgb(217, 106, 94);
 }
 
+table.gradebook .red:hover
+{
+  background-color: red;
+}
+
 
 table.gradebook .green, .rubric-title.green {
   background-color: rgb(85, 170, 104);
 }
 
+table.gradebook .green:hover {
+  background-color: green;
+}
+
 table.gradebook .blue, .rubric-title.blue {
   background-color: rgb(71, 125, 179);
+}
+
+table.gradebook .blue:hover {
+  background-color: blue;
 }
 
 
