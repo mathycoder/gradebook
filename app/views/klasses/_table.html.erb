@@ -31,10 +31,12 @@
         <%= content_tag(:td) if lt.assignments.empty? %>
         <% lt.chronological_assignments.each_with_index do |assignment, index| %>
           <td class="assignments <%= "start-of-lt" if index == 0 %>">
-            <div class="assignment-header">
-              <div><%= link_to(assignment.name, edit_klass_assignment_path(klass, assignment)) %></div>
-              <div class="date"><%= assignment.date_display %></div>
-            </div>
+            <%= link_to(edit_klass_assignment_path(klass, assignment)) do %>
+              <div class="assignment-header">
+                <div><%= assignment.name %></div>
+                <div class="date"><%= assignment.date_display %></div>
+              </div>
+            <% end %>
           </td>
         <% end %>
       <% end %>

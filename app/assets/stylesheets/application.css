@@ -4,10 +4,8 @@ a {
 }
 
 a:hover {
-
+  color: aqua;
 }
-
-
 
 
 input[type=text], textarea, input[type=date], input[type=select] {
@@ -356,6 +354,7 @@ input[type=text].text-field  {
   margin-top: -10px;
   padding-top: 9px;
   padding-left: 9.5px;
+  color: black;
 }
 
 
@@ -484,6 +483,7 @@ table.gradebook .assignment-header {
 
 table.gradebook .assignment-header:hover {
   border: rgb(128, 128, 128) 0.5px solid;
+  color: black;
 }
 
 
