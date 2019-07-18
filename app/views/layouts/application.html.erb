@@ -19,20 +19,28 @@
         </div>
 
         <div>
-          <% @lt ? (current_lt = @lt) : (current_lt = LearningTarget.new) %>
-          <%= form_for([:learning_target, current_lt], url: lt_redirect_path(@klass), method: :get) do |f| %>
-            <%= f.collection_select(:id,  [LearningTarget.new(name: "View Learning Targets")] + @klass.learning_targets + [LearningTarget.new(name: "Add Learning Target")], :id, :name, {include_blank: "Learning Targets"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
+          <%= form_tag(new_klass_assignment_path(@klass), method: :get) do %>
+            <%= submit_tag("+A", class: "fancy-button") %>
           <% end %>
         </div>
 
         <div>
-          <%= link_to("Assignments", new_klass_assignment_path(@klass)) %>
+          <%= form_tag(new_klass_learning_target_path(@klass), method: :get) do %>
+            <%= submit_tag("+LT", class: "fancy-button") %>
+          <% end %>
+        </div>
+
+        <div>
+          <% @lt ? (current_lt = @lt) : (current_lt = LearningTarget.new) %>
+          <%= form_for([:learning_target, current_lt], url: lt_redirect_path(@klass), method: :get) do |f| %>
+            <%= f.collection_select(:name, @klass.learning_targets, :name, :name, {include_blank: "All Learning Targets", prompt: "Learning Targets"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
+          <% end %>
         </div>
 
         <div>
           <% @student ? (current_student = @student) : (current_student = Student.new) %>
           <%= form_for([:student, current_student], url: student_redirect_path(@klass), method: :get) do |f| %>
-            <%= f.collection_select(:id, @klass.students, :id, :first_last_name, {include_blank: "Students"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
+            <%= f.collection_select(:id, @klass.students, :id, :first_last_name, {include_blank: "Add/Drop Students", prompt: "Students"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
           <% end %>
         </div>
       <% end %>

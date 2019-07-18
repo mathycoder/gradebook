@@ -3,7 +3,7 @@ class LearningTargetsController < ApplicationController
   before_action :find_lt, only: [:show, :edit, :update, :destroy]
 
   def redirect
-    @lt = LearningTarget.find_by(id: params[:learning_target][:id])
+    @lt = LearningTarget.find_by(name: params[:learning_target][:name])
     @lt ? redirect_to(klass_learning_target_path(@klass, @lt)) : redirect_to(klass_learning_targets_path(@klass))
   end
 

@@ -2,13 +2,7 @@
   <table class="gradebook">
     <tr>
       <th></th>
-      <th id="new-lt">
-        <% if !lt %>
-          <%= form_tag(new_klass_learning_target_path(klass), method: :get) do %>
-            <%= submit_tag("+LT", class: "fancy-button") %>
-          <% end %>
-        <% end %>
-      </th>
+      <th></th>
       <% collection.each do |target| %>
         <th colspan="<%= target.assignments.length %>" class="<%= klass.my_color_class(target) %> start-of-lt">
           <div class="lt-target-label-container">
@@ -28,11 +22,7 @@
       <td>
       </td>
       <% if !klass.learning_targets.empty? %>
-        <td>
-          <%= form_tag(new_klass_assignment_path(klass), method: :get) do %>
-            <%= submit_tag("+Assignment", class: "fancy-button") %>
-          <% end %>
-        </td>
+        <td></td>
       <% else %>
         <%= link_to("Start by Creating a Learning Target", new_klass_learning_target_path(klass)) %>
       <% end %>
