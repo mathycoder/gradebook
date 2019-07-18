@@ -2,7 +2,13 @@
   <table class="gradebook">
     <tr>
       <th></th>
-      <th id="new-lt"><%= link_to("New Learning Target", new_klass_learning_target_path(klass)) if !lt %></th>
+      <th id="new-lt">
+        <% if !lt %>
+          <%= form_tag(new_klass_learning_target_path(klass), method: :get) do %>
+            <%= submit_tag("+ Learning Target") %>
+          <% end %>
+        <% end %>
+      </th>
       <% collection.each do |target| %>
         <th colspan="<%= target.assignments.length %>" class="<%= klass.my_color_class(target) %> start-of-lt">
           <%= target.standard.standard_notation_clean if target.standard %><br>
@@ -14,7 +20,11 @@
     <tr>
       <td class="hidden"></td>
       <% if !klass.learning_targets.empty? %>
-        <td><%= link_to("New Assignment", new_klass_assignment_path(klass)) %> </td>
+        <td>
+          <%= form_tag(new_klass_assignment_path(klass), method: :get) do %>
+            <%= submit_tag("+ Assignment") %>
+          <% end %>
+        </td>
       <% else %>
         <%= link_to("Start by Creating a Learning Target", new_klass_learning_target_path(klass)) %>
       <% end %>
@@ -35,7 +45,11 @@
     <tr>
       <td>
         <div class="student-column">
-          <%= link_to("Students", klass_students_path(klass)) if !@lt %>
+          <% if !@lt %>
+            <%= form_tag(klass_students_path(klass), method: :get) do %>
+              <%= submit_tag("+ Students") %>
+            <% end %>
+          <% end %>
         </div>
       </td>
       <td><div><strong>Average</strong></div></td>
