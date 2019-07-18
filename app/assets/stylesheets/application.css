@@ -246,7 +246,9 @@ a:hover {
 .gradebook-wrapper {
   overflow-y: scroll;
   margin: 20px;
-  margin-left: 263px;
+  margin-left: 148px;
+  /* The margin below is when you want to lock the second column as well */
+  /* margin-left: 263px; */
 }
 
 /* edits the first column of students */
@@ -269,9 +271,9 @@ table.gradebook tr:nth-child(2n+4) td:first-child {
 
 /* edits the second column of students  */
 .gradebook-wrapper table.gradebook tr td:nth-child(2), .gradebook-wrapper table.gradebook tr th:nth-child(2) {
-  position: absolute;
+  /* position: absolute;
   left: 160px;
-  height: 47px;
+  height: 47px; */
 }
 
 #average {
