@@ -4,7 +4,7 @@ a {
 }
 
 a:hover {
-  color: aqua;
+  color: rgb(128, 128, 128);
 }
 
 
@@ -80,6 +80,10 @@ header div:nth-child(4) {
     text-indent: 1px;
     text-overflow: '';
   outline:0px;
+}
+
+.select-blend:hover {
+  cursor: pointer;
 }
 
 
@@ -400,14 +404,15 @@ table.gradebook td {
 }
 
 
-/* The color of LT headings */
+/* The LT headings */
+
 table.gradebook .red, .rubric-title.red {
   background-color: rgb(217, 106, 94);
 }
 
 table.gradebook .red:hover
 {
-  background-color: red;
+  background-color: rgb(255, 122, 107);
 }
 
 
@@ -416,7 +421,7 @@ table.gradebook .green, .rubric-title.green {
 }
 
 table.gradebook .green:hover {
-  background-color: green;
+  background-color: rgb(101, 201, 122);
 }
 
 table.gradebook .blue, .rubric-title.blue {
@@ -424,7 +429,7 @@ table.gradebook .blue, .rubric-title.blue {
 }
 
 table.gradebook .blue:hover {
-  background-color: blue;
+  background-color: rgb(86, 150, 214);
 }
 
 
@@ -463,7 +468,9 @@ table.gradebook tr:nth-child(3) td {
 
 .lt-target-label-container{
   display: grid;
-  grid-template-rows: auto 20px;
+  grid-template-rows: 60px 20px;
+  width: 100%;
+  height: 100%;
 }
 
 .lt-target-label-container .assignment-label {
@@ -476,6 +483,12 @@ table.gradebook tr:nth-child(3) td {
 
 .lt-target-label {
   margin: 10px 0;
+  height: 100%;
+  width: 100%;
+}
+
+.lt-target-label-container a {
+  overflow-x: scroll;
 }
 
 

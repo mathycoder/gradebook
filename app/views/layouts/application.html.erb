@@ -13,7 +13,7 @@
   <body>
     <header>
 
-      <% if @klass %>
+      <% if @klass && !@klass.new_record? %>
         <div>
           <strong><%= link_to("Class #{@klass.name}", klass_path(@klass)) %></strong>
         </div>
