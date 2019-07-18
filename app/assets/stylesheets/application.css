@@ -1,10 +1,29 @@
-body {
-  font-family: "Roboto", helvetica, arial, sans-serif;
-}
+
 
 input[type=text], textarea, input[type=date], input[type=select] {
   font-family: "Roboto", helvetica, arial, sans-serif;
   font-size: 14px;
+}
+
+body {
+  margin: 0;
+
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  display: grid;
+  grid-template-rows: 70px auto 100px;
+}
+
+header {
+  background-color: purple;
+}
+
+main {
+  padding: 20px;
+  overflow-y: scroll;
+}
+
+footer {
+  background-color: purple;
 }
 
 
