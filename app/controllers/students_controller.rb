@@ -6,11 +6,6 @@ class StudentsController < ApplicationController
     @student ? redirect_to(klass_student_path(@klass, @student)) : redirect_to(klass_students_path(@klass))
   end
 
-  def show
-    @klass = Klass.find(params[:klass_id])
-    @student = Student.find(params[:id])
-  end
-
   def index
     @klass = Klass.find(params[:klass_id])
     if params[:query] && !params[:query].empty?
@@ -19,6 +14,11 @@ class StudentsController < ApplicationController
       @students = Student.all.order(klass: :asc).order(last_name: :asc) - @klass.students
     end
     @mystudents = @klass.students.order(last_name: :asc)
+  end
+
+  def show
+    @klass = Klass.find(params[:klass_id])
+    @student = Student.find(params[:id])
   end
 
   def update

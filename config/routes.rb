@@ -10,22 +10,24 @@ Rails.application.routes.draw do
     get '/add_students', to: "klasses#add_students"
   end
 
+  #can't get this to work without post request
+  get '/classes/:klass_id/students/redirect', to: "students#redirect", as: "student_redirect"
+
+
   resources :klasses, :path => 'classes' do
     resources :students, only: [:index, :update, :show]
   end
 
-  #can't get this to work without post request
-  get '/classes/:klass_id/students/redirect', to: "students#redirect", as: "student_redirect"
 
   resources :klasses, :path => 'classes' do
     resources :assignments
   end
 
+  get '/classes/:klass_id/learning_targets/redirect', to: "learning_targets#redirect", as: "lt_redirect"
+
   resources :klasses, :path => 'classes' do
     resources :learning_targets, :path => 'lts'
   end
-
-  get '/classes/:klass_id/learning_targets/redirect', to: "learning_targets#redirect", as: "lt_redirect"
 
   resources :standards
 end

@@ -20,7 +20,8 @@
         </div>
 
         <div>
-          <%= form_for(:learning_target, url: lt_redirect_path(@klass), method: :get) do |f| %>
+          <% @lt ? (current_lt = @lt) : (current_lt = LearningTarget.new) %>
+          <%= form_for([:learning_target, current_lt], url: lt_redirect_path(@klass), method: :get) do |f| %>
             <%= f.collection_select(:id, @klass.learning_targets, :id, :name, {include_blank: "Learning Targets"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
           <% end %>
         </div>
@@ -30,7 +31,8 @@
         </div>
 
         <div>
-          <%= form_for(:student, url: student_redirect_path(@klass), method: :get) do |f| %>
+          <% @student ? (current_student = @student) : (current_student = Student.new) %>
+          <%= form_for([:student, current_student], url: student_redirect_path(@klass), method: :get) do |f| %>
             <%= f.collection_select(:id, @klass.students, :id, :first_last_name, {include_blank: "Students"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
           <% end %>
         </div>
