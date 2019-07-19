@@ -15,10 +15,21 @@ module ApplicationHelper
     end
   end
 
-  def new_resource_button(klass, path, tag)
-    form_tag(path, method: :get) do
-      submit_tag(tag, class: "fancy-button")
+  def logo_button(klass)
+    link_to(klass_path(klass)) do
+      content_tag(:div, class: "header-logo") do
+        image_tag('open-book.jpg')
+      end
     end
+  end 
+
+  def new_resource_button(klass, path, tag)
+    html_string = content_tag(:div) do
+      form_tag(path, method: :get) do
+        submit_tag(tag, class: "fancy-button")
+      end
+    end
+    html_string.html_safe
   end
 
   def current_klass(klass)
@@ -26,8 +37,10 @@ module ApplicationHelper
   end
 
   def klass_dropdown(klass)
-    form_for([:klass, current_klass(klass)], url: klass_redirect_path(), method: :get) do |f|
-      f.collection_select(:id, current_user.klasses_in_alphabetical_order, :id, :klass_name, {include_blank: "Classes"}, {class: "select-blend", onchange: "this.form.submit();"})
+    content_tag(:div, class: "class-header") do
+      form_for([:klass, current_klass(klass)], url: klass_redirect_path(), method: :get) do |f|
+        f.collection_select(:id, current_user.klasses_in_alphabetical_order, :id, :klass_name, {include_blank: "Classes"}, {class: "select-blend", onchange: "this.form.submit();"})
+      end
     end
   end
 
@@ -36,8 +49,10 @@ module ApplicationHelper
   end
 
   def lt_dropdown(klass, lt)
-    form_for([:learning_target, current_lt(klass, lt)], url: lt_redirect_path(klass), method: :get) do |f|
-      f.collection_select(:name, klass.learning_targets, :name, :name, {include_blank: "All Learning Targets", prompt: "Learning Targets"}, {class: "select-blend", onchange: "this.form.submit();"})
+    content_tag(:div, class: "header-select") do
+      form_for([:learning_target, current_lt(klass, lt)], url: lt_redirect_path(klass), method: :get) do |f|
+        f.collection_select(:name, klass.learning_targets, :name, :name, {include_blank: "All Learning Targets", prompt: "Learning Targets"}, {class: "select-blend", onchange: "this.form.submit();"})
+      end
     end
   end
 
@@ -46,8 +61,16 @@ module ApplicationHelper
   end
 
   def student_dropdown(klass, student)
-    form_for([:student, current_student(klass, student)], url: student_redirect_path(klass), method: :get) do |f|
-      f.collection_select(:id, klass.students, :id, :first_last_name, {prompt: "Students"}, {class: "select-blend", onchange: "this.form.submit();"})
+    content_tag(:div, class: "header-select") do
+      form_for([:student, current_student(klass, student)], url: student_redirect_path(klass), method: :get) do |f|
+        f.collection_select(:id, klass.students, :id, :first_last_name, {prompt: "Students"}, {class: "select-blend", onchange: "this.form.submit();"})
+      end
+    end
+  end
+
+  def logout_link()
+    content_tag(:div, class: "header-logout") do
+      link_to("Log Out", logout_path)
     end
   end
 

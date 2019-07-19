@@ -1,38 +1,12 @@
 <% if klass && !klass.new_record? %>
-  <%= link_to(klass_path(klass)) do %>
-    <div class="header-logo">
-      <%= image_tag('open-book.jpg') %>
-    </div>
-  <% end %>
-
-  <div>
-    <%= new_resource_button(klass, new_klass_assignment_path(klass), "+A") %>
-  </div>
-
-  <div>
-    <%= new_resource_button(klass, new_klass_learning_target_path(klass), "+LT") %>
-  </div>
-
-  <div>
-    <%= new_resource_button(klass, klass_students_path(klass), "+S") %>
-  </div>
-
-  <div id="class-header">
-    <%= klass_dropdown(klass) %>
-  </div>
-
-
-  <div class="header-select">
-    <%= lt_dropdown(klass, lt) %>
-  </div>
-
-  <div class="header-select">
-    <%= student_dropdown(klass, student) %>
-  </div>
-
-  <div class="header-logout">
-    <%= link_to("Log Out", logout_path) %>
-  </div>
+  <%= logo_button(klass) %>
+  <%= new_resource_button(klass, new_klass_assignment_path(klass), "+A") %>
+  <%= new_resource_button(klass, new_klass_learning_target_path(klass), "+LT") %>
+  <%= new_resource_button(klass, klass_students_path(klass), "+S") %>
+  <%= klass_dropdown(klass) %>
+  <%= lt_dropdown(klass, lt) %>
+  <%= student_dropdown(klass, student) %>
+  <%= logout_link() %>
 
 <% else %>
   <%= link_to(klasses_path()) do %>
