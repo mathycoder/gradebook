@@ -28,4 +28,14 @@ class Student < ApplicationRecord
     end
   end
 
+  def percent_of_assignments_on_level(klass, level)
+    level == 3.0? level_up = 1.1 : level_up = 1.0
+    grades = klass.grades.where("student_id = ?", self.id)
+    scores = grades.map{|grade| grade.score}.compact
+    target_scores = scores.select{|score| score >= level && score < (level + level_up)}
+    percentage = (target_scores.length.to_f / scores.length.to_f)*100.to_i
+    percentage = '%.1f' % percentage
+    "#{percentage}\%"
+  end
+
 end

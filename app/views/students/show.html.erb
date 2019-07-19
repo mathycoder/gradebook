@@ -15,12 +15,12 @@
     <div class="rubric-title"><strong>Student Stats</strong></div>
     <div>Overall Grade </div>
     <div><strong><%= @student.average(@klass) %></strong></div>
-    <div>Top LT </div>
-    <div><strong>blah</strong></div>
-    <div>Bottom LT </div>
-    <div><strong>blah</strong></div>
-    <div>What else? </div>
-    <div><strong>blah</strong></div>
+    <div>level 3 and up<br>Assignments</div>
+    <div><strong><%= @student.percent_of_assignments_on_level(@klass, 3.0) %></strong></div>
+    <div>level 2<br>Assignments</div>
+    <div><strong><%= @student.percent_of_assignments_on_level(@klass, 2.0) %></strong></div>
+    <div>level 1<br>Assignments</div>
+    <div><strong><%= @student.percent_of_assignments_on_level(@klass, 1.0) %></strong></div>
   </div>
 
 <% @klass.learning_targets.each do |lt| %>

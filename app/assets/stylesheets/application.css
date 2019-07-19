@@ -63,10 +63,19 @@ header div {
   width: 40px;
 }
 
+.header-logout {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.header-login {
+  margin-left: auto;
+}
+
 
 .select-blend {
   border: none;
-  width: 30vw;
+  width: 20vw;
   font-size: 18px;
   font-family: "Roboto", helvetica, arial, sans-serif;
   font-weight: 400;
@@ -83,10 +92,10 @@ header div {
   color: grey;
 }
 
-select.select-blend { width: 30vw; text-align-last:center; }
+select.select-blend { width: 22vw; text-align-last:center; }
 
 #class-header .select-blend {
-  width: auto;
+  width: 22vw;
 }
 
 
@@ -754,4 +763,10 @@ table.gradebook .hidden {
 .student-show .rubric-title {
   background-color: rgb(217, 106, 94);
   height: 15px;
+}
+
+@media only screen and (max-width: 850px) {
+  .header-select {
+    display: none;
+  }
 }

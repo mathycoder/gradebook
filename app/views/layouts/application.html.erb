@@ -12,53 +12,81 @@
 
   <body>
     <header>
+      <% if current_user %>
+        <% if @klass && !@klass.new_record?  %>
+          <%= link_to(klass_path(@klass)) do %>
+            <div class="header-logo">
+              <%= image_tag('open-book.jpg') %>
+            </div>
+          <% end %>
+        <% else %>
+        <div class="header-logo">
+          <%= image_tag('open-book.jpg') %>
+        </div>
+        <% end %>
 
-      <% if @klass %>
-        <%= link_to(klass_path(@klass)) do %>
-          <div class="header-logo">
-            <%= image_tag('open-book.jpg') %>
+        <% if @klass && !@klass.new_record? %>
+          <div>
+            <%= form_tag(new_klass_assignment_path(@klass), method: :get) do %>
+              <%= submit_tag("+A", class: "fancy-button") %>
+            <% end %>
+          </div>
+
+          <div>
+            <%= form_tag(new_klass_learning_target_path(@klass), method: :get) do %>
+              <%= submit_tag("+LT", class: "fancy-button") %>
+            <% end %>
+          </div>
+
+          <div>
+            <%= form_tag(klass_students_path(@klass), method: :get) do %>
+              <%= submit_tag("+S", class: "fancy-button") %>
+            <% end %>
           </div>
         <% end %>
-      <% else %>
-      <div class="header-logo">
-        <%= image_tag('open-book.jpg') %>
-      </div>
-      <% end %>
 
-      <% @klass ? (current_klass = @klass) : (current_klass = Klass.new)%>
-      <div id="class-header">
-        <%= form_for([:klass, current_klass], url: klass_redirect_path(), method: :get) do |f| %>
-          <%= f.collection_select(:id, current_user.klasses_in_alphabetical_order, :id, :klass_name, {include_blank: "Classes"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
+        <% @klass ? (current_klass = @klass) : (current_klass = Klass.new)%>
+        <div id="class-header">
+          <%= form_for([:klass, current_klass], url: klass_redirect_path(), method: :get) do |f| %>
+            <%= f.collection_select(:id, current_user.klasses_in_alphabetical_order, :id, :klass_name, {include_blank: "Classes"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
+          <% end %>
+        </div>
+
+
+        <% if @klass && !@klass.new_record? %>
+          <div class="header-select">
+            <% @lt ? (current_lt = @lt) : (current_lt = LearningTarget.new) %>
+            <%= form_for([:learning_target, current_lt], url: lt_redirect_path(@klass), method: :get) do |f| %>
+              <%= f.collection_select(:name, @klass.learning_targets, :name, :name, {include_blank: "All Learning Targets", prompt: "Learning Targets"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
+            <% end %>
+          </div>
+
+          <div class="header-select">
+            <% @student ? (current_student = @student) : (current_student = Student.new) %>
+            <%= form_for([:student, current_student], url: student_redirect_path(@klass), method: :get) do |f| %>
+              <%= f.collection_select(:id, @klass.students, :id, :first_last_name, {prompt: "Students"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
+            <% end %>
+          </div>
         <% end %>
-      </div>
 
-
-      <% if @klass && !@klass.new_record? %>
-        <div>
-          <%= form_tag(new_klass_assignment_path(@klass), method: :get) do %>
-            <%= submit_tag("+A", class: "fancy-button") %>
-          <% end %>
+        <div class="header-logout">
+          <%= link_to("Log Out", logout_path) %>
         </div>
 
-        <div>
-          <%= form_tag(new_klass_learning_target_path(@klass), method: :get) do %>
-            <%= submit_tag("+LT", class: "fancy-button") %>
-          <% end %>
+
+      <% else %>
+        <div class="header-logo">
+          <%= image_tag('open-book.jpg') %>
         </div>
 
-        <div>
-          <% @lt ? (current_lt = @lt) : (current_lt = LearningTarget.new) %>
-          <%= form_for([:learning_target, current_lt], url: lt_redirect_path(@klass), method: :get) do |f| %>
-            <%= f.collection_select(:name, @klass.learning_targets, :name, :name, {include_blank: "All Learning Targets", prompt: "Learning Targets"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
-          <% end %>
+        <div class="header-login">
+          <%= link_to("Log In", login_path) %>
         </div>
 
-        <div>
-          <% @student ? (current_student = @student) : (current_student = Student.new) %>
-          <%= form_for([:student, current_student], url: student_redirect_path(@klass), method: :get) do |f| %>
-            <%= f.collection_select(:id, @klass.students, :id, :first_last_name, {include_blank: "Add/Drop Students", prompt: "Students"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
-          <% end %>
+        <div class="header-signup">
+          <%= link_to("Sign Up", signup_path) %>
         </div>
+
       <% end %>
     </header>
 
@@ -72,7 +100,6 @@
       <%= yield %>
     </main>
 
-    <footer>
-    </footer>
+
   </body>
 </html>
