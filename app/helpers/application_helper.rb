@@ -14,4 +14,12 @@ module ApplicationHelper
     html_string.html_safe
     end
   end
+
+  def new_resource_button(klass, path, tag)
+    form_tag(path, method: :get) do
+      submit_tag(tag, class: "fancy-button")
+    end
+  end
+
+
 end
