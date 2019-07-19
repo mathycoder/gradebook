@@ -27,10 +27,7 @@
   </div>
 
   <div class="header-select">
-    <% @student ? (current_student = @student) : (current_student = Student.new) %>
-    <%= form_for([:student, current_student], url: student_redirect_path(@klass), method: :get) do |f| %>
-      <%= f.collection_select(:id, @klass.students, :id, :first_last_name, {prompt: "Students"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
-    <% end %>
+    <%= student_dropdown(klass, student) %>
   </div>
 
   <div class="header-logout">

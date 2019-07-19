@@ -22,7 +22,7 @@ module ApplicationHelper
   end
 
   def current_klass(klass)
-    klass ? (klass) : (current_user.klasses.build)
+    klass ? klass : Klass.new
   end
 
   def klass_dropdown(klass)
@@ -32,12 +32,22 @@ module ApplicationHelper
   end
 
   def current_lt(klass, lt)
-    lt ? (current_lt = lt) : (current_lt = klass.learning_targets.build)
+    lt ? lt : LearningTarget.new
   end
 
   def lt_dropdown(klass, lt)
     form_for([:learning_target, current_lt(klass, lt)], url: lt_redirect_path(klass), method: :get) do |f|
       f.collection_select(:name, klass.learning_targets, :name, :name, {include_blank: "All Learning Targets", prompt: "Learning Targets"}, {class: "select-blend", onchange: "this.form.submit();"})
+    end
+  end
+
+  def current_student(klass, student)
+    student ? student : Student.new
+  end
+
+  def student_dropdown(klass, student)
+    form_for([:student, current_student(klass, student)], url: student_redirect_path(klass), method: :get) do |f|
+      f.collection_select(:id, klass.students, :id, :first_last_name, {prompt: "Students"}, {class: "select-blend", onchange: "this.form.submit();"})
     end
   end
 

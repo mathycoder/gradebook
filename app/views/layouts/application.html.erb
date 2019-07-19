@@ -14,7 +14,7 @@
 
     <header>
       <% if logged_in? %>
-        <%= render partial: "layouts/header_when_logged_in", locals: {klass: @klass, lt: @lt} %>
+        <%= render partial: "layouts/header_when_logged_in", locals: {klass: @klass, lt: @lt, student: @student} %>
       <% else %>
         <%= render partial: "layouts/header_when_logged_out", locals: {} %>
       <% end %>
