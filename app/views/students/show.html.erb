@@ -1,6 +1,5 @@
 <h1><%= @student.first_last_name %></h1>
 
-
 <div class="student-show-container">
   <div class="student-show-studentbox">
     <%= column_chart(@klass.student_bar_graph_data(@student),
@@ -17,7 +16,7 @@
     <div><strong><%= @student.average(@klass) %></strong></div>
     <div>level 3 and up<br>Assignments</div>
     <div><strong><%= @student.percent_of_assignments_on_level(@klass, 3.0) %></strong></div>
-    <div>level 2<br>Assignments</div>
+    <div>level 2<br>Assignments </div>
     <div><strong><%= @student.percent_of_assignments_on_level(@klass, 2.0) %></strong></div>
     <div>level 1<br>Assignments</div>
     <div><strong><%= @student.percent_of_assignments_on_level(@klass, 1.0) %></strong></div>
