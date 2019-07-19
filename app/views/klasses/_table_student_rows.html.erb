@@ -8,7 +8,6 @@
       <% end %>
     </td>
 
-
     <td class="average"><p><strong><%= student.average(klass_or_lt) %></strong></p></td>
     <% collection.each do |lt| %>
       <%= content_tag(:td, nil, class: "start-of-lt") if lt.assignments.empty? %>

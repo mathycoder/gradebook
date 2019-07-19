@@ -84,11 +84,12 @@ header div:nth-child(4) {
 
 .select-blend:hover {
   cursor: pointer;
+  color: grey;
 }
 
 
 main {
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   overflow-y: scroll;
 
 }
@@ -327,7 +328,8 @@ input[type=text].text-field  {
 .gradebook-wrapper {
   overflow-y: scroll;
   margin: 20px;
-  margin-left: 148px;
+  margin-left: 0px;
+  /* margin-left: 148px; */
   /* The margin below is when you want to lock the second column as well */
   /* margin-left: 263px; */
 }
@@ -337,9 +339,21 @@ input[type=text].text-field  {
   min-width: 130px;
   text-align: left;
   padding-left: 10px;
-  position: absolute;
+  /* position: absolute; */
   left: 10px;
   padding-top: 9px;
+}
+
+.gradebook-title {
+  position: relative;
+  overflow: visible;
+  width: 250px;
+  color: black;
+  font-weight: lighter;
+}
+
+.gradebook-title img {
+  margin-left: 40px;
 }
 
 .student-name {
@@ -381,24 +395,18 @@ table.gradebook tr:nth-child(2n+4) td:first-child {
   height: 30px;
 }
 
-
-
-
-/* original border */
-table.gradebook {
-  /* border-collapse: collapse; */
-}
-
-table.gradebook, table.gradebook th, table.gradebook td {
-  /* border: 1px solid black; */
+#student-label {
+  margin-left: 2px;
 }
 
 
-/* height of data cells */
+
+
 table.gradebook th{
   color: white;
 }
 
+/* height of data cells */
 table.gradebook td {
   height: 45px;
 }

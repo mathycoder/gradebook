@@ -1,7 +1,7 @@
 <div class="gradebook-wrapper">
   <table class="gradebook">
     <tr>
-      <th></th>
+      <th rowspan="2"><%= render partial: "klasses/klass_title", locals: {klass: klass} %></th>
       <th></th>
       <% collection.each do |target| %>
         <th colspan="<%= target.assignments.length %>" class="<%= klass.my_color_class(target) %> start-of-lt">
@@ -22,13 +22,7 @@
     </tr>
 
     <tr>
-      <td>
-      </td>
-      <% if !klass.learning_targets.empty? %>
-        <td></td>
-      <% else %>
-        <%= link_to("Start by Creating a Learning Target", new_klass_learning_target_path(klass)) %>
-      <% end %>
+      <td></td>
 
       <% collection.each do |lt| %>
         <%= content_tag(:td) if lt.assignments.empty? %>
@@ -47,7 +41,7 @@
 
     <tr>
       <td>
-
+        <div id="student-label"><strong>Students</strong></div>
       </td>
       <td id="average"><div><strong>Average</strong></div></td>
 
