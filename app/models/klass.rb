@@ -15,6 +15,9 @@ class Klass < ApplicationRecord
   validates :subject, presence: true, length: {maximum: 20}
   validates :period, presence: true, numericality: true, length: {maximum: 2}
 
+  def klass_name
+    "Class #{self.name}"
+  end
 
   def student_bar_graph_data(student)
     data = self.learning_targets.map do |lt|

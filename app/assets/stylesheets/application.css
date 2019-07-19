@@ -57,15 +57,11 @@ header div {
   margin-left: 10px;
 }
 
-header div:nth-child(3) {
-  margin-right: 10px;
+
+
+.header-logo img {
+  width: 40px;
 }
-
-header div:nth-child(4) {
-  margin-left: auto;
-}
-
-
 
 
 .select-blend {
@@ -85,6 +81,12 @@ header div:nth-child(4) {
 .select-blend:hover {
   cursor: pointer;
   color: grey;
+}
+
+select.select-blend { width: 30vw; text-align-last:center; }
+
+#class-header .select-blend {
+  width: auto;
 }
 
 

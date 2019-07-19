@@ -1,6 +1,11 @@
 class KlassesController < ApplicationController
   before_action :find_klass, only: [:show, :edit, :update, :destroy]
 
+  def redirect
+    @klass = Klass.find_by(id: params[:klass][:id])
+    @klass ? redirect_to(klass_path(@klass)) : redirect_to(klasses_path())
+  end
+
   def new
     @klass = Klass.new
   end
@@ -42,7 +47,7 @@ class KlassesController < ApplicationController
     end
 
     def klass_params
-      params.require(:klass).permit(:name, :subject, :grade, :period)
+      params.require(:klass).permit(:name, :subject, :grade, :period, :id)
     end
 
 end

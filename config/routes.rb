@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get '/classes/redirect', to: "klasses#redirect", as: "klass_redirect"
+
   resources :klasses, :path => 'classes'
   resources :teachers
   get '/signup', to: "teachers#new"
@@ -10,7 +13,6 @@ Rails.application.routes.draw do
     get '/add_students', to: "klasses#add_students"
   end
 
-  #can't get this to work without post request
   get '/classes/:klass_id/students/redirect', to: "students#redirect", as: "student_redirect"
 
 

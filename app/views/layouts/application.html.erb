@@ -13,11 +13,27 @@
   <body>
     <header>
 
-      <% if @klass && !@klass.new_record? %>
-        <div>
-          <strong><%= link_to("Class #{@klass.name}", klass_path(@klass)) %></strong>
-        </div>
+      <% if @klass %>
+        <%= link_to(klass_path(@klass)) do %>
+          <div class="header-logo">
+            <%= image_tag('open-book.jpg') %>
+          </div>
+        <% end %>
+      <% else %>
+      <div class="header-logo">
+        <%= image_tag('open-book.jpg') %>
+      </div>
+      <% end %>
 
+      <% @klass ? (current_klass = @klass) : (current_klass = Klass.new)%>
+      <div id="class-header">
+        <%= form_for([:klass, current_klass], url: klass_redirect_path(), method: :get) do |f| %>
+          <%= f.collection_select(:id, current_user.klasses_in_alphabetical_order, :id, :klass_name, {include_blank: "Classes"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
+        <% end %>
+      </div>
+
+
+      <% if @klass && !@klass.new_record? %>
         <div>
           <%= form_tag(new_klass_assignment_path(@klass), method: :get) do %>
             <%= submit_tag("+A", class: "fancy-button") %>

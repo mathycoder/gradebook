@@ -11,4 +11,8 @@ class Teacher < ApplicationRecord
   def all_klasses_except(klass)
     self.klasses.where("klass_id != ?", klass.id)
   end
+
+  def klasses_in_alphabetical_order
+    self.klasses.sort_by{|klass| klass.name}
+  end
 end
