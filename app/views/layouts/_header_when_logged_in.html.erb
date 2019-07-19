@@ -17,21 +17,13 @@
     <%= new_resource_button(klass, klass_students_path(klass), "+S") %>
   </div>
 
-
-  <% @klass ? (current_klass = @klass) : (current_klass = Klass.new)%>
   <div id="class-header">
-    <%= form_for([:klass, current_klass], url: klass_redirect_path(), method: :get) do |f| %>
-      <%= f.collection_select(:id, current_user.klasses_in_alphabetical_order, :id, :klass_name, {include_blank: "Classes"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
-    <% end %>
+    <%= klass_dropdown(klass) %>
   </div>
 
 
-
   <div class="header-select">
-    <% @lt ? (current_lt = @lt) : (current_lt = LearningTarget.new) %>
-    <%= form_for([:learning_target, current_lt], url: lt_redirect_path(@klass), method: :get) do |f| %>
-      <%= f.collection_select(:name, @klass.learning_targets, :name, :name, {include_blank: "All Learning Targets", prompt: "Learning Targets"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
-    <% end %>
+    <%= lt_dropdown(klass, lt) %>
   </div>
 
   <div class="header-select">
