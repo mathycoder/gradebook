@@ -25,12 +25,18 @@ a:hover {
   padding-top: 70px;
 }
 
+.paper-form.paper-form-students {
+  width: 800px;
+  padding-left: 120px;
+}
+
 .paper-form.lt-paper-form {
   width: auto;
 }
 
 .paper-form h1 {
   margin-top: -20px;
+  text-align: center;
 }
 
 .paper-form.lt-paper-form h1 {
@@ -599,6 +605,7 @@ table.gradebook .hidden {
 .lt-form-container {
   display: flex;
   flex-wrap: wrap;
+
 }
 
 .lt-form-submit-area {
@@ -628,10 +635,8 @@ table.gradebook .hidden {
 .lt-form-container .lt-form-standard {
   margin: 0 auto;
   width: 480px;
-  border: 1px solid black;
   border-radius: 10px;
   padding: 10px;
-  background-color: white;
   padding-bottom: -10px;
 }
 
@@ -642,8 +647,11 @@ table.gradebook .hidden {
   max-height: 320px;
   width: 100%;
   margin: 0;
-  margin-top: 20px;
-
+  margin-top: 30px;
+  margin-right: 20px;
+  border: 1px black solid;
+  background-color: white;
+  border-radius: 10px;
 }
 
 
@@ -821,4 +829,9 @@ table.gradebook .hidden {
   .paper-form.assignment {
     width: 300px;
   }
+
+  .paper-form.lt-paper-form {
+    padding-left: 0px;
+  }
+
 }
