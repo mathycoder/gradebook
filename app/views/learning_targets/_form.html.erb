@@ -1,8 +1,9 @@
-<div class="paper-form lt-paper-form">
+<div>
   <h1><%= header %></h1>
   <div class="lt-form-container-full">
     <div class="lt-form-container">
-      <div class="lt-form-standard">
+      <div id ="paper-lt" class="lt-form-standard paper-form">
+        <h2>Select a Common Core Standard</h2>
         <%= generate_standard_filter_form(lt, klass, standard) %>
         <%= form_for([klass,lt]) do |f| %>
           <%= error_display(lt) %>

@@ -27,7 +27,10 @@ class StudentsController < ApplicationController
 
     if !@klass.students.include?(@student)
       @klass.students << @student
-      @klass.assignments.each {|assignment| assignment.grades.create(student_id: @student.id) }
+      @klass.assignments.each do |assignment|
+        #assignment.grades.where("student_id = ?", @student.id).destroy_all
+        assignment.grades.find_or_create_by(student_id: @student.id)
+      end
     else
       @klass.students.delete(@student)
     end

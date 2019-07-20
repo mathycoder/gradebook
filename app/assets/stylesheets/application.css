@@ -25,6 +25,20 @@ a:hover {
   padding-top: 70px;
 }
 
+#paper-lt {
+  border-radius: 0px;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.paper-form.assignment .assignment-form-table {
+  background-color: white;
+  border: 1px black solid;
+  padding: 20px;
+  border-radius: 10px;
+  column-count: 2;
+}
+
 .paper-form.paper-form-students {
   width: 800px;
   padding-left: 120px;
@@ -599,7 +613,7 @@ table.gradebook .hidden {
 
 .lt-form-container-full {
   display: grid;
-  grid-template-rows: auto 100px;
+  grid-template-rows: auto 300px;
 }
 
 .lt-form-container {
@@ -620,6 +634,19 @@ table.gradebook .hidden {
 
 .lt-form-klasses {
   margin: 20px auto;
+  background-image: url('notepad.png');
+  background-repeat: no-repeat;
+  background-size:contain;
+  height: 250px;
+  width: 200px;
+}
+
+.lt-form-klasses p {
+  width: 70%;
+  margin-top: 15%;
+  font-weight: bold;
+  margin-left: 10%;
+  font-size: 20px;
 }
 
 .lt-form-container-full .lt-form-submit {
@@ -746,7 +773,7 @@ table.gradebook .hidden {
 
 .lt-form-rubric {
   width: 40%;
-  grid-template-rows: auto repeat(4, 80px);
+  grid-template-rows: auto repeat(4, 100px);
 }
 
 .rubric-title {
@@ -816,6 +843,7 @@ table.gradebook .hidden {
   background-color: rgb(217, 106, 94);
   height: 15px;
 }
+
 
 @media only screen and (max-width: 850px) {
   .header-select {
