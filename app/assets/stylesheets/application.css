@@ -15,7 +15,6 @@ input[type=text], textarea, input[type=date], input[type=select] {
 
 body {
   margin: 0;
-
   font-family: "Roboto", helvetica, arial, sans-serif;
   display: grid;
   grid-template-rows: 50px auto 100px;
@@ -337,11 +336,9 @@ input[type=text].text-field  {
 
 .gradebook-wrapper {
   overflow-y: scroll;
-  margin: 20px;
-  margin-left: 0px;
-  /* margin-left: 148px; */
-  /* The margin below is when you want to lock the second column as well */
-  /* margin-left: 263px; */
+  margin: 20px -20px;
+  padding-left: 20px;
+  padding-right: 100px;
 }
 
 /* edits the first column of students */
@@ -352,6 +349,10 @@ input[type=text].text-field  {
   /* position: absolute; */
   left: 10px;
   padding-top: 9px;
+}
+
+.gradebook-wrapper table tr td:last-child, .gradebook-wrapper table tr th:last-child {
+  border-right: 20px white solid;
 }
 
 .gradebook-title {
@@ -630,6 +631,10 @@ table.gradebook .hidden {
 
 .lt-show-container .lt-show-gradebook {
   overflow-x: scroll;
+  display: flex;
+  justify-content: center;
+  margin: 0 -40px;
+  padding: 0 20px;
 }
 
 .lt-show-container .lt-stats .averages, .averages {

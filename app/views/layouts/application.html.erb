@@ -4,14 +4,12 @@
     <title>Gradebook</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,700&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-
     <header>
       <% if logged_in? %>
         <%= render partial: "layouts/header_when_logged_in", locals: {klass: @klass, lt: @lt, student: @student} %>
@@ -19,7 +17,6 @@
         <%= render partial: "layouts/header_when_logged_out", locals: {} %>
       <% end %>
     </header>
-
     <main>
       <% flash.keys.each do |type| %>
         <div onclick="style.display='none';" data-alert class="flash <%= type %> alert-box radius">
@@ -29,7 +26,5 @@
       <% end %>
       <%= yield %>
     </main>
-
-
   </body>
 </html>
