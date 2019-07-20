@@ -21,14 +21,16 @@ module LtFormHelper
 
 
   def generate_standard_filter_form_block(lt, klass, standard, standards)
-
-    standard.try("id") ? display_grade = standard.try("id") : display_grade = standards.first.try("grade")
-    b = select_tag "query[grade]", options_from_collection_for_select(Standard.grades, :grade, :grade, display_grade), class: "select-css", prompt: "Select a Grade"
+    b = select_tag "query[grade]", options_from_collection_for_select(Standard.grades, :grade, :grade, display_grade(standard, standards)), class: "select-css", prompt: "Select a Grade"
     b << tag(:br) + tag(:br)
     b << submit_tag("Filter", class: "little-button")
     b << submit_tag('clear', class: "little-button")
     b << tag(:br)
     b
+  end
+
+  def display_grade(standard, standards)
+    standard.try("id") ? standard.try("id") : standards.first.try("grade")
   end
 
   def delete_button(klass, lt)
