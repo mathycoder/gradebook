@@ -74,5 +74,16 @@ module ApplicationHelper
     end
   end
 
+  def login_link()
+    content_tag(:div, class: "header-login") do
+      link_to("Log In", login_path)
+    end
+  end
+
+  def signup_link()
+    content_tag(:div, class: "header-signup") do
+      link_to("Sign Up", signup_path)
+    end 
+  end
 
 end
