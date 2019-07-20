@@ -59,6 +59,16 @@ a:hover {
   text-align: center;
 }
 
+.listed-students {
+    overflow-y: scroll;
+    padding: 5px;
+    width: 350px;
+    text-align: left;
+    max-height: 300px;
+    background: white;
+    border: 1px black solid;
+}
+
 
 input[type=text], textarea, input[type=date], input[type=select] {
   font-family: "Roboto", helvetica, arial, sans-serif;
@@ -321,8 +331,12 @@ input[type=text].text-field  {
 
 .student-list-container {
   display: grid;
-  grid-template-columns: 400px 400px;
+  grid-template-columns: 500px 500px;
+}
 
+.student-list-container div {
+  margin: 0 auto;
+  height: 400px;
 }
 
 /* klass schedule styling */
