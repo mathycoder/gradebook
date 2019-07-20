@@ -1,43 +1,45 @@
+<div class="paper-form lt-paper-form">
+  <h1><%= header %></h1>
+  <div class="lt-form-container-full">
+    <div class="lt-form-container">
+      <div class="lt-form-standard">
+        <%= generate_standard_filter_form(lt, klass, standard) %>
+        <%= form_for([klass,lt]) do |f| %>
+          <%= error_display(lt) %>
+          <%= f.fields_for(:standard, include_id: false) do |s| %>
+            <%= render partial: "learning_targets/standards_table", locals: {klass: klass, lt: lt, standard: standard, s: s } %>
+          <% end %>
+      </div>
 
-<div class="lt-form-container-full">
-  <div class="lt-form-container">
-    <div class="lt-form-standard">
-      <%= generate_standard_filter_form(lt, klass, standard) %>
-      <%= form_for([klass,lt]) do |f| %>
-        <%= error_display(lt) %>
-        <%= f.fields_for(:standard, include_id: false) do |s| %>
-          <%= render partial: "learning_targets/standards_table", locals: {klass: klass, lt: lt, standard: standard, s: s } %>
-        <% end %>
+      <div class="lt-form-rubric">
+        <%= render partial: "learning_targets/rubric_form", locals: {f: f, color: color} %>
+      </div>
     </div>
 
-    <div class="lt-form-rubric">
-      <%= render partial: "learning_targets/rubric_form", locals: {f: f, color: color} %>
-    </div>
-  </div>
-
-  <div class="lt-form-submit-area">
-    <div class="lt-form-klasses">
-      <% if lt.new_record? %>
-        <%= f.fields_for(:klasses, lt.klasses.build) do |k| %>
-          <p>Add LT to another class:<p>
-          <%= k.collection_check_boxes(:id, current_user.all_klasses_except(klass), :id, :name) %>
-        <% end %>
-      <% elsif lt.klasses.length > 1 %>
-        <p>This LT is attached to these classes: <p>
-        <% lt.klasses.each do |kl| %>
-          <%= "#{kl.name} " %>
-        <% end %>
-      <% end %>
-    </div>
-
-    <div class="lt-form-submit">
-      <div class="big-button">
-        <%= f.submit %>
+    <div class="lt-form-submit-area">
+      <div class="lt-form-klasses">
+        <% if lt.new_record? %>
+          <%= f.fields_for(:klasses, lt.klasses.build) do |k| %>
+            <p>Add LT to another class:<p>
+            <%= k.collection_check_boxes(:id, current_user.all_klasses_except(klass), :id, :name) %>
+          <% end %>
+        <% elsif lt.klasses.length > 1 %>
+          <p>This LT is attached to these classes: <p>
+          <% lt.klasses.each do |kl| %>
+            <%= "#{kl.name} " %>
+          <% end %>
         <% end %>
       </div>
 
-      <div class="big-button">
-        <%= delete_button(klass, lt) %>
+      <div class="lt-form-submit">
+        <div class="big-button">
+          <%= f.submit %>
+          <% end %>
+        </div>
+
+        <div class="big-button">
+          <%= delete_button(klass, lt) %>
+        </div>
       </div>
     </div>
   </div>

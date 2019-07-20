@@ -1,3 +1,1 @@
-<h1>Edit Learning Target</h1>
-
-<%= render partial: "learning_targets/form", locals: {klass: @klass, lt: @lt, standard: @standard, submit_text: "Update LT", color: @klass.my_color_class(@lt) } %>
+<%= render partial: "learning_targets/form", locals: {header: "Edit Learning Target", klass: @klass, lt: @lt, standard: @standard, submit_text: "Update LT", color: @klass.my_color_class(@lt) } %>
