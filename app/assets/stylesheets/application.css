@@ -7,6 +7,22 @@ a:hover {
   color: rgb(128, 128, 128);
 }
 
+.paper-form {
+  background-image: url('lined-paper-flat.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 40px;
+  padding-left: 70px;
+  width: 340px;
+  height: auto;
+  margin: 50px auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.paper-form h1 {
+  margin-top: -20px;
+}
+
 
 input[type=text], textarea, input[type=date], input[type=select] {
   font-family: "Roboto", helvetica, arial, sans-serif;
