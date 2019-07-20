@@ -1,36 +1,47 @@
-<%= form_for([klass,assignment]) do |f| %>
+<div class="paper-form assignment">
+  <%= form_for([klass,assignment]) do |f| %>
 
-  <%= error_display(assignment) %>
+    <h1><%= "#{add_or_edit} #{klass.name}" %></h1>
 
-  <div>
-    <%= f.label(:name, "Name of assignment") %><br>
-    <%= f.text_field(:name, {class: "text-field", maxlength: "40"}) %><br><br>
-  </div>
+    <%= error_display(assignment) %>
+    <div>
+      <%= f.label(:name, "Name of assignment") %><br>
+      <%= f.text_field(:name, {class: "text-field", maxlength: "40"}) %><br><br>
+    </div>
 
-  <div>
-    <%= f.label(:date, "Date of Assignment") %><br>
-    <%= f.date_field(:date) %><br><Br>
-  </div>
+    <div>
+      <%= f.label(:date, "Date of Assignment") %><br>
+      <%= f.date_field(:date) %><br><Br>
+    </div>
 
-  <div>
-    <%= f.collection_select :learning_target_id, klass.learning_targets, :id, :name, {include_blank: 'Select the Learning Target'}, {class: "select-css"} %><br><br>
-  </div>
+    <div>
+      <%= f.collection_select :learning_target_id, klass.learning_targets, :id, :name, {include_blank: 'Select the Learning Target'}, {class: "select-css"} %><br><br>
+    </div>
 
-  <table>
-    <% klass.students.each do |student| %>
-      <tr>
-        <%= f.fields_for(:grades, student.current_grade(@assignment), include_id: false) do |br| %>
-          <div>
-            <td><%= br.label(:score, student.full_name) %></td>
-            <td><%= br.text_field(:score, {class: "text-field-grade", maxlength: "3"}) %></td>
-            <%= br.hidden_field(:student_id, :value => student.id) %>
-          </div>
-        <% end %>
-      </tr>
+    <table>
+      <% klass.students.each do |student| %>
+        <tr>
+          <%= f.fields_for(:grades, student.current_grade(@assignment), include_id: false) do |br| %>
+            <div>
+              <td><%= br.label(:score, student.full_name) %></td>
+              <td><%= br.text_field(:score, {class: "text-field-grade", maxlength: "3"}) %></td>
+              <%= br.hidden_field(:student_id, :value => student.id) %>
+            </div>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+    <br>
+    <div class="big-button">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+  <% if !assignment.new_record? %>
+    <%= form_for([@klass, @assignment], method: :delete) do |f| %>
+      <div class="big-button">
+        <%= f.submit("Delete Assignment") %>
+      </div>
     <% end %>
-  </table>
-  <br>
-  <div class="big-button">
-    <%= f.submit %>
-  </div>
-<% end %>
+  <% end %>
+</div>

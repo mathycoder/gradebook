@@ -1,9 +1,1 @@
-<h1>Edit assignment for <%= link_to(@klass.name, klass_path(@klass)) %></h1>
-
-<%= render partial: "assignments/form", locals: {klass: @klass, assignment: @assignment} %>
-
-<%= form_for([@klass, @assignment], method: :delete) do |f| %>
-  <div class="big-button">
-    <%= f.submit("Delete Assignment") %>
-  </div>
-<% end %>
+<%= render partial: "assignments/form", locals: {klass: @klass, assignment: @assignment, add_or_edit: "Edit assignment for "} %>
