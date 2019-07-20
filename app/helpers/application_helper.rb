@@ -15,13 +15,13 @@ module ApplicationHelper
     end
   end
 
-  def logo_button(klass)
-    link_to(klass_path(klass)) do
+  def logo_button(klass, path)
+    link_to(path) do
       content_tag(:div, class: "header-logo") do
         image_tag('open-book.jpg')
       end
     end
-  end 
+  end
 
   def new_resource_button(klass, path, tag)
     html_string = content_tag(:div) do

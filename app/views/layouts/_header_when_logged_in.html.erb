@@ -1,5 +1,5 @@
 <% if klass && !klass.new_record? %>
-  <%= logo_button(klass) %>
+  <%= logo_button(klass, klass_path(klass)) %>
   <%= new_resource_button(klass, new_klass_assignment_path(klass), "+A") %>
   <%= new_resource_button(klass, new_klass_learning_target_path(klass), "+LT") %>
   <%= new_resource_button(klass, klass_students_path(klass), "+S") %>
@@ -7,15 +7,7 @@
   <%= lt_dropdown(klass, lt) %>
   <%= student_dropdown(klass, student) %>
   <%= logout_link() %>
-
 <% else %>
-  <%= link_to(klasses_path()) do %>
-    <div class="header-logo">
-      <%= image_tag('open-book.jpg') %>
-    </div>
-  <% end %>
-
-  <div class="header-logout">
-    <%= link_to("Log Out", logout_path) %>
-  </div>
+  <%= logo_button(nil, klasses_path()) %>
+  <%= logout_link() %>
 <% end %>
