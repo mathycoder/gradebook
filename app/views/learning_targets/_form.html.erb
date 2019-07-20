@@ -4,7 +4,7 @@
     <div class="lt-form-container">
       <div id ="paper-lt" class="lt-form-standard paper-form">
         <h2>Select a Common Core Standard</h2>
-        <%= generate_standard_filter_form(lt, klass, standard) %>
+        <%= generate_standard_filter_form(lt, klass, standard, @standards) %>
         <%= form_for([klass,lt]) do |f| %>
           <%= error_display(lt) %>
           <%= f.fields_for(:standard, include_id: false) do |s| %>
