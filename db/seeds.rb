@@ -24,7 +24,7 @@ Student.create(first_name: "Jaycob", last_name: "Cutler", grade: 7, klass: 703)
 Student.create(first_name: "Johanni", last_name: "Garcia-Santana", grade: 7, klass: 703)
 Student.create(first_name: "Richie", last_name: "Rodriguez", grade: 7, klass: 703)
 
-mrsarli = Teacher.create(name: "Mr. Sarli", email: "adam@gmail.com")
+mrsarli = Teacher.create(name: "Mr. Sarli", email: "adam@gmail.com", password_digest: "$2y$12$z2DQ3nH8K7jQ2aQJL40zpuDRL03t5SVp4qj2HBblQg.QejOkbBAM6")
 klass = mrsarli.klasses.create(name: "602", subject: "math", grade: "6th", period: 3)
 
 # lt = LearningTarget.create(name: "1.1 Adding and Subtracting Integers")

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
   def create
     @teacher = Teacher.find_by(email: params[:teacher][:email])
-    if @teacher
+    if @teacher.authenticate(params[:teacher][:password])
       session[:user_id] = @teacher.id
       redirect_to(klasses_path)
     else

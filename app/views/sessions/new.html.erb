@@ -1,7 +1,7 @@
 <div class="book-form">
   <div class="book-form-title">
     <h1>MyGradebook</h1><br>
-    <%= image_tag('open-book.jpg', width: "100px") %>
+    <%= image_tag('open-book2.png', width: "100px") %>
   </div>
   <br><br>
   <div class="book-form-login">
@@ -9,6 +9,11 @@
       <div>
         <%= f.text_field(:email, class: "text-field", placeholder: "Enter your email") %><br><br>
       </div>
+
+      <div>
+        <%= f.password_field(:password, class: "text-field", placeholder: "Enter your password") %><br><br>
+      </div>
+
       <div class="fancy-button">
         <%= f.submit("Log in") %>
       </div>

@@ -18,7 +18,8 @@ module ApplicationHelper
   def logo_button(klass, path)
     link_to(path) do
       content_tag(:div, class: "header-logo") do
-        image_tag('open-book.jpg')
+        #image_tag('open-book.jpg')
+        image_tag('open-book2.png')
       end
     end
   end
