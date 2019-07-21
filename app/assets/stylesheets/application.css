@@ -7,9 +7,58 @@ a:hover {
   color: rgb(128, 128, 128);
 }
 
+
 .mygradebook{
   margin-left: 10px;
 }
+
+.book-form {
+  padding: 1px;
+  width: 420px;
+  height: 550px;
+  margin: 40px auto;
+  background-image: url('gradebook3.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.book-form input[type=text].text-field {
+  width: 250px;
+  border-radius: 10px;
+  padding: 5px;
+  margin-left: 20px;
+}
+
+.book-form .fancy-button {
+  margin-top: 30px;
+  margin-left: 70px;
+}
+
+.book-form .fancy-button input[type=submit] {
+  width: 150px;
+}
+
+.book-form .book-form-title {
+  border: 1px black solid;
+  width: 60%;
+  margin: 20px 40% 20px 20%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.book-form-title h1 {
+  display: inline;
+  margin: 0 auto;
+}
+
+.book-form-login {
+  margin-left: 70px;
+}
+
 
 .paper-form {
   background-image: url('lined-paper-flat.png');
@@ -156,6 +205,7 @@ header div {
   cursor: pointer;
   color: grey;
 }
+
 
 select.select-blend { width: 22vw; text-align-last:center; }
 
@@ -861,7 +911,6 @@ table.gradebook .hidden {
   background-color: rgb(217, 106, 94);
   height: 15px;
 }
-
 
 @media only screen and (max-width: 850px) {
   .header-select {
