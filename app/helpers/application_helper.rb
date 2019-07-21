@@ -83,7 +83,13 @@ module ApplicationHelper
   def signup_link()
     content_tag(:div, class: "header-signup") do
       link_to("Sign Up", signup_path)
-    end 
+    end
+  end
+
+  def mygradebook()
+    content_tag(:div, class: "mygradebook") do
+      content_tag(:h3, "MyGradebook")
+    end
   end
 
 end
