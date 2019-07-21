@@ -7,11 +7,13 @@ class SessionsController < ApplicationController
 
   def create
     @teacher = Teacher.find_by(email: params[:teacher][:email])
-    if @teacher.authenticate(params[:teacher][:password])
+    if @teacher.nil?
+      redirect_to(login_path, alert: "No account matches that email") if !@teacher
+    elsif @teacher.authenticate(params[:teacher][:password])
       session[:user_id] = @teacher.id
       redirect_to(klasses_path)
     else
-      redirect_to(login_path)
+      redirect_to(login_path, alert: "Incorrect password")
     end
   end
 

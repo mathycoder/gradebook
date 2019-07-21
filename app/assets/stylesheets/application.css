@@ -349,6 +349,7 @@ footer {
   padding: 20px;
   margin-left: -20px;
   text-decoration: none;
+  position: absolute;
 }
 
 .field_with_errors {
@@ -404,6 +405,7 @@ input[type=text].text-field, input[type=password].text-field    {
   background-image: url('lined-paper.png');
   width: 550px;
   height: 568px;
+  margin: 0 auto;
 }
 
 .klass-schedule h1, .klass-schedule table, .klass-schedule-links {

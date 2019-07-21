@@ -7,11 +7,11 @@
   <div class="book-form-login">
     <%= form_for(@teacher, :url => {controller: 'sessions', action: 'create', method: 'post'}) do |f| %>
       <div>
-        <%= f.text_field(:email, class: "text-field", placeholder: "Enter your email") %><br><br>
+        <%= f.text_field(:email, class: "text-field", placeholder: "Enter your email", required: true) %><br><br>
       </div>
 
       <div>
-        <%= f.password_field(:password, class: "text-field", placeholder: "Enter your password") %><br><br>
+        <%= f.password_field(:password, class: "text-field", placeholder: "Enter your password", required: true) %><br><br>
       </div>
 
       <div class="fancy-button">
