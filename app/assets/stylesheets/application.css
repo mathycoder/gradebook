@@ -1,3 +1,11 @@
+.file-upload {
+  margin-left: 50px;
+}
+
+.file-upload input[type=file] {
+  background-color: blue;
+}
+
 .signup-container {
   display: flex;
   flex-wrap: wrap;
@@ -82,6 +90,11 @@ a:hover {
   object-fit: cover;
   margin-left: 100px;
   border-radius: 5px;
+}
+
+.profile-pic .change-pic {
+  margin-top: 10px;
+  display: flex;
 }
 
 

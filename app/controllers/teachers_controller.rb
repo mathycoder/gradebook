@@ -25,6 +25,17 @@ class TeachersController < ApplicationController
     @teacher = Teacher.find(params[:id])
   end
 
+  def update
+    @teacher = Teacher.find(params[:id])
+    uploaded_io = params[:teacher][:picture_url]
+    File.open(Rails.root.join('app', 'assets', 'images', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+    @teacher.picture_url = "uploads/#{uploaded_io.original_filename}"
+    @teacher.save
+    redirect_to(teacher_path(@teacher), alert: "Profile pic updated")
+  end
+
   private
 
     def teacher_params

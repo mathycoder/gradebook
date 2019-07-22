@@ -6,6 +6,18 @@
   <div class="profile-pic">
     <% current_user.picture_url ? (pic = current_user.picture_url) : (pic = 'silhouette.png') %>
     <%= image_tag(pic) %>
+      <%= form_for(current_user) do |f| %>
+        <div class="change-pic">
+          <div>
+            <%= f.file_field :picture_url %>
+          </div>
+
+          <div class="change-pic-submit">
+            <%= f.submit("Change pic", class: "little-button") %>
+          </div>
+        </div>
+      <% end %>
+
   </div>
 
 </div>
