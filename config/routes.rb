@@ -32,4 +32,5 @@ Rails.application.routes.draw do
   end
 
   resources :standards
+  root 'sessions#new'
 end

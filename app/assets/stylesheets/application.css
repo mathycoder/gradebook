@@ -97,7 +97,10 @@ a:hover {
   display: flex;
 }
 
-
+.profile-delete {
+  margin-top: 50px;
+  margin-left: 50px;
+}
 
 
 .book-form {
@@ -587,7 +590,7 @@ input[type=text].text-field, input[type=password].text-field    {
   position: relative;
   display: grid;
   grid-template-rows: auto 1fr;
-  height: 120px;
+  height: 130px;
   width: 250px;
   color: black;
   font-weight: lighter;
@@ -596,6 +599,7 @@ input[type=text].text-field, input[type=password].text-field    {
 .gradebook-title #gradebook-details {
   overflow: scroll;
   word-wrap: break-word;
+
 }
 
 .gradebook-title #book-logo {
