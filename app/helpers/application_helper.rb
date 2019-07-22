@@ -94,8 +94,13 @@ module ApplicationHelper
 
   def silhouette(path)
     link_to(path) do
+      if current_user
+        current_user.picture_url ? (pic = current_user.picture_url) : (pic = 'silhouette.png')
+      else
+        pic = 'silhouette.png'
+      end
       content_tag(:div, class: "header-profile") do
-        image_tag('silhouette.png')
+        image_tag(pic)
       end
     end
   end
