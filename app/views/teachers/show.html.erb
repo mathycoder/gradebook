@@ -1,6 +1,10 @@
-<h1>Teacher Profile Page</h1>
+<div class="open-book profile-page">
+  <div class="open-book-title">
+    <h1><%= current_user.name %>'s Settings</h1>
+  </div>
 
-<h3><%= @teacher.name %> is logged in</h3>
+  <div class="profile-pic">
+    <%= image_tag('silhouette.png') %>
+  </div>
 
-<%= link_to("My Classes", klasses_path) %>
-<%= link_to("Log Out", logout_path) %>
+</div>

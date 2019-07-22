@@ -68,6 +68,19 @@ a:hover {
   font-size: 20px;
 }
 
+.profile-page h1 {
+  background-color: rgb(71, 125, 179);
+}
+
+.profile-pic {
+  margin-left: 60px;
+}
+
+.profile-pic img {
+  width: 150px;
+  margin-left: 80px;
+}
+
 
 
 
