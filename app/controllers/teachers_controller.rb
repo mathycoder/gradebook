@@ -8,6 +8,12 @@ class TeachersController < ApplicationController
   def create
     @teacher = Teacher.new(teacher_params)
     if @teacher.save
+      uploaded_io = params[:teacher][:picture_url]
+      File.open(Rails.root.join('app', 'assets', 'images', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+        file.write(uploaded_io.read)
+      end
+      @teacher.picture_url = "uploads/#{uploaded_io.original_filename}"
+      @teacher.save
       session[:user_id] = @teacher.id
       redirect_to(klasses_path(), alert: "New account created")
     else
@@ -22,6 +28,6 @@ class TeachersController < ApplicationController
   private
 
     def teacher_params
-      params.require(:teacher).permit(:name, :email, :password, :password_confirmation)
+      params.require(:teacher).permit(:name, :email, :password, :password_confirmation, :picture_url)
     end
 end

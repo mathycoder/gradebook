@@ -24,6 +24,10 @@
           <%= f.password_field(:password_confirmation, class: "text-field", placeholder: "Confirm your password", required: true) %><br><br>
         </div>
 
+        <div>
+          <%= f.file_field :picture_url %>
+        </div>
+
         <div class="fancy-button">
           <%= f.submit("Create Teacher") %>
         </div>

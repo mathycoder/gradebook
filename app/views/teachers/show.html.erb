@@ -4,7 +4,8 @@
   </div>
 
   <div class="profile-pic">
-    <%= image_tag('silhouette.png') %>
+    <% current_user.picture_url ? (pic = current_user.picture_url) : (pic = 'silhouette.png') %>
+    <%= image_tag(pic) %>
   </div>
 
 </div>
