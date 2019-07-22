@@ -22,7 +22,7 @@
   <div class="profile-delete">
 
     <%= form_for(current_user, method: :delete) do |f| %>
-      <%= f.submit 'Delete Account', data: { confirm: 'Are you sure you want to delete this account?' } %>
+      <%= f.submit 'Delete Account', class: "little-button", data: { confirm: 'Are you sure you want to delete this account?' } %>
     <% end %>
   </div>
 

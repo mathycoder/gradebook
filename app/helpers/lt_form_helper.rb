@@ -13,13 +13,6 @@ module LtFormHelper
     html_string.html_safe
   end
 
-  # content_tag(:div, class: "class-header") do
-  #   form_for([:klass, current_klass(klass)], url: klass_redirect_path(), method: :get) do |f|
-  #     f.collection_select(:id, current_user.klasses_in_alphabetical_order, :id, :klass_name, {include_blank: "Classes"}, {class: "select-blend", onchange: "this.form.submit();"})
-  #   end
-  # end
-
-
   def generate_standard_filter_form_block(lt, klass, standard, standards)
     b = select_tag "query[grade]", options_from_collection_for_select(Standard.grades, :grade, :grade, display_grade(standard, standards)), class: "select-css", prompt: "Select a Grade"
     b << tag(:br) + tag(:br)
@@ -36,7 +29,7 @@ module LtFormHelper
   def delete_button(klass, lt)
     if !lt.new_record?
       html_string = form_for([klass, lt], method: :delete) do |d|
-        d.submit("delete")
+        d.submit("delete", data: { confirm: 'Are you sure you want to delete this learning target?'} )
       end
     html_string.html_safe
     end

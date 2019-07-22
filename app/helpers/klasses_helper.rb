@@ -7,7 +7,4 @@ module KlassesHelper
       end
     end
   end
-
-
-
 end

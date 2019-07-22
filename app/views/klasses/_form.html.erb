@@ -31,7 +31,7 @@
   <% if !klass.new_record? %>
     <%= form_for(klass, method: :delete) do |f| %>
       <div class="big-button">
-        <%= f.submit("Delete Class") %>
+        <%= f.submit("Delete Class", data: { confirm: 'Are you sure you want to delete this class?'}) %>
       </div>
     <% end %>
   <% end %>
