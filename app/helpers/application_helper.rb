@@ -18,7 +18,6 @@ module ApplicationHelper
   def logo_button(klass, path)
     link_to(path) do
       content_tag(:div, class: "header-logo") do
-        #image_tag('open-book.jpg')
         image_tag('open-book2.png')
       end
     end
@@ -90,6 +89,14 @@ module ApplicationHelper
   def mygradebook()
     content_tag(:div, class: "mygradebook") do
       content_tag(:h3, "MyGradebook")
+    end
+  end
+
+  def silhouette(path)
+    link_to(path) do
+      content_tag(:div, class: "header-profile") do
+        image_tag('silhouette.png')
+      end
     end
   end
 

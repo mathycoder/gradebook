@@ -7,8 +7,10 @@
   <%= lt_dropdown(klass, lt) %>
   <%= student_dropdown(klass, student) %>
   <%= logout_link() %>
+  <%= silhouette(teacher_path(current_user)) %>
 <% else %>
   <%= logo_button(nil, klasses_path()) %>
   <%= mygradebook() %>
   <%= logout_link() %>
+  <%= silhouette(teacher_path(current_user)) %>
 <% end %>

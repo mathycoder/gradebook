@@ -235,9 +235,18 @@ header div {
 }
 
 
-
 .header-logo img {
   width: 40px;
+}
+
+.header-profile {
+
+}
+
+.header-profile img {
+  width: 40px;
+
+
 }
 
 .header-logout {
@@ -270,7 +279,7 @@ header div {
 }
 
 
-select.select-blend { width: 22vw; text-align-last:center; }
+select.select-blend { width: 20vw; text-align-last:center; }
 
 class-header .select-blend {
   width: 22vw;
@@ -281,6 +290,9 @@ class-header .select-blend {
 main {
   padding: 0 20px 20px 20px;
   overflow-y: scroll;
+  /* background-image: url('background.png');
+  background-size: contain;
+  background-repeat: no-repeat; */
 }
 
 footer {
