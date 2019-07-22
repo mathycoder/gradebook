@@ -1,20 +1,38 @@
-<div class="paper-form">
-  <h1>Create a new Teacher account</h1>
-
-  <%= form_for(@teacher) do |f| %>
-
-    <div>
-      <%= f.label(:name, "Enter your name") %><br>
-      <%= f.text_field(:name) %><br><br>
+<%= error_display(@teacher) %>
+<div class="signup-container">
+  <div class="book-form">
+    <div class="book-form-title">
+      <h1>MyGradebook</h1><br>
+      <%= image_tag('open-book2.png', width: "100px") %>
     </div>
+    <div class="book-form-login">
+      <%= form_for(@teacher) do |f| %>
 
-    <div>
-      <%= f.label(:email, "Enter your email") %><br>
-      <%= f.text_field(:email) %><br><br>
+        <div>
+          <%= f.text_field(:name, class: "text-field", placeholder: "Enter your name", required: true) %><br><br>
+        </div>
+
+        <div>
+          <%= f.text_field(:email, class: "text-field", placeholder: "Enter your email", required: true) %><br><br>
+        </div>
+
+        <div>
+          <%= f.password_field(:password, class: "text-field", placeholder: "Create a password", required: true) %><br><br>
+        </div>
+
+        <div>
+          <%= f.password_field(:password_confirmation, class: "text-field", placeholder: "Confirm your password", required: true) %><br><br>
+        </div>
+
+        <div class="fancy-button">
+          <%= f.submit("Create Teacher") %>
+        </div>
+      <% end %>
     </div>
+  </div>
 
+  <div>
+    <h1>Create a new Teacher account</h1>
+  </div>
 
-    <%= f.submit %>
-
-  <% end %>
 </div>

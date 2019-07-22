@@ -1,6 +1,6 @@
 class TeachersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
-  
+
   def new
     @teacher = Teacher.new
   end
@@ -9,7 +9,7 @@ class TeachersController < ApplicationController
     @teacher = Teacher.new(teacher_params)
     if @teacher.save
       session[:user_id] = @teacher.id
-      redirect_to(teacher_path(@teacher))
+      redirect_to(klasses_path(), alert: "New account created")
     else
       render 'new'
     end
@@ -22,6 +22,6 @@ class TeachersController < ApplicationController
   private
 
     def teacher_params
-      params.require(:teacher).permit(:name, :email)
+      params.require(:teacher).permit(:name, :email, :password, :password_confirmation)
     end
 end

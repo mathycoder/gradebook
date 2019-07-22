@@ -1,3 +1,13 @@
+.signup-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.signup-container div {
+  width: 400px;
+}
+
+
 a {
   text-decoration: none;
   color: black;
@@ -916,6 +926,10 @@ table.gradebook .hidden {
 .student-show .rubric-title {
   background-color: rgb(217, 106, 94);
   height: 15px;
+}
+
+.signup-container .fancy-button {
+  margin-top: 20px;
 }
 
 @media only screen and (max-width: 850px) {

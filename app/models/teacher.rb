@@ -5,6 +5,10 @@ class Teacher < ApplicationRecord
   has_many :students, through: :klass_students
   has_secure_password
 
+  validates :name, length: { minimum: 3 }
+  validates :email, length: { minimum: 3 }
+  validates :password, length: { minimum: 8 }
+
   def classes_sorted_by_period
     self.klasses.sort_by{|klass| klass.period}
   end
