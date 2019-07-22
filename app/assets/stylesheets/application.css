@@ -22,6 +22,55 @@ a:hover {
   margin-left: 10px;
 }
 
+
+.open-book {
+  align-items: center;
+  padding: 1px;
+  width: 420px;
+  height: 550px;
+  margin: 40px auto;
+  background-image: url('open-gradebook2.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.open-book-title {
+  margin: 50px auto 40px auto;
+  text-align: center;
+  background-color: rgb(217, 106, 94);
+  color: white;
+  width: 300px;
+}
+
+.open-book-table {
+  margin-left: 60px;
+  font-size: 20px;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.open-book-table td, .open-book-table th {
+  height: 40px;
+}
+
+.open-book-table tr td:nth-child(1), .open-book-table tr th:nth-child(1) {
+  width: 70px;
+  text-align: left;
+}
+
+.open-book-table tr td:nth-child(2), .open-book-table tr th:nth-child(2) {
+  width: 180px;
+  text-align: left;
+}
+
+.open-book-links {
+  margin-left: 60px;
+  font-size: 20px;
+}
+
+
+
+
 .book-form {
   padding: 1px;
   width: 420px;
@@ -232,7 +281,6 @@ class-header .select-blend {
 main {
   padding: 0 20px 20px 20px;
   overflow-y: scroll;
-
 }
 
 footer {

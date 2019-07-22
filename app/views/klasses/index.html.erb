@@ -1,25 +1,26 @@
-<div class="klass-schedule">
-  <div class="klass-schedule-title">
+<div class="open-book">
+  <div class="open-book-title">
     <h1><%= current_user.name %>'s classes</h1>
   </div>
-  <table>
-    <tr>
-      <th>Period</th>
-      <th>Class</th>
-    </tr>
-    <% @klasses.each do |klass| %>
+  <div class="open-book-table">
+    <table>
       <tr>
-        <td><%= klass.period %></td>
-        <td><%= link_to(klass.name, klass_path(klass)) %></td>
-        <td class="klass-schedule-edit">
-          <%= link_to("edit", edit_klass_path(klass)) %>
-        </td>
+        <th>Period</th>
+        <th>Class</th>
       </tr>
-    <% end %>
-  </table>
+      <% @klasses.each do |klass| %>
+        <tr>
+          <td><%= klass.period %></td>
+          <td><%= link_to(klass.name, klass_path(klass)) %></td>
+          <td>
+            <%= link_to("edit", edit_klass_path(klass)) %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 
-  <div class="klass-schedule-links">
+  <div class="open-book-links">
     <p><%= link_to("Add a New Class", new_klass_path) %></p>
-    <p><%= link_to("Log Out", logout_path) %></p>
   </div>
 </div>
