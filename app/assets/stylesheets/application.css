@@ -452,6 +452,7 @@ footer {
   margin-left: -20px;
   text-decoration: none;
   position: absolute;
+  z-index: 10;
 }
 
 .field_with_errors {
@@ -584,14 +585,28 @@ input[type=text].text-field, input[type=password].text-field    {
 
 .gradebook-title {
   position: relative;
-  overflow: visible;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 120px;
   width: 250px;
   color: black;
   font-weight: lighter;
 }
 
+.gradebook-title #gradebook-details {
+  overflow: scroll;
+  word-wrap: break-word;
+}
+
+.gradebook-title #book-logo {
+  text-align: center;
+
+}
+
 .gradebook-title img {
-  margin-left: 40px;
+
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .student-name {

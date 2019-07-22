@@ -4,7 +4,7 @@
     <%= error_display(klass) %>
     <div>
       <%= f.label(:name, "Class Name") %><br>
-      <%= f.text_field(:name, {maxlength: "35", class: "text-field"}) %><br><br>
+      <%= f.text_field(:name, {maxlength: "20", class: "text-field"}) %><br><br>
     </div>
 
     <div>
@@ -14,7 +14,7 @@
 
     <div>
       <%= f.label(:grade, "Enter the grade (as a string for now)") %><br>
-      <%= f.text_field(:grade, {maxlength: "20", class: "text-field"}) %><br><br>
+      <%= f.text_field(:grade, {maxlength: "10", class: "text-field"}) %><br><br>
     </div>
 
     <div>
@@ -26,13 +26,13 @@
       <%= f.submit(submit_text) %>
       <br><br>
     </div>
+  <% end %>
 
-    <% if !klass.new_record? %>
-      <%= form_for(klass, method: :delete) do |f| %>
-        <div class="big-button">
-          <%= f.submit("Delete Class") %>
-        </div>
-      <% end %>
+  <% if !klass.new_record? %>
+    <%= form_for(klass, method: :delete) do |f| %>
+      <div class="big-button">
+        <%= f.submit("Delete Class") %>
+      </div>
     <% end %>
   <% end %>
 </div>

@@ -10,8 +10,8 @@ class Klass < ApplicationRecord
   has_many :assignments, through: :learning_targets
   has_many :grades, through: :assignments
 
-  validates :name, presence: true, length: {maximum: 35}
-  validates :grade, presence: true, length: {maximum: 20}
+  validates :name, presence: true, length: {maximum: 20}
+  validates :grade, presence: true, length: {maximum: 10}
   validates :subject, presence: true, length: {maximum: 20}
   validates :period, presence: true, numericality: true, length: {maximum: 2}
 

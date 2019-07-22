@@ -1,9 +1,15 @@
 <div class="gradebook-title">
-  <h1 style="display: inline"><%= klass.name %>'s Gradebook</h1><br>
-  <p style="display: inline">
-    <strong>Subject: </strong><%= klass.subject %>
-    <strong>Grade: </strong><%= klass.grade %>
-    <strong>Period: </strong><%= klass.period %><br>
-  <p>
-    <%= image_tag('open-book2.png', width: "150px") %>
+  <div id="gradebook-details">
+    <h2 style="display: inline"><strong><%= klass.name %>'s Gradebook</strong></h2><br>
+    <p style="display: inline">
+      <strong>Subject: </strong><%= klass.subject %>
+      <strong>Grade: </strong><%= klass.grade %>
+      <strong>Period: </strong><%= klass.period %><br>
+    <p>
+  </div>
+
+  <div id="book-logo">
+    <%= image_tag('open-book2.png') %>
+  </div>
+
 </div>
