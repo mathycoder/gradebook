@@ -14,7 +14,7 @@ class KlassesController < ApplicationController
     @klass = Klass.new(klass_params)
     if @klass.save
       current_user.klasses << @klass
-      redirect_to(klass_path(@klass), alert: "Class successfully created")
+      redirect_to(klasses_path(), alert: "Class successfully created")
     else
       render 'new'
     end

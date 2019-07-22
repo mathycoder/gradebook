@@ -1,6 +1,7 @@
 class AssignmentsController < ApplicationController
   before_action :find_klass
   before_action :find_assignment, only: [:edit, :update, :destroy]
+  before_action :require_lts
 
   def new
     @assignment = Assignment.new
@@ -38,6 +39,13 @@ class AssignmentsController < ApplicationController
 
     def assignment_params
       params.require(:assignment).permit(:name, :learning_target_id, :date, :grades_attributes => {})
+    end
+
+    def require_lts
+      unless !@klass.learning_targets.empty?
+        flash[:error] = "Before you can add assignments, you need to add your first learning target"
+        redirect_to(klass_learning_targets_url(@klass))
+      end
     end
 
 end

@@ -37,6 +37,13 @@ class TeachersController < ApplicationController
     redirect_to(teacher_path(@teacher), alert: "Profile pic updated")
   end
 
+  def destroy
+    @teacher = Teacher.find(params[:id])
+    @teacher.destroy
+    session.clear
+    redirect_to(login_path)
+  end
+
   private
 
     def teacher_params
