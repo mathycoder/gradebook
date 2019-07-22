@@ -28,6 +28,7 @@ class TeachersController < ApplicationController
   def update
     @teacher = Teacher.find(params[:id])
     uploaded_io = params[:teacher][:picture_url]
+    File.delete(Rails.root.join('app', 'assets', 'images', @teacher.picture_url))
     File.open(Rails.root.join('app', 'assets', 'images', 'uploads', uploaded_io.original_filename), 'wb') do |file|
       file.write(uploaded_io.read)
     end
