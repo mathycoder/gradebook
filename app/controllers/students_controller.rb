@@ -10,21 +10,14 @@ class StudentsController < ApplicationController
 
   def index
     set_students_instance_variable()
-    @mystudents = @klass.students_by_last_name 
+    @mystudents = @klass.students_by_last_name
   end
 
   def show
   end
 
   def update
-    if !@klass.students.include?(@student)
-      @klass.students << @student
-      @klass.assignments.each do |assignment|
-        assignment.grades.find_or_create_by(student_id: @student.id)
-      end
-    else
-      @klass.students.delete(@student)
-    end
+    @klass.students.include?(@student) ? @klass.students.delete(@student) : add_student_to_klass()
     redirect_to(klass_students_path(@klass))
   end
 
@@ -43,6 +36,13 @@ class StudentsController < ApplicationController
         @students = Student.where('first_name LIKE ? OR last_name LIKE ? OR klass LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").all - @klass.students
       else
         @students = Student.all.order(klass: :asc).order(last_name: :asc) - @klass.students
+      end
+    end
+
+    def add_student_to_klass
+      @klass.students << @student
+      @klass.assignments.each do |assignment|
+        assignment.grades.find_or_create_by(student_id: @student.id)
       end
     end
 
