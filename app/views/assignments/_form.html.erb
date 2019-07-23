@@ -1,44 +1,43 @@
-<div class="paper-form assignment">
+<%= content_tag(:div, class: ["paper-form", "assignment"]) do %>
   <%= form_for([klass,assignment]) do |f| %>
-
-    <h1><%= "#{add_or_edit} #{klass.name}" %></h1>
-
+    <%= assignment_form_title(klass, add_or_edit) %>
     <%= error_display(assignment) %>
-    <div>
-      <%= f.label(:name, "Name of assignment") %><br>
-      <%= f.text_field(:name, {class: "text-field", maxlength: "40"}) %><br><br>
-    </div>
 
-    <div>
-      <%= f.label(:date, "Date of Assignment") %><br>
-      <%= f.date_field(:date) %><br><Br>
-    </div>
+    <%= content_tag(:div) do %>
+      <%= f.label(:name, "Name of assignment") + tag(:br) %>
+      <%= f.text_field(:name, {class: "text-field", maxlength: "40"}) + tag(:br) + tag(:br) %>
+    <% end %>
 
-    <div>
+    <%= content_tag(:div) do %>
+      <%= f.label(:date, "Date of Assignment") + tag(:br) %>
+      <%= f.date_field(:date) + tag(:br) + tag(:br) %>
+    <% end %>
+
+    <%= content_tag(:div) do %>
       <%= f.collection_select :learning_target_id, klass.learning_targets, :id, :name, {include_blank: 'Select the Learning Target'}, {class: "select-css"} %><br><br>
-    </div>
+    <% end %>
 
-    <div class="assignment-form-table">
-      <table>
+    <%= content_tag(:div, class: "assignment-form-table") do %>
+      <%= content_tag(:table) do  %>
         <% klass.students.each do |student| %>
-          <tr>
+          <%= content_tag(:tr) do %>
             <%= f.fields_for(:grades, student.current_grade(assignment), include_id: false) do |br| %>
-              <div>
-                <td><%= br.label(:score, student.full_name) %></td>
-                <td><%= br.text_field(:score, {class: "text-field-grade", maxlength: "3"}) %></td>
+              <%= content_tag(:div) do %>
+                <%= content_tag(:td, br.label(:score, student.full_name)) %>
+                <%= content_tag(:td, br.label(:score, br.text_field(:score, {class: "text-field-grade", maxlength: "3"}))) %>
                 <%= br.hidden_field(:student_id, :value => student.id) %>
-              </div>
+              <% end %>
             <% end %>
-          </tr>
+          <% end %>
         <% end %>
-      </table>
-    </div>
-    <br>
-    <div class="big-button">
-      <%= f.submit %>
-    </div>
+      <% end %>
+    <% end %>
+
+    <%= content_tag(:div, class: "big-button") do %>
+      <%= tag(:br) + f.submit %>
+    <% end %>
   <% end %>
 
   <%= assignment_delete_button(klass, assignment) %>
 
-</div>
+<% end %>

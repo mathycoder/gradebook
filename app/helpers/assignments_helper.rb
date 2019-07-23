@@ -9,4 +9,9 @@ module AssignmentsHelper
     end
   end
 
+  def assignment_form_title(klass, add_or_edit)
+    content_tag(:h1, "#{add_or_edit} #{klass.name}" )
+  end
+
+
 end
