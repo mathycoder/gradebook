@@ -9,7 +9,7 @@
     <%= form_for(current_user) do |f| %>
       <div class="change-pic">
         <div>
-          <%= f.file_field :picture_url %>
+          <%= f.file_field(:picture_url, required: true) %>
         </div>
 
         <div class="change-pic-submit">

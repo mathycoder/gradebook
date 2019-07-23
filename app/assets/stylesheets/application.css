@@ -117,6 +117,7 @@ a:hover {
   width: 250px;
   border-radius: 10px;
   padding: 5px;
+  padding-left: 10px;
   margin-left: 20px;
   font-family: "Roboto", helvetica, arial, sans-serif;
   font-size: 14px;
