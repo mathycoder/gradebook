@@ -22,7 +22,7 @@
       <table>
         <% klass.students.each do |student| %>
           <tr>
-            <%= f.fields_for(:grades, student.current_grade(@assignment), include_id: false) do |br| %>
+            <%= f.fields_for(:grades, student.current_grade(assignment), include_id: false) do |br| %>
               <div>
                 <td><%= br.label(:score, student.full_name) %></td>
                 <td><%= br.text_field(:score, {class: "text-field-grade", maxlength: "3"}) %></td>
@@ -39,11 +39,6 @@
     </div>
   <% end %>
 
-  <% if !assignment.new_record? %>
-    <%= form_for([@klass, @assignment], method: :delete) do |f| %>
-      <div class="big-button">
-        <%= f.submit("Delete Assignment", data: { confirm: 'Are you sure you want to delete this assignment?'}) %>
-      </div>
-    <% end %>
-  <% end %>
+  <%= assignment_delete_button(klass, assignment) %>
+
 </div>
