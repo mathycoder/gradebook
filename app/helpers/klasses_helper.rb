@@ -86,4 +86,24 @@ module KlassesHelper
     end
   end
 
+  def blank_td?(lt)
+    content_tag(:td, nil, class: "start-of-lt") if lt.assignments.empty?
+  end
+
+  def td_display_average(klass, assignment, index)
+    content_tag(:td, class: td_display_average_classes(index)) do
+      content_tag(:div) do
+        content_tag(:strong) do
+          assignment.average(klass).to_s
+        end
+      end
+    end
+  end
+
+  def td_display_average_classes(index)
+    array = []
+    array << "start-of-lt" if index == 0
+    array
+  end
+
 end
