@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   before_action :find_klass
+  before_action :find_student, only: [:show, :update]
   before_action :require_lts, only: [:index]
 
   def redirect
@@ -17,12 +18,9 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @student = Student.find(params[:id])
   end
 
   def update
-    @student = Student.find(params[:id])
-
     if !@klass.students.include?(@student)
       @klass.students << @student
       @klass.assignments.each do |assignment|
@@ -38,6 +36,10 @@ class StudentsController < ApplicationController
 
     def find_klass
       @klass = Klass.find(params[:klass_id])
+    end
+
+    def find_student
+      @student = Student.find(params[:id])
     end
 
 end
