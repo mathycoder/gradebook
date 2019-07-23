@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def already_logged_in
+    redirect_to(klasses_path()) if logged_in?
+  end
+
 end

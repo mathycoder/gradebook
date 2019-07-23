@@ -1,5 +1,6 @@
 class TeachersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
+  before_action :already_logged_in, only: [:new]
   before_action :find_teacher, only: [:show, :update, :destroy]
   before_action :get_uploaded_io, only: [:create, :update]
 
