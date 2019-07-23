@@ -1,16 +1,12 @@
-<tr>
-  <th rowspan="2"><%= render partial: "klasses/klass_title", locals: {klass: klass} %></th>
-  <th></th>
+<%= content_tag(:tr) do %>
+  <%= klass_title(klass) %>
+  <%= content_tag(:th) %>
   <% collection.each do |target| %>
-    <th colspan="<%= target.assignments.length %>" class="<%= klass.my_color_class(target) %> start-of-lt">
-      <div class="lt-target-label-container">
-        <%= link_to(klass_learning_target_path(klass, target)) do %>
-          <%= learning_target_text(target) %>
-        <% end %>
-        <div class="assignment-label">
-          Assignments
-        </div>
-      </div>
-    </th>
+    <%= content_tag(:th, colspan: target.assignments.length , class: [klass.my_color_class(target), "start-of-lt"]) do %>
+      <%= content_tag(:div, class: "lt-target-label-container") do %>
+        <%= learning_target_link(klass, target) %>
+        <%= assignment_label() %>
+      <% end %>
+    <% end %>
   <% end %>
-</tr>
+<% end %>
