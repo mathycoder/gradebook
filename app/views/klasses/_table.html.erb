@@ -1,25 +1,7 @@
 <div class="gradebook-wrapper">
   <table class="gradebook">
-    <tr>
-      <th rowspan="2"><%= render partial: "klasses/klass_title", locals: {klass: klass} %></th>
-      <th></th>
-      <% collection.each do |target| %>
-        <th colspan="<%= target.assignments.length %>" class="<%= klass.my_color_class(target) %> start-of-lt">
-          <div class="lt-target-label-container">
-            <%= link_to(klass_learning_target_path(klass, target)) do %>
-              <div class="lt-target-label">
-                <%= target.standard.standard_notation_clean if target.standard %><br>
-                <%= target.name %>
-              </div>
-            <% end %>
 
-            <div class="assignment-label">
-              Assignments
-            </div>
-          </div>
-        </th>
-      <% end %>
-    </tr>
+    <%= render partial: "klasses/table_header_row", locals: {klass: klass, collection: collection} %>
 
     <tr>
       <td></td>
