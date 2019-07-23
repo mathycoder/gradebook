@@ -9,12 +9,8 @@ class StudentsController < ApplicationController
   end
 
   def index
-    if params[:query] && !params[:query].empty?
-      @students = Student.where('first_name LIKE ? OR last_name LIKE ? OR klass LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").all - @klass.students
-    else
-      @students = Student.all.order(klass: :asc).order(last_name: :asc) - @klass.students
-    end
-    @mystudents = @klass.students.order(last_name: :asc)
+    set_students_instance_variable()
+    @mystudents = @klass.students_by_last_name 
   end
 
   def show
@@ -40,6 +36,14 @@ class StudentsController < ApplicationController
 
     def find_student
       @student = Student.find(params[:id])
+    end
+
+    def set_students_instance_variable
+      if params[:query] && !params[:query].empty?
+        @students = Student.where('first_name LIKE ? OR last_name LIKE ? OR klass LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").all - @klass.students
+      else
+        @students = Student.all.order(klass: :asc).order(last_name: :asc) - @klass.students
+      end
     end
 
 end

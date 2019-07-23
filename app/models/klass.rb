@@ -19,6 +19,10 @@ class Klass < ApplicationRecord
     "Class #{self.name}"
   end
 
+  def students_by_last_name
+    self.students.order(last_name: :asc)
+  end
+
   def student_bar_graph_data(student)
     data = self.learning_targets.map do |lt|
       {name: lt.name, data: {"Learning Targets": lt.student_average(student)}}
