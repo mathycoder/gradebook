@@ -1,5 +1,6 @@
 class KlassesController < ApplicationController
   before_action :find_klass, only: [:show, :edit, :update, :destroy]
+  before_action :belongs_to_current_user?, only: [:show, :update, :destroy]
 
   def redirect
     @klass = Klass.find_by(id: params[:klass][:id])
@@ -25,7 +26,6 @@ class KlassesController < ApplicationController
   end
 
   def show
-    redirect_to(klass_learning_targets_path(@klass)) if @klass.learning_targets.empty?
   end
 
   def edit
@@ -43,7 +43,12 @@ class KlassesController < ApplicationController
   private
 
     def find_klass
-      @klass = Klass.find(params[:id])
+      @klass = Klass.find_by(id: params[:id])
+      redirect_to(klasses_url(), alert: "That class doesn't exist") if @klass.nil?
+    end
+
+    def belongs_to_current_user?
+      redirect_to(klasses_url(), alert: "You don't have access to this page") if !current_user.klasses.include?(@klass)
     end
 
     def klass_params
