@@ -55,4 +55,24 @@ module KlassesHelper
     end
   end
 
+  def display_assignment_and_date(klass, assignment)
+    link_to(edit_klass_assignment_path(klass, assignment)) do
+      content_tag(:div, class: "assignment-header") do
+        assignment_and_date(klass, assignment)
+      end
+    end
+  end
+
+  def assignment_and_date(klass, assignment)
+    block = ""
+    block << content_tag(:div, assignment.name)
+    block << content_tag(:div, assignment.date_display, class: "date")
+    block.html_safe
+  end
+
+  def assignment_classes(index)
+    array = ["assignments"]
+    array << "start-of-lt" if index == 0
+    array
+  end
 end
