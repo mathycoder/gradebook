@@ -20,15 +20,7 @@
     <%= content_tag(:div, class: "assignment-form-table") do %>
       <%= content_tag(:table) do  %>
         <% klass.students.each do |student| %>
-          <%= content_tag(:tr) do %>
-            <%= f.fields_for(:grades, student.current_grade(assignment), include_id: false) do |br| %>
-              <%= content_tag(:div) do %>
-                <%= content_tag(:td, br.label(:score, student.full_name)) %>
-                <%= content_tag(:td, br.label(:score, br.text_field(:score, {class: "text-field-grade", maxlength: "3"}))) %>
-                <%= br.hidden_field(:student_id, :value => student.id) %>
-              <% end %>
-            <% end %>
-          <% end %>
+          <%= display_field_for_grades(f, student, assignment) %>
         <% end %>
       <% end %>
     <% end %>
