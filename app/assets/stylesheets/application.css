@@ -600,7 +600,15 @@ input[type=text].text-field, input[type=password].text-field    {
 .gradebook-title #gradebook-details {
   overflow: scroll;
   word-wrap: break-word;
+}
 
+
+#gradebook-details h2 {
+  display: inline;
+}
+
+#class-details {
+  display: inline;
 }
 
 .gradebook-title #book-logo {

@@ -1,15 +1,9 @@
-<div class="gradebook-title">
-  <div id="gradebook-details">
-    <h2 style="display: inline"><strong><%= klass.name %>'s Gradebook</strong></h2><br>
-    <p style="display: inline">
-      <strong>Subject: </strong><%= klass.subject %>
-      <strong>Grade: </strong><%= klass.grade %>
-      <strong>Period: </strong><%= klass.period %>
-    <p>
-  </div>
-
-  <div id="book-logo">
+<%= content_tag(:div, class: "gradebook-title") do %>
+  <%= content_tag(:div, id: "gradebook-details") do %>
+    <%= klass_gradebook_title(klass) %>
+    <%= klass_details(klass) %>
+  <% end %>
+  <%= content_tag(:div, id: "book-logo") do %>
     <%= image_tag('open-book2.png') %>
-  </div>
-
-</div>
+  <% end %>
+<% end %>

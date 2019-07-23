@@ -34,4 +34,25 @@ module KlassesHelper
     end
   end
 
+  def klass_details(klass)
+    content_tag(:div, id: "class-details") do
+      block = ""
+      block << content_tag(:strong, "Subject: ") + klass.subject
+      block << content_tag(:strong, "\sGrade: ") + klass.grade
+      block << content_tag(:strong, "\sPeriod: ") + klass.period.to_s
+      block << tag(:br) + tag(:br)
+      block.html_safe
+    end
+  end
+
+  def klass_gradebook_title(klass)
+    content_tag(:h2) do
+      content_tag(:strong) do
+        block = "#{klass.name}'s Gradebook"
+        block << tag(:br)
+        block.html_safe
+      end
+    end
+  end
+
 end
