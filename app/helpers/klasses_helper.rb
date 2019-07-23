@@ -106,4 +106,36 @@ module KlassesHelper
     array
   end
 
+  def td_link_to_student(klass, student)
+    content_tag(:td, class: "student-name") do
+      link_to klass_student_path(klass, student) do
+        content_tag(:div, class: "student-column") do
+          student.full_name
+        end
+      end
+    end
+  end
+
+  def td_student_average(student, klass_or_lt)
+    content_tag(:td, class: "average") do
+      content_tag(:p) do
+        content_tag(:strong) do
+          student.average(klass_or_lt)
+        end
+      end
+    end
+  end
+
+  def td_display_score(grade, index)
+    content_tag(:td, class: td_display_score_classes(index)) do
+      grade.score.to_s if grade
+    end
+  end
+
+  def td_display_score_classes(index)
+    array = ["score"]
+    array << "start-of-lt" if index == 0
+    array
+  end
+
 end
