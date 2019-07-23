@@ -1,5 +1,6 @@
 class KlassesController < ApplicationController
   before_action :find_klass, only: [:show, :edit, :update, :destroy]
+  before_action :require_lts, only: [:show]
   before_action :belongs_to_current_user?, only: [:show, :update, :destroy]
 
   def redirect

@@ -17,7 +17,6 @@ class AssignmentsController < ApplicationController
   end
 
   def update
-    #@assignment.update(assignment_params)
     @assignment.update(assignment_params) ? (redirect_to(klass_path(@klass), alert: "Assignment successfully updated")) : (render 'edit')
   end
 

@@ -1,13 +1,13 @@
 class StudentsController < ApplicationController
+  before_action :find_klass
+  before_action :require_lts, only: [:index]
 
   def redirect
-    @klass = Klass.find(params[:klass_id])
     @student = Student.find_by(id: params[:student][:id])
     @student ? redirect_to(klass_student_path(@klass, @student)) : redirect_to(klass_students_path(@klass))
   end
 
   def index
-    @klass = Klass.find(params[:klass_id])
     if params[:query] && !params[:query].empty?
       @students = Student.where('first_name LIKE ? OR last_name LIKE ? OR klass LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").all - @klass.students
     else
@@ -17,12 +17,10 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @klass = Klass.find(params[:klass_id])
     @student = Student.find(params[:id])
   end
 
   def update
-    @klass = Klass.find(params[:klass_id])
     @student = Student.find(params[:id])
 
     if !@klass.students.include?(@student)
@@ -35,4 +33,11 @@ class StudentsController < ApplicationController
     end
     redirect_to(klass_students_path(@klass))
   end
+
+  private
+
+    def find_klass
+      @klass = Klass.find(params[:klass_id])
+    end
+
 end

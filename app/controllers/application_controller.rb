@@ -23,4 +23,7 @@ class ApplicationController < ActionController::Base
     redirect_to(klasses_path()) if logged_in?
   end
 
+  def require_lts
+    redirect_to(klass_learning_targets_url(@klass)) if @klass.learning_targets.empty?
+  end
 end

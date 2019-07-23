@@ -40,7 +40,8 @@ class TeachersController < ApplicationController
   private
 
     def find_teacher
-      @teacher = Teacher.find(params[:id])
+      @teacher = Teacher.find_by(id: params[:id])
+      redirect_to(klasses_url(), alert: "That path doesn't exist") if @teacher.nil?
     end
 
     def matches_current_user?
