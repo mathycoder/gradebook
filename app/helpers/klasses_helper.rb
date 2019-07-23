@@ -126,4 +126,14 @@ module KlassesHelper
     array
   end
 
+  def klass_delete_button(klass)
+    if !klass.new_record?
+      form_for(klass, method: :delete) do |f|
+        content_tag(:div, class: "big-button") do
+          f.submit("Delete Class", data: { confirm: 'Are you sure you want to delete this class?'})
+        end
+      end
+    end
+  end
+
 end
