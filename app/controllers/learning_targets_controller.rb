@@ -57,11 +57,14 @@ class LearningTargetsController < ApplicationController
     end
 
     def find_klass
-      @klass = Klass.find(params[:klass_id])
+      @klass = Klass.find_by(id: params[:klass_id])
+      redirect_to(klasses_url(), alert: "You don't have access to that klass") if @klass.nil? || !current_user.klasses.include?(@klass)
     end
 
     def find_lt
-      @lt = LearningTarget.find(params[:id])
+      @lt = LearningTarget.find_by(id: params[:id])
+      redirect_to(klass_learning_targets_url(@klass), alert: "You don't have access to that learning target") if !@klass.learning_targets.include?(@lt)
+
     end
 
     def lt_params
