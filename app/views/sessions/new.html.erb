@@ -3,8 +3,17 @@
     <h1>MyGradebook</h1><br>
     <%= image_tag('open-book2.png', width: "100px") %>
   </div>
-  <br><br>
+  <br>
   <div class="book-form-login">
+    <div>
+      <%= radio_button_tag(:type, "teacher") %>
+      Teacher
+      <%= radio_button_tag(:type, "admin") %>
+      Administrator
+      <%= radio_button_tag(:type, "student") %>
+      Student
+    </div>
+    <br>
     <%= form_for(@teacher, :url => {controller: 'sessions', action: 'create', method: 'post'}) do |f| %>
       <div>
         <%= f.text_field(:email, class: "text-field", placeholder: "Enter your email", required: true) %><br><br>

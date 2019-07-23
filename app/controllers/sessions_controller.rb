@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    binding.pry
     @teacher = Teacher.find_by(email: params[:teacher][:email])
     if @teacher.nil?
       redirect_to(login_path, alert: "No account matches that email") if !@teacher
