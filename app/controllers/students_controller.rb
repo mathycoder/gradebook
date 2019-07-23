@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
   before_action :find_klass
   before_action :find_student, only: [:show, :update]
+  before_action :student_in_class?, only: [:show]
   before_action :require_lts, only: [:index]
 
   def redirect
@@ -24,11 +25,17 @@ class StudentsController < ApplicationController
   private
 
     def find_klass
-      @klass = Klass.find(params[:klass_id])
+      @klass = Klass.find_by(id: params[:klass_id])
+      redirect_to(klasses_url(), alert: "That class doesn't exist") if @klass.nil?
     end
 
     def find_student
-      @student = Student.find(params[:id])
+      @student = Student.find_by(id: params[:id])
+      redirect_to(klass_students_url(@klass), alert: "That student doesn't exist") if @student.nil?
+    end
+
+    def student_in_class?
+      redirect_to(klass_students_url(@klass), alert: "That student isn't in this class") if !@klass.students.include?(@student)
     end
 
     def set_students_instance_variable
