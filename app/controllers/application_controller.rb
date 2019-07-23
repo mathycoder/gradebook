@@ -12,6 +12,11 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def find_klass_nested_route
+    @klass = Klass.find_by(id: params[:klass_id])
+    redirect_to(klasses_url(), alert: "You don't have access to that class") if @klass.nil? || !current_user.klasses.include?(@klass)
+  end
+
   def require_login
     unless logged_in?
       flash[:error] = "You must be logged in to access this section"

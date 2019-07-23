@@ -1,5 +1,5 @@
 class LearningTargetsController < ApplicationController
-  before_action :find_klass
+  before_action :find_klass_nested_route
   before_action :find_lt, only: [:show, :edit, :update, :destroy]
 
   def redirect
@@ -54,11 +54,6 @@ class LearningTargetsController < ApplicationController
 
     def set_standards_based_on_search_query(current_standard)
       params[:query] ? @standards = Standard.by_grade(params[:query][:grade]) : @standards = current_standard
-    end
-
-    def find_klass
-      @klass = Klass.find_by(id: params[:klass_id])
-      redirect_to(klasses_url(), alert: "You don't have access to that klass") if @klass.nil? || !current_user.klasses.include?(@klass)
     end
 
     def find_lt

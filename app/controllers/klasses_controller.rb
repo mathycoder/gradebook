@@ -1,7 +1,6 @@
 class KlassesController < ApplicationController
   before_action :find_klass, only: [:show, :edit, :update, :destroy]
   before_action :require_lts, only: [:show]
-  before_action :belongs_to_current_user?, only: [:show, :update, :destroy]
 
   def redirect
     @klass = Klass.find_by(id: params[:klass][:id])
@@ -45,11 +44,7 @@ class KlassesController < ApplicationController
 
     def find_klass
       @klass = Klass.find_by(id: params[:id])
-      redirect_to(klasses_url(), alert: "That class doesn't exist") if @klass.nil?
-    end
-
-    def belongs_to_current_user?
-      redirect_to(klasses_url(), alert: "You don't have access to this page") if !current_user.klasses.include?(@klass)
+      redirect_to(klasses_url(), alert: "You don't have access to that class") if @klass.nil? || !current_user.klasses.include?(@klass)
     end
 
     def klass_params

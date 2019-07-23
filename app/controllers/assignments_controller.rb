@@ -1,5 +1,5 @@
 class AssignmentsController < ApplicationController
-  before_action :find_klass
+  before_action :find_klass_nested_route
   before_action :find_assignment, only: [:edit, :update, :destroy]
   before_action :require_lts
 
@@ -28,12 +28,9 @@ class AssignmentsController < ApplicationController
 
   private
 
-    def find_klass
-      @klass = Klass.find(params[:klass_id])
-    end
-
     def find_assignment
-      @assignment = Assignment.find(params[:id])
+      @assignment = Assignment.find_by(id: params[:id])
+      redirect_to(klass_path(@klass), alert: "You don't have access to that assignment") if @assignment.nil? || !@klass.assignments.include?(@assignment)
     end
 
     def assignment_params

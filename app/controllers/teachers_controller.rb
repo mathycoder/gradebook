@@ -2,7 +2,6 @@ class TeachersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
   before_action :already_logged_in, only: [:new]
   before_action :find_teacher, only: [:show, :update, :destroy]
-  before_action :matches_current_user?, only: [:show, :update]
   before_action :get_uploaded_io, only: [:create, :update]
 
   def new
@@ -41,11 +40,7 @@ class TeachersController < ApplicationController
 
     def find_teacher
       @teacher = Teacher.find_by(id: params[:id])
-      redirect_to(klasses_url(), alert: "That path doesn't exist") if @teacher.nil?
-    end
-
-    def matches_current_user?
-      redirect_to(klasses_url(), alert: "You don't have permission to perform this action") if @teacher != current_user
+      redirect_to(klasses_url(), alert: "You don't have access to that teacher") if @teacher.nil? ||  @teacher != current_user
     end
 
     def get_uploaded_io
