@@ -1,41 +1,8 @@
 <div class="gradebook-wrapper">
   <table class="gradebook">
-
     <%= render partial: "klasses/table_header_row", locals: {klass: klass, collection: collection} %>
-
-    <tr>
-      <td></td>
-
-      <% collection.each do |lt| %>
-        <%= content_tag(:td) if lt.assignments.empty? %>
-        <% lt.chronological_assignments.each_with_index do |assignment, index| %>
-          <td class="assignments <%= "start-of-lt" if index == 0 %>">
-            <%= link_to(edit_klass_assignment_path(klass, assignment)) do %>
-              <div class="assignment-header">
-                <div><%= assignment.name %></div>
-                <div class="date"><%= assignment.date_display %></div>
-              </div>
-            <% end %>
-          </td>
-        <% end %>
-      <% end %>
-    </tr>
-
-    <tr>
-      <td>
-        <div id="student-label"><strong>Students</strong></div>
-      </td>
-      <td id="average"><div><strong>Average</strong></div></td>
-
-      <% collection.each do |lt| %>
-        <%= content_tag(:td, nil, class: "start-of-lt") if lt.assignments.empty? %>
-        <% lt.chronological_assignments.each_with_index do |assignment, index| %>
-          <td class="<%= "start-of-lt" if index == 0 %>"><div><strong><%= assignment.average(klass) %></strong></div></td>
-        <% end %>
-      <% end %>
-    </tr>
-
+    <%= render partial: "klasses/table_assignments_row", locals: {klass: klass, collection: collection} %>
+    <%= render partial: "klasses/table_averages_row", locals: {klass: klass, collection: collection, klass_or_lt: klass_or_lt} %>
     <%= render partial: "klasses/table_student_rows", locals: {klass: klass, collection: collection, klass_or_lt: klass_or_lt} %>
-
   </table>
 </div>

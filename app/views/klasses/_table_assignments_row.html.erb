@@ -1,0 +1,16 @@
+<tr>
+  <td></td>
+  <% collection.each do |lt| %>
+    <%= content_tag(:td) if lt.assignments.empty? %>
+    <% lt.chronological_assignments.each_with_index do |assignment, index| %>
+      <td class="assignments <%= "start-of-lt" if index == 0 %>">
+        <%= link_to(edit_klass_assignment_path(klass, assignment)) do %>
+          <div class="assignment-header">
+            <div><%= assignment.name %></div>
+            <div class="date"><%= assignment.date_display %></div>
+          </div>
+        <% end %>
+      </td>
+    <% end %>
+  <% end %>
+</tr>

@@ -1,0 +1,13 @@
+<tr>
+  <td>
+    <div id="student-label"><strong>Students</strong></div>
+  </td>
+  <td id="average"><div><strong>Average</strong></div></td>
+
+  <% collection.each do |lt| %>
+    <%= content_tag(:td, nil, class: "start-of-lt") if lt.assignments.empty? %>
+    <% lt.chronological_assignments.each_with_index do |assignment, index| %>
+      <td class="<%= "start-of-lt" if index == 0 %>"><div><strong><%= assignment.average(klass) %></strong></div></td>
+    <% end %>
+  <% end %>
+</tr>
