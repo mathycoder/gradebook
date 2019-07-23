@@ -5,10 +5,7 @@
     <th colspan="<%= target.assignments.length %>" class="<%= klass.my_color_class(target) %> start-of-lt">
       <div class="lt-target-label-container">
         <%= link_to(klass_learning_target_path(klass, target)) do %>
-          <div class="lt-target-label">
-            <%= target.standard.standard_notation_clean if target.standard %><br>
-            <%= target.name %>
-          </div>
+          <%= learning_target_text(target) %>
         <% end %>
         <div class="assignment-label">
           Assignments

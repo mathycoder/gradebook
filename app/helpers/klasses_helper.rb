@@ -7,4 +7,15 @@ module KlassesHelper
       end
     end
   end
+
+  def learning_target_text(target)
+    content_tag(:div, class: "lt-target-label") do
+      block = ""
+      block << target.standard.standard_notation_clean if target.standard
+      block << tag(:br)
+      block << target.name
+      block.html_safe
+    end
+  end
+
 end
