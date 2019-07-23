@@ -573,6 +573,10 @@ input[type=text].text-field, input[type=password].text-field    {
   padding-right: 100px;
 }
 
+.strong-label {
+  text-align: left;
+}
+
 /* edits the first column of students */
 .gradebook-wrapper table.gradebook tr td:first-child, .gradebook-wrapper table.gradebook tr th:first-child {
   min-width: 130px;
@@ -658,13 +662,7 @@ table.gradebook tr:nth-child(2n+4) td:first-child {
   height: 47px; */
 }
 
-#average {
-  height: 30px;
-}
 
-#student-label {
-  margin-left: 2px;
-}
 
 
 

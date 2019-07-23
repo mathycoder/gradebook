@@ -75,4 +75,15 @@ module KlassesHelper
     array << "start-of-lt" if index == 0
     array
   end
+
+  def td_strong_label(text)
+    content_tag(:td) do
+      content_tag(:div) do
+        content_tag(:strong) do
+          "#{text}"
+        end
+      end
+    end
+  end
+
 end
