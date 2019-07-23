@@ -3,7 +3,7 @@
   <% collection.each do |lt| %>
     <%= content_tag(:td) if lt.assignments.empty? %>
     <% lt.chronological_assignments.each_with_index do |assignment, index| %>
-      <%= content_tag(:td, class: assignment_classes(index)) do %>
+      <%= content_tag(:td, class: td_classes(index, "assignments")) do %>
         <%= display_assignment_and_date(klass, assignment) %>
       <% end %>
     <% end %>

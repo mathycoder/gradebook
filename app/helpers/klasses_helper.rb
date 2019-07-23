@@ -70,12 +70,6 @@ module KlassesHelper
     block.html_safe
   end
 
-  def assignment_classes(index)
-    array = ["assignments"]
-    array << "start-of-lt" if index == 0
-    array
-  end
-
   def td_strong_label(text)
     content_tag(:td) do
       content_tag(:div) do
@@ -91,19 +85,13 @@ module KlassesHelper
   end
 
   def td_display_average(klass, assignment, index)
-    content_tag(:td, class: td_display_average_classes(index)) do
+    content_tag(:td, class: td_classes(index)) do
       content_tag(:div) do
         content_tag(:strong) do
           assignment.average(klass).to_s
         end
       end
     end
-  end
-
-  def td_display_average_classes(index)
-    array = []
-    array << "start-of-lt" if index == 0
-    array
   end
 
   def td_link_to_student(klass, student)
@@ -127,13 +115,13 @@ module KlassesHelper
   end
 
   def td_display_score(grade, index)
-    content_tag(:td, class: td_display_score_classes(index)) do
+    content_tag(:td, class: td_classes(index, "score")) do
       grade.score.to_s if grade
     end
   end
 
-  def td_display_score_classes(index)
-    array = ["score"]
+  def td_classes(index, initial_class=nil)
+    array = [initial_class]
     array << "start-of-lt" if index == 0
     array
   end
