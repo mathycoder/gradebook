@@ -5,16 +5,18 @@
   </div>
   <br>
   <div class="book-form-login">
-    <div>
-      <%= radio_button_tag(:type, "teacher") %>
-      Teacher
-      <%= radio_button_tag(:type, "admin") %>
-      Administrator
-      <%= radio_button_tag(:type, "student") %>
-      Student
-    </div>
-    <br>
-    <%= form_for(@teacher, :url => {controller: 'sessions', action: 'create', method: 'post'}) do |f| %>
+    <%= form_for(@session, :url => {controller: 'sessions', action: 'create', method: 'post'}) do |f| %>
+      <div>
+        <%= f.radio_button(:type, "teacher") %>
+        Teacher
+        <%= f.radio_button(:type, "admin") %>
+        Administrator
+        <%= f.radio_button(:type, "student") %>
+        Student
+      </div>
+
+      <br>
+
       <div>
         <%= f.text_field(:email, class: "text-field", placeholder: "Enter your email", required: true) %><br><br>
       </div>
