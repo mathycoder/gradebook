@@ -5,6 +5,7 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
+    @students = Student.all
   end
 
   def create
@@ -42,7 +43,7 @@ class StudentsController < ApplicationController
 
     def find_student
       @student = Student.find_by(id: params[:id])
-      redirect_to(klass_students_url(@klass), alert: "You don't have access to that student") if @student.nil? || !@klass.students.include?(@student)
+      redirect_to(klass_students_url(@klass), alert: "You don't have access to that student") if @student.nil?
     end
 
     def set_students_instance_variable

@@ -1,29 +1,53 @@
-<div class="paper-form">
-  <h1>Add New Student to school</h1>
-  <%= form_for(@student) do |f| %>
-    <%= error_display(@student) %>
+<h1>Add New Student to School</h1>
+<div class="student-list-container">
+  <div class="paper-form">
+    <h2>New Student</h2>
+    <%= form_for(@student) do |f| %>
+      <%= error_display(@student) %>
 
-    <div>
       <%= f.text_field(:first_name, {maxlength: "20", class: "text-field", placeholder: "First Name"}) %><br><br>
-    </div>
-
-    <div>
       <%= f.text_field(:last_name, {maxlength: "20", class: "text-field", placeholder: "Last Name"}) %><br><br>
-    </div>
-
-    <div>
       <%= f.text_field(:grade, {maxlength: "4", class: "text-field", placeholder: "Grade"}) %><br><br>
-    </div>
-
-    <div>
       <%= f.text_field(:klass, {maxlength: "3", class: "text-field", placeholder: "Homeroom"}) %><br><br>
+
+      <br>
+
+      <div class="big-button">
+        <%= f.submit() %>
+      </div>
+
+    <% end %>
+  </div>
+
+  <div class="students-in-school paper-form">
+    <h3>Students in the school</h3>
+
+    <%= form_tag(new_student_path(), method: "get") do %>
+      <%= text_field_tag('query', nil, placeholder: "Filter by name or class") %>
+      <%= submit_tag("Filter", class: "little-button") %>
+      <%= submit_tag('clear', class: "little-button") %>
+    <% end %><br>
+
+    <div class="listed-students">
+      <table>
+        <tr>
+          <th></th>
+          <th>Last Name</th>
+          <th>First Name</th>
+          <th>Grade</th>
+          <th>HR</th>
+        </tr>
+        <% @students.each do |student| %>
+          <tr>
+            <td>
+            </td>
+            <td><%= student.last_name %></td>
+            <td><%= student.first_name %></td>
+            <td><%= student.grade %></td>
+            <td><%= student.klass %></td>
+          </tr>
+        <% end %>
+      </table>
     </div>
-
-    <br>
-
-    <div class="big-button">
-      <%= f.submit() %>
-    </div>
-
-  <% end %>
+  </div>
 </div>
