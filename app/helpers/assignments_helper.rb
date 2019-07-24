@@ -16,10 +16,15 @@ module AssignmentsHelper
 
   def display_field_for_grades(f, student, assignment)
     content_tag(:tr) do
-      f.fields_for(:grades, student.current_grade(assignment), include_id: false) do |br|
+      f.fields_for(:grades, current_grade(student, assignment), include_id: false) do |br|
         student_name_and_score_field(student, br)
       end
     end
+  end
+
+  def current_grade(student, assignment)
+    grade = @assignment.grades.find{|grade| grade.student_id == student.id}
+    grade ? grade : assignment.grades.build()
   end
 
 

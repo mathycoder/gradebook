@@ -5,16 +5,16 @@
 
     <%= content_tag(:div) do %>
       <%= f.label(:name, "Name of assignment") + tag(:br) %>
-      <%= f.text_field(:name, {class: "text-field", maxlength: "40"}) + tag(:br) + tag(:br) %>
+      <%= f.text_field(:name, {class: "text-field", maxlength: "40", required: true}) + tag(:br) + tag(:br) %>
     <% end %>
 
     <%= content_tag(:div) do %>
       <%= f.label(:date, "Date of Assignment") + tag(:br) %>
-      <%= f.date_field(:date) + tag(:br) + tag(:br) %>
+      <%= f.date_field(:date, required: true) + tag(:br) + tag(:br) %>
     <% end %>
 
     <%= content_tag(:div) do %>
-      <%= f.collection_select :learning_target_id, klass.learning_targets, :id, :name, {include_blank: 'Select the Learning Target'}, {class: "select-css"} %><br><br>
+      <%= f.collection_select :learning_target_id, klass.learning_targets, :id, :name, {include_blank: 'Select the Learning Target'}, {class: "select-css", required: true} %><br><br>
     <% end %>
 
     <%= content_tag(:div, class: "assignment-form-table") do %>

@@ -6,11 +6,9 @@
   <br>
   <div class="book-form-login">
     <%= form_for(@session, :url => {controller: 'sessions', action: 'create', method: 'post'}) do |f| %>
-      <div>
+      <div class="radio-buttons">
         <%= f.radio_button(:type, "teacher", checked: true) %>
         Teacher
-        <%= f.radio_button(:type, "admin") %>
-        Administrator
         <%= f.radio_button(:type, "student") %>
         Student
       </div>

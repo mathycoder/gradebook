@@ -5,7 +5,6 @@ class Assignment < ApplicationRecord
   accepts_nested_attributes_for :grades
   validates :name, presence: true, length: { maximum: 40 }
   validates :date, presence: true
-  validates_associated :grades
 
 
   def grades_attributes=(grades_hash)
@@ -24,7 +23,6 @@ class Assignment < ApplicationRecord
 
   def set_remaining_scores_to_nil
     self.learning_target.students.each do |student|
-      #binding.pry
       if !self.grades.find{|grade| grade.student == student} && !Grade.find_by(student_id: attributes[:student_id], assignment_id: self.id)
         self.grades.build(score: nil, student_id: student.id)
       end
