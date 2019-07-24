@@ -19,6 +19,19 @@
   width: 400px;
 }
 
+.signup-container .promos {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.signup-container .promos div {
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+
 
 a {
   text-decoration: none;
