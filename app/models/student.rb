@@ -5,6 +5,11 @@ class Student < ApplicationRecord
   has_many :teachers, through: :teacher_klasses
   has_many :grades
 
+  validates :first_name, presence: true, length: {maximum: 20}
+  validates :last_name, presence: true, length: {maximum: 20}
+  validates :grade, presence: true, length: {maximum: 4}
+  validates :klass, presence: true, length: {maximum: 5}
+
 
   def full_name
     "#{self.last_name}, #{self.first_name}"

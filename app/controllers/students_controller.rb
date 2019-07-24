@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
   before_action :find_klass_nested_route, only: [:redirect, :index, :show]
-  before_action :find_student, only: [:show]
+  before_action :find_student, only: [:show, :edit, :destroy]
+  before_action :student_in_klass?, only: [:show]
   before_action :require_lts, only: [:index]
 
   def new
@@ -13,6 +14,7 @@ class StudentsController < ApplicationController
     if @student.save
       redirect_to(new_student_url(), alert: "#{@student.first_name} added to the school")
     else
+      set_students_instance_variable()
       render 'new'
     end
   end
@@ -31,7 +33,6 @@ class StudentsController < ApplicationController
   end
 
   def edit
-    @student = Student.find_by(id: params[:id])
     set_students_instance_variable()
   end
 
@@ -43,12 +44,16 @@ class StudentsController < ApplicationController
       redirect_to(klass_students_path(@klass))
     else
       @student = Student.find_by(id: params[:id])
-      @student.update(student_params) ? (redirect_to(new_student_path(), alert: "Student updated")) : (render 'edit')
+      if @student.update(student_params)
+        redirect_to(new_student_path(), alert: "Student updated")
+      else
+        set_students_instance_variable()
+        render 'edit'
+      end
     end
   end
 
   def destroy
-    @student = Student.find_by(id: params[:id])
     @student.destroy
     redirect_to(new_student_path(), alert: "Student Deleted from School")
   end
@@ -61,7 +66,11 @@ class StudentsController < ApplicationController
 
     def find_student
       @student = Student.find_by(id: params[:id])
-      redirect_to(klass_students_url(@klass), alert: "You don't have access to that student") if @student.nil?
+      redirect_to(klasses_url(), alert: "You don't have access to that student") if @student.nil?
+    end
+
+    def student_in_klass?
+      redirect_to(klass_students_url(@klass), alert: "You don't have access to that student") if !@klass.students.include?(@student)
     end
 
     def set_students_instance_variable()
