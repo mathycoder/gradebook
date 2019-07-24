@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
-    @students = Student.all
+    set_students_instance_variable()
   end
 
   def create
@@ -46,11 +46,13 @@ class StudentsController < ApplicationController
       redirect_to(klass_students_url(@klass), alert: "You don't have access to that student") if @student.nil?
     end
 
-    def set_students_instance_variable
+    def set_students_instance_variable()
       if params[:query] && !params[:query].empty?
-        @students = Student.where('first_name LIKE ? OR last_name LIKE ? OR klass LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").all - @klass.students
+        @students = Student.where('first_name LIKE ? OR last_name LIKE ? OR klass LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").all
+        @students = @students - @klass.students if @klass
       else
-        @students = Student.all.order(klass: :asc).order(last_name: :asc) - @klass.students
+        @students = Student.all.order(klass: :asc).order(last_name: :asc)
+        @students = @students - @klass.students if @klass
       end
     end
 
