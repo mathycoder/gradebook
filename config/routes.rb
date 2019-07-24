@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :students, only: [:new, :create, :edit, :update, :delete]
+  resources :students, only: [:new, :create, :edit, :update, :destroy]
 
   get '/classes/redirect', to: "klasses#redirect", as: "klass_redirect"
 

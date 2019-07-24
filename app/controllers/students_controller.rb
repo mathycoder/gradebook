@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :find_klass_nested_route, :except => [:new, :create, :edit, :update]
+  before_action :find_klass_nested_route, only: [:redirect, :index, :show]
   before_action :find_student, only: [:show]
   before_action :require_lts, only: [:index]
 
@@ -45,6 +45,12 @@ class StudentsController < ApplicationController
       @student = Student.find_by(id: params[:id])
       @student.update(student_params) ? (redirect_to(new_student_path(), alert: "Student updated")) : (render 'edit')
     end
+  end
+
+  def destroy
+    @student = Student.find_by(id: params[:id])
+    @student.destroy
+    redirect_to(new_student_path(), alert: "Student Deleted from School")
   end
 
   private
