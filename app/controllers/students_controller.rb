@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
-  before_action :find_klass_nested_route, :except => [:new, :create, :edit]
-  before_action :find_student, only: [:show, :update]
+  before_action :find_klass_nested_route, :except => [:new, :create, :edit, :update]
+  before_action :find_student, only: [:show]
   before_action :require_lts, only: [:index]
 
   def new
@@ -36,8 +36,15 @@ class StudentsController < ApplicationController
   end
 
   def update
-    @klass.students.include?(@student) ? @klass.students.delete(@student) : add_student_to_klass()
-    redirect_to(klass_students_path(@klass))
+    if params[:klass_id]
+      find_klass_nested_route()
+      find_student()
+      @klass.students.include?(@student) ? @klass.students.delete(@student) : add_student_to_klass()
+      redirect_to(klass_students_path(@klass))
+    else
+      @student = Student.find_by(id: params[:id])
+      @student.update(student_params) ? (redirect_to(new_student_path(), alert: "Student updated")) : (render 'edit')
+    end
   end
 
   private
