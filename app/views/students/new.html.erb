@@ -1,0 +1,29 @@
+<div class="paper-form">
+  <h1>Add New Student to school</h1>
+  <%= form_for(@student) do |f| %>
+    <%= error_display(@student) %>
+
+    <div>
+      <%= f.text_field(:first_name, {maxlength: "20", class: "text-field", placeholder: "First Name"}) %><br><br>
+    </div>
+
+    <div>
+      <%= f.text_field(:last_name, {maxlength: "20", class: "text-field", placeholder: "Last Name"}) %><br><br>
+    </div>
+
+    <div>
+      <%= f.text_field(:grade, {maxlength: "4", class: "text-field", placeholder: "Grade"}) %><br><br>
+    </div>
+
+    <div>
+      <%= f.text_field(:klass, {maxlength: "3", class: "text-field", placeholder: "Homeroom"}) %><br><br>
+    </div>
+
+    <br>
+
+    <div class="big-button">
+      <%= f.submit() %>
+    </div>
+
+  <% end %>
+</div>

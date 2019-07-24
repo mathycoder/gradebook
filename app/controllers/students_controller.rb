@@ -1,7 +1,20 @@
 class StudentsController < ApplicationController
-  before_action :find_klass_nested_route
+  before_action :find_klass_nested_route, :except => [:new, :create]
   before_action :find_student, only: [:show, :update]
   before_action :require_lts, only: [:index]
+
+  def new
+    @student = Student.new
+  end
+
+  def create
+    @student = Student.new(student_params)
+    if @student.save
+      redirect_to(new_student_url(), alert: "#{@student.first_name} added to the school")
+    else
+      render 'new'
+    end
+  end
 
   def redirect
     @student = Student.find_by(id: params[:student][:id])
@@ -22,6 +35,10 @@ class StudentsController < ApplicationController
   end
 
   private
+
+    def student_params
+      params.require(:student).permit(:first_name, :last_name, :grade, :klass)
+    end
 
     def find_student
       @student = Student.find_by(id: params[:id])
