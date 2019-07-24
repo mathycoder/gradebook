@@ -1,6 +1,6 @@
 <div class="student-list-container">
   <div class="paper-form">
-    <h2>New Student</h2>
+    <h2>Student</h2>
     <%= form_for(student) do |f| %>
       <%= error_display(student) %>
 
@@ -39,6 +39,9 @@
         <% students.each do |st| %>
           <tr>
             <td>
+              <%= form_tag(edit_student_path(st), method: "get") do %>
+                <%= submit_tag("edit", class: "little-button") %>
+              <% end %>
             </td>
             <td><%= st.last_name %></td>
             <td><%= st.first_name %></td>

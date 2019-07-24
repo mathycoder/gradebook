@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :find_klass_nested_route, :except => [:new, :create]
+  before_action :find_klass_nested_route, :except => [:new, :create, :edit]
   before_action :find_student, only: [:show, :update]
   before_action :require_lts, only: [:index]
 
@@ -28,6 +28,11 @@ class StudentsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+    @student = Student.find_by(id: params[:id])
+    set_students_instance_variable()
   end
 
   def update
