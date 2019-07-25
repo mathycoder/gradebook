@@ -6,6 +6,7 @@ ruby '2.6.1'
 #omniauth
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-rails_csrf_protection'
 
 #For using the standards API
 gem 'dotenv-rails'
