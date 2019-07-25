@@ -32,6 +32,9 @@ Rails.application.routes.draw do
     resources :learning_targets, :path => 'lts'
   end
 
-  #resources :standards
+  #omniauth
+  get '/auth/facebook/callback' => 'sessions#create'
+
+
   root 'sessions#new'
 end
