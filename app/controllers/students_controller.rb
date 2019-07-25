@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
-    set_students_instance_variable()
+    @students = Student.filter_by(params[:query], nil)
   end
 
   def create
@@ -14,7 +14,7 @@ class StudentsController < ApplicationController
     if @student.save
       redirect_to(new_student_url(), alert: "#{@student.first_name} added to the school")
     else
-      set_students_instance_variable()
+      @students = Student.filter_by(params[:query], nil)
       render 'new'
     end
   end
@@ -25,7 +25,7 @@ class StudentsController < ApplicationController
   end
 
   def index
-    set_students_instance_variable()
+    @students = Student.filter_by(params[:query], @klass)
     @mystudents = @klass.students_by_last_name
   end
 
@@ -33,7 +33,7 @@ class StudentsController < ApplicationController
   end
 
   def edit
-    set_students_instance_variable()
+    @students = Student.filter_by(params[:query], @klass)
   end
 
   def update
@@ -47,7 +47,7 @@ class StudentsController < ApplicationController
       if @student.update(student_params)
         redirect_to(new_student_path(), alert: "Student updated")
       else
-        set_students_instance_variable()
+        @students = Student.filter_by(params[:query], @klass)
         render 'edit'
       end
     end
@@ -71,16 +71,6 @@ class StudentsController < ApplicationController
 
     def student_in_klass?
       redirect_to(klass_students_url(@klass), alert: "You don't have access to that student") if !@klass.students.include?(@student)
-    end
-
-    def set_students_instance_variable()
-      if params[:query] && !params[:query].empty?
-        @students = Student.where('first_name LIKE ? OR last_name LIKE ? OR klass LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").all
-        @students = @students - @klass.students if @klass
-      else
-        @students = Student.all.order(klass: :asc).order(last_name: :asc)
-        @students = @students - @klass.students if @klass
-      end
     end
 
     def add_student_to_klass

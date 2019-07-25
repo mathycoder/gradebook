@@ -31,7 +31,17 @@
         <div class="fancy-button">
           <%= f.submit("Create Teacher") %>
         </div>
+
       <% end %>
+
+      <br><br>
+      
+      <div class="omniauth">
+        <%= link_to('/auth/facebook') do  %>
+          <%= image_tag('facebook-login.png') %>
+        <% end %>
+      </div>
+
     </div>
   </div>
 

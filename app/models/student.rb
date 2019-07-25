@@ -11,6 +11,17 @@ class Student < ApplicationRecord
   validates :klass, presence: true, length: {maximum: 5}
 
 
+
+  def self.filter_by(query, klass)
+    if query && !query.empty?
+      students = self.where('first_name LIKE ? OR last_name LIKE ? OR klass LIKE ?', "%#{query}%", "%#{query}%", "%#{query}%").all
+    else
+      students = self.all.order(klass: :asc).order(last_name: :asc)
+    end
+    students = students - klass.students if klass
+    students
+  end
+
   def full_name
     "#{self.last_name}, #{self.first_name}"
   end

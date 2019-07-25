@@ -1,11 +1,10 @@
 class LearningTarget < ApplicationRecord
+  belongs_to :standard
   has_many :klass_learning_targets
   has_many :klasses, through: :klass_learning_targets
   has_many :assignments, :dependent => :delete_all
   has_many :grades, through: :assignments
-  #has_many :students, through: :grades
   has_many :students, through: :klasses
-  belongs_to :standard
   accepts_nested_attributes_for :standard, :klasses
   validates :name, presence: true, length: { maximum: 50 }
   validates :level1, :level2, :level3, :level4, length: {maximum: 160}
