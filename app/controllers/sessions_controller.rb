@@ -7,19 +7,21 @@ class SessionsController < ApplicationController
   end
 
   def create
-    binding.pry
     if !request.env['omniauth.auth'].nil?
       @teacher = Teacher.find_or_create_by(uid: auth['uid']) do |u|
         u.name = auth['info']['name']
         u.email = auth['info']['email']
         u.picture_url = auth['info']['image']
+        u.password_digest = SecureRandom.urlsafe_base64
       end
+      session[:user_id] = @teacher.id
+      redirect_to(klasses_path)
     else
       if params[:session][:type] == "teacher"
         @teacher = Teacher.find_by(email: params[:session][:email])
         if @teacher.nil?
           redirect_to(login_path, alert: "No account matches that email") if !@teacher
-        elsif @teacher.authenticate(params[:session][:password])
+        elsif @teacher.authenticate(params[:session][:password]) && @teacher.uid.nil?
           session[:user_id] = @teacher.id
           redirect_to(klasses_path)
         else

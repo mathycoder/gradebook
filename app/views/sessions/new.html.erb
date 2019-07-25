@@ -29,7 +29,9 @@
 
       <br><br>
       <div class="omniauth">
-        <%= link_to("Log in with Facebook!", '/auth/facebook') %>
+        <%= link_to('/auth/facebook') do  %>
+          <%= image_tag('facebook-login.png') %>
+        <% end %>
       </div>
     <% end %>
   </div>

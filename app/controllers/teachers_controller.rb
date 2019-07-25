@@ -24,7 +24,7 @@ class TeachersController < ApplicationController
   end
 
   def update
-    delete_pic_from_server()
+    delete_pic_from_server() if @teacher.uid.nil?
     upload_pic_to_server()
     update_teacher_pic()
     redirect_to(teacher_path(@teacher), alert: "Profile pic updated")
