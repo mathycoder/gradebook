@@ -43,7 +43,10 @@ class Assignment < ApplicationRecord
 
 An Assignment validates for the presence and length of a name, and the presence of a date.  It also validates it's has_many association for grades, which have their own validations.  
 
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+
+The student controller calls Student.filter_by(params[:query], @klass), which is a class method that uses #where and #order to return records from the database.  
+
 
 - [x] Include signup (how e.g. Devise)
 
@@ -61,7 +64,7 @@ Logout routes to the controller action sessions#destroy
 
 Signup/login can be done through Facebook.  Authentication then happens only through Facebook, and a random password is generated for the database.  
 
-- [ ] Include nested resource show or index (URL e.g. users/2/recipes)
+- [x] Include nested resource show or index (URL e.g. users/2/recipes)
 
 Show page for learning targets in class
 http://localhost:3000/classes/2/lts/15
@@ -85,6 +88,14 @@ Confirm:
 
 For example, the gradebook table is used with slight modifications on both klasses/show and learning_targets/show, with only different arguments passed into a partial to make that happen.  Also, many helper methods prevent repetitive code.  
 
-- [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [x] Limited logic in controllers
+
+Logic happens in the Models.  The controllers are "skinny."
+
+- [x] Views use helper methods if appropriate
+
+For example, the header uses an assortment of Rails and custom helper methods to make the code more readable.
+
+- [x] Views use partials if appropriate
+
+The partial for a gradebook table shows up in multiple places.  Each CRUD resource uses the same form partial for /new and /edit
