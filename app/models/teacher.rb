@@ -8,15 +8,16 @@ class Teacher < ApplicationRecord
   validates :name, length: { minimum: 3 }
   validates :email, length: { minimum: 3 }
 
-  def classes_sorted_by_period
-    self.klasses.sort_by{|klass| klass.period}
-  end
-
   def all_klasses_except(klass)
     self.klasses.where("klass_id != ?", klass.id)
   end
 
   def klasses_in_alphabetical_order
-    self.klasses.sort_by{|klass| klass.name}
+    #self.klasses.sort_by{|klass| klass.name}
+    self.klasses.order(name: :asc)
   end
+
+  # def classes_sorted_by_period
+  #   self.klasses.sorted_by_period
+  # end
 end

@@ -22,7 +22,7 @@ class KlassesController < ApplicationController
   end
 
   def index
-    @klasses = current_user.classes_sorted_by_period
+    @klasses = current_user.klasses.sorted_by_period
   end
 
   def show

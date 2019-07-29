@@ -43,9 +43,21 @@ class Assignment < ApplicationRecord
 
 An Assignment validates for the presence and length of a name, and the presence of a date.  It also validates it's has_many association for grades, which have their own validations.  
 
+
 - [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 
 The student controller calls Student.filter_by(params[:query], @klass), which is a class method that uses #where and #order to return records from the database.  
+
+Also, the klasses controller has this action:
+
+def index
+  @klasses = current_user.klasses.sorted_by_period
+end
+
+And #sorted_by_period is a Scope defined in the Klasses model using an ActiveRecord query method
+
+scope :sorted_by_period, -> {order(period: :asc)}
+
 
 
 - [x] Include signup (how e.g. Devise)

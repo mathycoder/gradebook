@@ -1,19 +1,17 @@
 class Klass < ApplicationRecord
   has_many :klass_students
   has_many :students, through: :klass_students
-
   has_many :teacher_klasses
   has_many :teachers, through: :teacher_klasses
-
   has_many :klass_learning_targets
   has_many :learning_targets, through: :klass_learning_targets
   has_many :assignments, through: :learning_targets
   has_many :grades, through: :assignments
-
   validates :name, presence: true, length: {maximum: 20}
   validates :grade, presence: true, length: {maximum: 10}
   validates :subject, presence: true, length: {maximum: 20}
   validates :period, presence: true, numericality: true, length: {maximum: 2}
+  scope :sorted_by_period, -> {order(period: :asc)}
 
   def klass_name
     "Class #{self.name}"
