@@ -14,12 +14,12 @@
     <% end %>
 
     <%= content_tag(:div) do %>
-      <%= f.label(:grade, "Enter the grade (as a string for now)") %><br>
+      <%= f.label(:grade, "Enter the grade") %><br>
       <%= f.text_field(:grade, {maxlength: "10", class: "text-field"}) %><br><br>
     <% end %>
 
     <%= content_tag(:div) do %>
-      <%= f.label(:period, "Enter the class period (as an integer for now)") %><br>
+      <%= f.label(:period, "Enter the class period") %><br>
       <%= f.text_field(:period, {maxlength: "2", class: "text-field"}) %><br><br>
     <% end %>
 
@@ -30,5 +30,5 @@
   <% end %>
 
   <%= klass_delete_button(klass) %>
-  
+
 <% end %>

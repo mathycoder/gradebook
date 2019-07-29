@@ -54,7 +54,7 @@ def index
   @klasses = current_user.klasses.sorted_by_period
 end
 
-And #sorted_by_period is a Scope defined in the Klasses model using an ActiveRecord query method
+And #sorted_by_period is a Scope defined in the Klass model using an ActiveRecord query method
 
 scope :sorted_by_period, -> {order(period: :asc)}
 
