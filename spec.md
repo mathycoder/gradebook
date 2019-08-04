@@ -30,7 +30,9 @@ LearningTargets have many Klasses, and Klasses have many Learning Targets
 
 - [x] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
 
-LearningTargets act as a through for Klasses and Assignments.  A Klass has many Assignments, through LearningTargets.  Users can submit :name, :level1, :level2, :level3, and :level4 directly on a LearningTarget.  
+Option1: Grades.  The grades table acts as a join table between students and assignments.  But the grades table also has a score attribute.  
+
+Option2: LearningTargets act as a through for Klasses and Assignments.  A Klass has many Assignments, through LearningTargets.  Users can submit :name, :level1, :level2, :level3, and :level4 directly on a LearningTarget.  
 
 - [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
 
