@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
       if params[:session][:type] == "teacher"
         @teacher = Teacher.find_by(email: params[:session][:email])
         if @teacher.nil?
-          redirect_to(login_path, alert: "No account matches that email") if !@teacher
+          redirect_to(login_path, alert: "No teacher account matches that email")
         elsif @teacher.authenticate(params[:session][:password]) && @teacher.uid.nil?
           session[:user_id] = @teacher.id
           redirect_to(klasses_path)
@@ -28,7 +28,15 @@ class SessionsController < ApplicationController
           redirect_to(login_path, alert: "Incorrect password")
         end
       else
-        redirect_to(login_path, alert: "You can only login as a Teacher currently")
+        #redirect_to(login_path, alert: "You can only login as a Teacher currently")
+        @student = Student.find_by(first_name: params[:session][:email])
+        if @student.nil?
+          redirect_to(login_path, alert: "No student account matches that email")
+        else
+          session[:student_id] = @student.id
+          binding.pry
+          session.clear
+        end
       end
     end
   end

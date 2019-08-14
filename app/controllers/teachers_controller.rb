@@ -4,6 +4,12 @@ class TeachersController < ApplicationController
   before_action :find_teacher, only: [:show, :update, :destroy]
   before_action :get_uploaded_io, only: [:create, :update]
 
+  def busy
+    @busyteacher = Teacher.busy.first
+
+
+  end
+
   def new
     @teacher = Teacher.new
   end

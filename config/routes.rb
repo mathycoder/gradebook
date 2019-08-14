@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get '/classes/redirect', to: "klasses#redirect", as: "klass_redirect"
 
   resources :klasses, :path => 'classes'
+
+  get '/busyteacher', to: "teachers#busy"
+
   resources :teachers
   get '/signup', to: "teachers#new"
   get '/login', to: 'sessions#new'

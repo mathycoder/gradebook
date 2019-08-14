@@ -15,7 +15,6 @@ class Student < ApplicationRecord
   def self.filter_by(query, klass)
     if query && !query.empty?
       students = self.where('first_name LIKE ? OR last_name LIKE ? OR klass LIKE ?', "%#{query}%", "%#{query}%", "%#{query}%")
-      #students = self.where('first_name LIKE ? OR last_name LIKE ? OR klass LIKE ?', "%#{query}%", "%#{query}%", "%#{query}%").all
     else
       students = self.all.order(klass: :asc).order(last_name: :asc)
     end
