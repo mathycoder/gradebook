@@ -12,7 +12,7 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     if @student.save
-      redirect_to(new_student_url(), alert: "#{@student.first_name} added to the school")
+      redirect_to(new_student_url, alert: "#{@student.first_name} added to the school")
     else
       @students = Student.filter_by(params[:query], nil)
       render 'new'
@@ -38,14 +38,14 @@ class StudentsController < ApplicationController
 
   def update
     if params[:klass_id]
-      find_klass_nested_route()
-      find_student()
-      @klass.students.include?(@student) ? @klass.students.delete(@student) : add_student_to_klass()
+      find_klass_nested_route
+      find_student
+      @klass.students.include?(@student) ? @klass.students.delete(@student) : add_student_to_klass
       redirect_to(klass_students_path(@klass))
     else
       @student = Student.find_by(id: params[:id])
       if @student.update(student_params)
-        redirect_to(new_student_path(), alert: "Student updated")
+        redirect_to(new_student_path, alert: "Student updated")
       else
         @students = Student.filter_by(params[:query], @klass)
         render 'edit'
@@ -55,7 +55,7 @@ class StudentsController < ApplicationController
 
   def destroy
     @student.destroy
-    redirect_to(new_student_path(), alert: "Student Deleted from School")
+    redirect_to(new_student_path, alert: "Student Deleted from School")
   end
 
   private
@@ -66,7 +66,7 @@ class StudentsController < ApplicationController
 
     def find_student
       @student = Student.find_by(id: params[:id])
-      redirect_to(klasses_url(), alert: "You don't have access to that student") if @student.nil?
+      redirect_to(klasses_url, alert: "You don't have access to that student") if @student.nil?
     end
 
     def student_in_klass?

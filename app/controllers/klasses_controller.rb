@@ -4,7 +4,7 @@ class KlassesController < ApplicationController
 
   def redirect
     @klass = Klass.find_by(id: params[:klass][:id])
-    @klass ? redirect_to(klass_path(@klass)) : redirect_to(klasses_path())
+    @klass ? redirect_to(klass_path(@klass)) : redirect_to(klasses_path)
   end
 
   def new
@@ -15,7 +15,7 @@ class KlassesController < ApplicationController
     @klass = Klass.new(klass_params)
     if @klass.save
       current_user.klasses << @klass
-      redirect_to(klasses_path(), alert: "Class successfully created")
+      redirect_to(klasses_path, alert: "Class successfully created")
     else
       render 'new'
     end
@@ -44,7 +44,7 @@ class KlassesController < ApplicationController
 
     def find_klass
       @klass = Klass.find_by(id: params[:id])
-      redirect_to(klasses_url(), alert: "You don't have access to that class") if @klass.nil? || !current_user.klasses.include?(@klass)
+      redirect_to(klasses_url, alert: "You don't have access to that class") if @klass.nil? || !current_user.klasses.include?(@klass)
     end
 
     def klass_params

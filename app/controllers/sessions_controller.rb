@@ -34,7 +34,6 @@ class SessionsController < ApplicationController
           redirect_to(login_path, alert: "No student account matches that email")
         else
           session[:student_id] = @student.id
-          binding.pry
           session.clear
         end
       end

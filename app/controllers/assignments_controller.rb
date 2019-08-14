@@ -5,7 +5,7 @@ class AssignmentsController < ApplicationController
 
   def new
     @assignment = Assignment.new
-    @assignment.grades.build()
+    @assignment.grades.build
   end
 
   def create

@@ -17,10 +17,10 @@ class TeachersController < ApplicationController
   def create
     @teacher = Teacher.new(teacher_params)
     if @teacher.save
-      upload_pic_to_server()
-      update_teacher_pic()
+      upload_pic_to_server
+      update_teacher_pic
       session[:user_id] = @teacher.id
-      redirect_to(klasses_path(), alert: "New account created")
+      redirect_to(klasses_path, alert: "New account created")
     else
       render 'new'
     end
@@ -30,9 +30,9 @@ class TeachersController < ApplicationController
   end
 
   def update
-    delete_pic_from_server() if @teacher.uid.nil?
-    upload_pic_to_server()
-    update_teacher_pic()
+    delete_pic_from_server if @teacher.uid.nil?
+    upload_pic_to_server
+    update_teacher_pic
     redirect_to(teacher_path(@teacher), alert: "Profile pic updated")
   end
 
@@ -57,17 +57,17 @@ class TeachersController < ApplicationController
       params.require(:teacher).permit(:name, :email, :password, :password_confirmation, :picture_url)
     end
 
-    def delete_pic_from_server()
+    def delete_pic_from_server
       File.delete(Rails.root.join('app', 'assets', 'images', @teacher.picture_url))
     end
 
-    def upload_pic_to_server()
+    def upload_pic_to_server
       File.open(Rails.root.join('app', 'assets', 'images', 'uploads', @uploaded_io.original_filename), 'wb') do |file|
         file.write(@uploaded_io.read)
       end
     end
 
-    def update_teacher_pic()
+    def update_teacher_pic
       @teacher.update(picture_url: "uploads/#{@uploaded_io.original_filename}")
     end
 end

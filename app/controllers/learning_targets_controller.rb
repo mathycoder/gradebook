@@ -10,7 +10,7 @@ class LearningTargetsController < ApplicationController
   def new
     ApiScraper.scrape_math_standards if Standard.all.empty?
     @lt = LearningTarget.new
-    @standard = @lt.build_standard()
+    @standard = @lt.build_standard
     set_standards_based_on_search_query([])
   end
 
