@@ -3,10 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 
-#omniauth
-#gem 'omniauth'
 gem 'omniauth-facebook'
-#gem 'omniauth-rails_csrf_protection'
+
+gem 'jquery-rails'
+
 
 #For using the standards API
 gem 'dotenv-rails'
