@@ -1,4 +1,7 @@
-$(document).ready(function() {
+// Instead of listening to document.ready, we have to listen for when turbolinks
+//load a new page.  Otherwise, testing() only invokes during the initial page load.
+
+$(document).on('turbolinks:load', function() {
   testing()
 })
 

@@ -96,7 +96,7 @@ module KlassesHelper
   end
 
   def td_student_average(student, klass_or_lt)
-    content_tag(:td, class: "average") do
+    content_tag(:td, class: ["average", "assignment-averages"]) do
       content_tag(:p) do
         content_tag(:strong) do
           student.average(klass_or_lt)
