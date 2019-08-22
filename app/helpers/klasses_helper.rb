@@ -84,15 +84,6 @@ module KlassesHelper
     content_tag(:td, nil, class: "start-of-lt") if lt.assignments.empty?
   end
 
-  def td_display_average(klass, assignment, index)
-    content_tag(:td, class: td_classes(index)) do
-      content_tag(:div) do
-        content_tag(:strong) do
-          assignment.average(klass).to_s
-        end
-      end
-    end
-  end
 
   def td_link_to_student(klass, student)
     content_tag(:td, class: "student-name") do

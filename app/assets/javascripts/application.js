@@ -17,3 +17,5 @@
 
 //= require chartkick
 //= require Chart.bundle
+
+//= require formatting
