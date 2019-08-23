@@ -1,3 +1,13 @@
-<h1>Add New Student to School</h1>
+<div id="new-students-title">
+  <div>
+    <h1>Add Students to School</h1>
+  </div>
+
+  <div id="add-csv-link">
+    <h4>
+      <%= link_to("Add Many With CSV file", '#') %>
+    </h4>
+  </div>
+</div>
 
 <%= render partial: 'students/form', locals: {students: @students, student: @student} %>
