@@ -676,20 +676,13 @@ input[type=text].text-field, input[type=password].text-field    {
   color: black;
 }
 
-
-table.gradebook tr:nth-child(2n+3) td:first-child, table.gradebook tr:nth-child(2n+3) td:nth-child(2) {
+/* formats the first two columns of the gradebook students */
+table.gradebook tr:nth-child(2n+3) td:first-child, table.gradebook tr:nth-child(3) td:nth-child(2) {
   background-color: rgb(218, 217, 224);
 }
 
 table.gradebook tr:nth-child(2n+4) td:first-child {
   background-color: white;
-}
-
-/* edits the second column of student averages  */
-.gradebook-wrapper table.gradebook tr td:nth-child(2), .gradebook-wrapper table.gradebook tr th:nth-child(2) {
-  /* position: absolute;
-  left: 160px;
-  height: 47px; */
 }
 
 
@@ -744,8 +737,14 @@ table.gradebook th a {
 }
 
 /* alternates white and grey for the rows */
-table.gradebook tr:nth-child(2n+3) {
+table.gradebook tr:nth-child(2n+5) td:nth-child(n+3) {
   background-color: rgb(218, 217, 224);
+}
+
+/* edits the second column of student averages  */
+.gradebook-wrapper table.gradebook tr:nth-child(n+4) td:nth-child(2).average {
+
+
 }
 
 /* the width of all table cells */
