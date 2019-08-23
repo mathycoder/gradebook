@@ -10,6 +10,9 @@ class Student < ApplicationRecord
   validates :grade, presence: true, length: {maximum: 4}
   validates :klass, presence: true, length: {maximum: 5}
 
+  validates :first_name, uniqueness: { scope: [:last_name, :grade],
+    message: "That student already exists in the database" }
+
 
 
   def self.filter_by(query, klass)
