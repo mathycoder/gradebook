@@ -23,3 +23,30 @@ function conditionalFormatting() {
     }
   }
 }
+
+function sortByAverage() {
+  const tbody = document.querySelector('tbody')
+  const allTrs = document.querySelectorAll('tr')
+
+  document.querySelector('tbody').innerHTML = ''
+
+  for(let i=0; i<3; i++) {
+    document.querySelector('tbody').appendChild(allTrs[i])
+  }
+
+  let arrayOfSortObjects = []
+
+  for(let i=3; i<allTrs.length; i++) {
+    const obj = {index: i, average: parseFloat(allTrs[i].querySelector('td.average').innerText)}
+    arrayOfSortObjects.push(obj)
+  }
+
+  arrayOfSortObjects.sort(function(a,b) {
+    return b.average - a.average
+  })
+
+  for(let i=0; i<arrayOfSortObjects.length; i++) {
+    document.querySelector('tbody').appendChild(allTrs[arrayOfSortObjects[i].index])
+  }
+
+}
