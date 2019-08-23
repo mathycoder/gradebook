@@ -1,11 +1,17 @@
 <tr>
-  <td><div><strong>Students</strong></div></td>
+  <td>
+    <div>
+      <strong>Students</strong>
+      <span onclick="rowSorter('highest', 'name')" class="arrow"> 	&#x2B06 </span>
+      <span onclick="rowSorter('lowest', 'name')" class="arrow"> 	&#x2B07 </span>
+    </div>
+  </td>
 
   <td>
     <div>
       <strong> Average </strong>
-      <span onclick="sortByAverage('highest')" class="arrow"> 	&#x2B06 </span>
-      <span onclick="sortByAverage('lowest')" class="arrow"> 	&#x2B07 </span>
+      <span onclick="rowSorter('highest', 'average')" class="arrow"> 	&#x2B06 </span>
+      <span onclick="rowSorter('lowest', 'average')" class="arrow"> 	&#x2B07 </span>
     </div>
   </td>
 

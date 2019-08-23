@@ -24,7 +24,7 @@ function conditionalFormatting() {
   }
 }
 
-function sortByAverage(direction) {
+function rowSorter(direction, type) {
   const tbody = document.querySelector('tbody')
   const allTrs = document.querySelectorAll('tr')
   document.querySelector('tbody').innerHTML = ''
@@ -36,15 +36,22 @@ function sortByAverage(direction) {
   let arrayOfSortObjects = []
 
   for(let i=3; i<allTrs.length; i++) {
-    const obj = {index: i, average: parseFloat(allTrs[i].querySelector('td.average').innerText)}
+    const obj = {index: i,
+                 average: parseFloat(allTrs[i].querySelector('td.average').innerText),
+                 name: allTrs[i].querySelector('td.student-name').innerText
+               }
     arrayOfSortObjects.push(obj)
   }
 
   arrayOfSortObjects.sort(function(a,b) {
-    if (direction === "highest") {
+    if (direction === "highest" && type === "average") {
       return b.average - a.average
-    } else {
+    } else if (direction === "lowest" && type === "average"){
       return a.average - b.average
+    } else if (direction === "highest" && type === "name") {
+      return a.name.localeCompare(b.name)
+    } else {
+      return b.name.localeCompare(a.name)
     }
   })
 
