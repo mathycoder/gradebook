@@ -737,7 +737,7 @@ table.gradebook th a {
 }
 
 /* alternates white and grey for the rows */
-table.gradebook tr:nth-child(2n+5) td:nth-child(n+3) {
+table.gradebook tr:nth-child(2n+3) td:nth-child(n+3) {
   background-color: rgb(218, 217, 224);
 }
 
