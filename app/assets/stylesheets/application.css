@@ -7,6 +7,10 @@
   margin-top: 10px;
 }
 
+#csv-example img {
+  width: 400px;
+}
+
 .arrow {
   cursor: pointer;
 }

@@ -9,6 +9,9 @@ class StudentsController < ApplicationController
     @students = Student.filter_by(params[:query], nil)
   end
 
+  def csv
+  end
+
   def create
     @student = Student.new(student_params)
     if @student.save

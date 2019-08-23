@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get '/students/new/csv', to: "students#csv"
   resources :students, only: [:new, :create, :edit, :update, :destroy]
 
   get '/classes/redirect', to: "klasses#redirect", as: "klass_redirect"
