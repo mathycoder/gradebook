@@ -24,10 +24,9 @@ function conditionalFormatting() {
   }
 }
 
-function sortByAverage() {
+function sortByAverage(direction) {
   const tbody = document.querySelector('tbody')
   const allTrs = document.querySelectorAll('tr')
-
   document.querySelector('tbody').innerHTML = ''
 
   for(let i=0; i<3; i++) {
@@ -42,11 +41,14 @@ function sortByAverage() {
   }
 
   arrayOfSortObjects.sort(function(a,b) {
-    return b.average - a.average
+    if (direction === "highest") {
+      return b.average - a.average
+    } else {
+      return a.average - b.average
+    }
   })
 
   for(let i=0; i<arrayOfSortObjects.length; i++) {
     document.querySelector('tbody').appendChild(allTrs[arrayOfSortObjects[i].index])
   }
-
 }
