@@ -1,4 +1,4 @@
-<% klass.students.each do |student| %>
+<% klass.students_by_last_name.each do |student| %>
   <%= content_tag(:tr) do %>
     <%= td_link_to_student(klass, student) %>
     <%= td_student_average(student, klass_or_lt) %>
