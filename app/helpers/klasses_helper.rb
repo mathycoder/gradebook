@@ -70,15 +70,6 @@ module KlassesHelper
     block.html_safe
   end
 
-  def td_strong_label(text)
-    content_tag(:td) do
-      content_tag(:div) do
-        content_tag(:strong) do
-          "#{text}"
-        end
-      end
-    end
-  end
 
   def blank_td?(lt)
     content_tag(:td, nil, class: "start-of-lt") if lt.assignments.empty?

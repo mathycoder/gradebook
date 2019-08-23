@@ -1,6 +1,13 @@
 <tr>
-  <%= td_strong_label("Students") %>
-  <%= td_strong_label("Average") %>
+  <td><div><strong>Students</strong></div></td>
+
+  <td>
+    <div>
+      <strong> Average </strong>
+      <span onclick="sortByAverage()" class="arrow"> 	&#x2B06 </span>
+    </div>
+  </td>
+
   <% collection.each do |lt| %>
     <%= blank_td?(lt) %>
     <% lt.chronological_assignments.each_with_index do |assignment, index| %>
