@@ -4,6 +4,8 @@ class StudentsController < ApplicationController
   before_action :student_in_klass?, only: [:show]
   before_action :require_lts, only: [:index]
 
+  require 'csv'
+
   def new
     @student = Student.new
     @students = Student.filter_by(params[:query], nil)
@@ -13,7 +15,10 @@ class StudentsController < ApplicationController
   end
 
   def csv_upload
-    binding.pry 
+    CSV.foreach(params[:students].path, headers: true) do |student|
+      Student.create(last_name: student[0], first_name: student[1], grade: student[2], klass: student[3])
+    end
+    redirect_to(new_student_url, alert: "CSV successfully uploaded")
   end
 
   def create

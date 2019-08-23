@@ -9,7 +9,7 @@
 
 <div>
   <%= form_tag(students_new_csv_path, {method: :post, multipart: true}) do %>
-    <%= file_field_tag :students %>
+    <%= file_field_tag :students, required: true %>
     <%= submit_tag "Import Students" %>
   <% end %>
 </div>
