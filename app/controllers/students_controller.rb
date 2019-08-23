@@ -12,6 +12,10 @@ class StudentsController < ApplicationController
   def csv
   end
 
+  def csv_upload
+    binding.pry 
+  end
+
   def create
     @student = Student.new(student_params)
     if @student.save
