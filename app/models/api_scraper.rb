@@ -1,18 +1,24 @@
 class ApiScraper < ApplicationRecord
 
   #https://commonstandardsproject.com/developers
-  def self.call_the_API(url)
-      response = RestClient::Request.execute(
-        method: :get,
-        url: url,
-        headers: {api_key: ENV['CCSS_KEY']}
-        )
-        hash = JSON.parse(response)["data"]
-    end
 
   def self.ccss_standards
     self.call_the_API("https://api.commonstandardsproject.com/api/v1/jurisdictions/67810E9EF6944F9383DCC602A3484C23")["standardSets"]
   end
+
+  def self.call_the_API(url)
+      # response = RestClient::Request.execute(
+      #   method: :get,
+      #   url: url,
+      #   headers: {api_key: ENV['CCSS_KEY']}
+      #   )
+      # hash = JSON.parse(response)["data"]
+
+      response = Faraday.get(url) do |req|
+        req.params['api-key'] = ENV['CCSS_KEY']
+      end
+      JSON.parse(response.body)["data"]
+    end
 
   def self.scrape_math_standards
     array = self.ccss_standards

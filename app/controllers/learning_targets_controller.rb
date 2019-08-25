@@ -54,7 +54,7 @@ class LearningTargetsController < ApplicationController
   private
 
     def set_standards_based_on_search_query(current_standard)
-      params[:query] ? @standards = Standard.by_grade(params[:query][:grade]) : @standards = current_standard
+      @standards = (params[:query] ? Standard.by_grade(params[:query][:grade]) : current_standard)
     end
 
     def find_lt
