@@ -97,7 +97,7 @@ module KlassesHelper
   end
 
   def td_display_score(grade, index)
-    content_tag(:td, class: td_classes(index, "score")) do
+    content_tag(:td, class: td_classes(index, "score"), id: "#{grade.id}") do
       grade.score.to_s if grade
     end
   end

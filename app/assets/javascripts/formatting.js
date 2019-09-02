@@ -11,13 +11,16 @@ function conditionalFormatting() {
     if (allTds[i] !== undefined) {
       const num = allTds[i].querySelector('strong').innerHTML
       if (parseFloat(num) >= 3.0) {
-        allTds[i].style.backgroundColor = "rgb(88, 169, 106, 0.6)"
+        //allTds[i].style.backgroundColor = "rgb(88, 169, 106, 0.6)"
+        allTds[i].style.backgroundColor = "rgb(196, 221, 185, 1)"
         allTds[i].style.color = "black"
       } else if (parseFloat(num) >= 2.0) {
-        allTds[i].style.backgroundColor = "rgb(212, 208, 96, 0.6)"
+        //allTds[i].style.backgroundColor = "rgb(212, 208, 96, 0.6)"
+        allTds[i].style.backgroundColor = "rgb(221, 220, 185)"
         allTds[i].style.color = "black"
       } else {
-        allTds[i].style.backgroundColor = "rgb(212, 106, 96, 0.6)"
+        //allTds[i].style.backgroundColor = "rgb(212, 106, 96, 0.6)"
+        allTds[i].style.backgroundColor = "rgb(221, 186, 185)"
         allTds[i].style.color = "black"
       }
     }
