@@ -1,1 +1,27 @@
-<h1>The student klasses page!</h1>
+<div class="open-book">
+  <div class="open-book-title">
+    <h1><%= current_student_user.first_last_name %>'s classes</h1>
+  </div>
+  <div class="open-book-table">
+    <table>
+      <tr>
+        <th>Period</th>
+        <th>Class</th>
+        <th>Subject</th>
+        <th>Teacher</th>
+        <th>Grade</th>
+      </tr>
+      <% current_student_user.klasses.each do |klass| %>
+        <tr>
+          <td><%= klass.period %></td>
+          <td><%= link_to(klass.name, '#') %></td>
+          <td><%= klass.subject %></td>
+          <td><%= klass.teachers.first.name %></td>
+          <td><%= current_student_user.average(klass) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+
+</div>
