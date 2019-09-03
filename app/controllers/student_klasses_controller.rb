@@ -9,4 +9,9 @@ class StudentKlassesController < ApplicationController
     @klass = Klass.find_by(id: params[:id])
   end
 
+  def redirect
+    @klass = Klass.find_by(id: params[:klass][:id])
+    @klass ? redirect_to(s_klass_path(@klass)) : redirect_to(s_klasses_path)
+  end
+
 end

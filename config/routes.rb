@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   #student experience routes
   get '/studentklasses', to: "student_klasses#index", as: "s_klasses"
+  get '/studentklasses/redirect', to: "student_klasses#redirect", as: "s_klass_redirect"
   get '/studentklasses/:id', to: "student_klasses#show", as: "s_klass"
 
   #teacher experience routes

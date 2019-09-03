@@ -1,3 +1,11 @@
-<%= logo_button(nil, nil) %>
+<%= logo_button(nil, s_klasses_path) %>
 <%= mygradebook() %>
+<div class="class-header">
+
+</div>
+  <% @klass = @klass ? @klass : Klass.new %>
+  <%= form_for([:klass, @klass], url: s_klass_redirect_path, method: :get) do |f| %>
+    <%= f.collection_select(:id, current_student_user.klasses, :id, :klass_name, {include_blank: "Classes"}, {class: "select-blend", onchange: "this.form.submit();"}) %>
+  <% end %>
+
 <%= logout_link() %>
