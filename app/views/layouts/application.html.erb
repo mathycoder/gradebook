@@ -13,6 +13,8 @@
     <header>
       <% if logged_in? %>
         <%= render partial: "layouts/header_when_logged_in", locals: {klass: @klass, lt: @lt, student: @student} %>
+      <% elsif student_logged_in? %>
+        <%= render partial: "layouts/header_when_student_logged_in" %>
       <% else %>
         <%= render partial: "layouts/header_when_logged_out", locals: {} %>
       <% end %>

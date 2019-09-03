@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :current_student_user, :student_logged_in?
   before_action :require_login
 
   def current_user
