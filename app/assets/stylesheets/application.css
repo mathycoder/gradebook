@@ -97,15 +97,24 @@ a:hover {
   width: 300px;
 }
 
-.open-book-table {
+.open-book-table, .open-book-table-students {
   margin-left: 60px;
   font-size: 20px;
   height: 300px;
   overflow-y: scroll;
 }
 
-.open-book-table td, .open-book-table th {
+.open-book-table td, .open-book-table th, .open-book-table-students td, .open-book-table-students th {
   height: 40px;
+}
+
+.open-book-table-students {
+  font-size: 16px;
+}
+
+.open-book-table-students td {
+  width: 70px;
+  text-align: center;
 }
 
 .open-book-table tr td:nth-child(1), .open-book-table tr th:nth-child(1) {

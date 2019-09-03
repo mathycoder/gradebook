@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   #student experience routes
   get '/studentklasses', to: "student_klasses#index", as: "s_klasses"
+  get '/studentklasses/:id', to: "student_klasses#show", as: "s_klass"
 
   #teacher experience routes
   get '/students/new/csv', to: "students#csv"

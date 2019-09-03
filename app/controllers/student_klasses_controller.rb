@@ -5,4 +5,8 @@ class StudentKlassesController < ApplicationController
   def index
   end
 
+  def show
+    @klass = Klass.find_by(id: params[:id])
+  end
+
 end
