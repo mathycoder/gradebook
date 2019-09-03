@@ -22,13 +22,16 @@ class ApplicationController < ActionController::Base
 
   def find_klass_nested_route
     @klass = Klass.find_by(id: params[:klass_id])
-    redirect_to(klasses_url(), alert: "You don't have access to that class") if @klass.nil? || !current_user.klasses.include?(@klass)
+    redirect_to(klasses_url, alert: "You don't have access to that class") if @klass.nil? || !current_user.klasses.include?(@klass)
   end
 
   def require_login
-    unless logged_in?
+    if !logged_in? && !student_logged_in?
       flash[:error] = "You must be logged in to access this section"
       redirect_to(login_url)
+    elsif student_logged_in?
+      flash[:error] = "You must be logged into a teacher account to access this section"
+      redirect_to(s_klasses_url)
     end
   end
 
@@ -40,7 +43,7 @@ class ApplicationController < ActionController::Base
   end
 
   def already_logged_in
-    redirect_to(klasses_path()) if logged_in?
+    redirect_to(klasses_path) if logged_in?
   end
 
 
