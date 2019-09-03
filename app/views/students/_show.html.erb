@@ -23,59 +23,61 @@
   </div>
 
 <% klass.learning_targets.each do |lt| %>
-  <div class="student-show-gradebook-container">
-    <table class="gradebook">
-      <tr>
-        <th colspan="<%= lt.assignments.length %>" class="<%= klass.my_color_class(lt) %> start-of-lt">
-          <div class="lt-target-label-container">
-            <div class="lt-target-label">
-              <%= lt.standard.standard_notation_clean if lt.standard %><br>
-              <% if current_user %>
-                <%= link_to(lt.name, klass_learning_target_path(klass, lt)) %><br>
-              <% else %>
-                <%= lt.name %><br>
-              <% end %>
-            </div>
-            <div class="assignment-label">
-              Assignments
-            </div>
-          </div>
-        </th>
-      </tr>
-
-      <tr>
-        <%= content_tag(:td) if lt.assignments.empty? %>
-        <% lt.chronological_assignments.each_with_index do |assignment, index| %>
-          <td class="assignments <%= "start-of-lt" if index == 0 %>">
-            <div class="assignment-header">
-              <div>
+  <% if lt.assignments.length > 0 %>
+    <div class="student-show-gradebook-container">
+      <table class="gradebook">
+        <tr>
+          <th colspan="<%= lt.assignments.length %>" class="<%= klass.my_color_class(lt) %> start-of-lt">
+            <div class="lt-target-label-container">
+              <div class="lt-target-label">
+                <%= lt.standard.standard_notation_clean if lt.standard %><br>
                 <% if current_user %>
-                  <%= link_to(assignment.name, edit_klass_assignment_path(klass, assignment)) %>
+                  <%= link_to(lt.name, klass_learning_target_path(klass, lt)) %><br>
                 <% else %>
-                  <%= assignment.name %>
+                  <%= lt.name %><br>
                 <% end %>
               </div>
-              <div class="date"><%= assignment.date_display %></div>
+              <div class="assignment-label">
+                Assignments
+              </div>
             </div>
-          </td>
-        <% end %>
-      </tr>
+          </th>
+        </tr>
 
-      <tr>
-        <%= content_tag(:td, nil, class: "start-of-lt") if lt.assignments.empty? %>
-        <% lt.students_chronological_grades(student).each_with_index do |grade, index| %>
-          <td class="score <%= "start-of-lt" if index == 0 %>"><%= grade.score if grade %></td>
-        <% end %>
-      </tr>
-    </table>
-  </div>
+        <tr>
+          <%= content_tag(:td) if lt.assignments.empty? %>
+          <% lt.chronological_assignments.each_with_index do |assignment, index| %>
+            <td class="assignments <%= "start-of-lt" if index == 0 %>">
+              <div class="assignment-header">
+                <div>
+                  <% if current_user %>
+                    <%= link_to(assignment.name, edit_klass_assignment_path(klass, assignment)) %>
+                  <% else %>
+                    <%= assignment.name %>
+                  <% end %>
+                </div>
+                <div class="date"><%= assignment.date_display %></div>
+              </div>
+            </td>
+          <% end %>
+        </tr>
 
-  <div class="student-show-lt-graph">
-    <%= line_chart(lt.graph_data(klass, student), width: "400px", xtitle: "Date",
-                   ytitle: "Assignment Score", messages: {empty: "No data"},
-                   colors: [klass.my_color_class(lt), klass.my_color_class(lt)], min: 0, max: 4,
-                   library: { scales: { yAxes: [{ gridLines: { display: true },ticks: { maxTicksLimit: 5 } }]}}) %>
-  </div>
+        <tr>
+          <%= content_tag(:td, nil, class: "start-of-lt") if lt.assignments.empty? %>
+          <% lt.students_chronological_grades(student).each_with_index do |grade, index| %>
+            <td class="score <%= "start-of-lt" if index == 0 %>"><%= grade.score if grade %></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+
+    <div class="student-show-lt-graph">
+      <%= line_chart(lt.graph_data(klass, student), width: "400px", xtitle: "Date",
+                     ytitle: "Assignment Score", messages: {empty: "No data"},
+                     colors: [klass.my_color_class(lt), klass.my_color_class(lt)], min: 0, max: 4,
+                     library: { scales: { yAxes: [{ gridLines: { display: true },ticks: { maxTicksLimit: 5 } }]}}) %>
+    </div>
+  <% end %>
 <% end %>
 
 </div>

@@ -25,6 +25,11 @@ class Klass < ApplicationRecord
     data = self.learning_targets.map do |lt|
       {name: lt.name, data: {"Learning Targets": lt.student_average(student)}}
     end
+
+    #gets rid of any learning targets without assignments yet
+    data = data.filter do |item|
+      !item[:data][:"Learning Targets"].nil?
+    end
   end
 
   def student_bar_graph_colors
