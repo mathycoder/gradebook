@@ -10,6 +10,14 @@ class ApplicationController < ActionController::Base
     !session[:user_id].nil?
   end
 
+  def current_student_user
+    Student.find_by(id: session[:student_id])
+  end
+
+  def student_logged_in?
+    !session[:student_id].nil?
+  end
+
   private
 
   def find_klass_nested_route
@@ -24,9 +32,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_student_login
+    unless student_logged_in?
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to(login_url)
+    end
+  end
+
   def already_logged_in
     redirect_to(klasses_path()) if logged_in?
   end
+
 
   def require_lts
     redirect_to(klass_learning_targets_url(@klass)) if @klass.learning_targets.empty?

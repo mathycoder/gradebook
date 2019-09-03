@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  #student experience routes
+  get '/studentklasses', to: "student_klasses#index", as: "s_klasses"
+
+  #teacher experience routes
   get '/students/new/csv', to: "students#csv"
   post '/students/new/csv', to: "students#csv_upload"
 
@@ -40,7 +44,5 @@ Rails.application.routes.draw do
 
   #omniauth
   get '/auth/facebook/callback' => 'sessions#create'
-
-
   root 'sessions#new'
 end
