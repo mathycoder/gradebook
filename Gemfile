@@ -6,7 +6,7 @@ ruby '2.6.1'
 gem 'omniauth-facebook'
 
 gem 'jquery-rails'
-
+gem 'active_model_serializers'
 
 #For using the standards API
 gem 'dotenv-rails'
