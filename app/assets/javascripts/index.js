@@ -1,10 +1,10 @@
 $(document).on('turbolinks:load', function() {
   const array = window.location.href.split('/')
+  // Checks for the correct show page before running getData()
   if (array.length === 5 && array[3] === 'classes' && array[4] !== 'new'){
     getData()
   }
 })
-
 
 
 function getData() {
