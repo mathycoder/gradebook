@@ -6,6 +6,7 @@ class Klass < ApplicationRecord
   has_many :klass_learning_targets
   has_many :learning_targets, through: :klass_learning_targets
   has_many :assignments, through: :learning_targets
+  has_many :standards, through: :learning_targets
   has_many :grades, through: :assignments
   validates :name, presence: true, length: {maximum: 20}
   validates :grade, presence: true, length: {maximum: 10}
