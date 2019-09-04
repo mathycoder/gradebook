@@ -1,5 +1,8 @@
 $(document).on('turbolinks:load', function() {
-  getData()
+  const array = window.location.href.split('/')
+  if (array.length === 5 && array[3] === 'classes' && array[4] !== 'new'){
+    getData()
+  }
 })
 
 function getData() {
