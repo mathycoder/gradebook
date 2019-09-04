@@ -10,12 +10,13 @@ $(document).on('turbolinks:load', function() {
 function getData() {
   const klassId = window.location.href.split("/")[4]
   $.get('/classes/' + klassId + '.json', function(json){
+    // Serializer grabs way too many grades... not sure why
     console.log(json)
-    //createLearningTargets(json)
     createJSONObjects(json.learning_targets, LearningTarget)
     createJSONObjects(json.standards, Standard)
     createJSONObjects(json.students, Student)
     createJSONObjects(json.assignments, Assignment)
+    createJSONObjects(json.grades, Grade)
   })
 }
 

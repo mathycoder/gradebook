@@ -5,5 +5,5 @@ class KlassSerializer < ActiveModel::Serializer
   has_many :standards
   has_many :teachers
   has_many :assignments
-  has_many :grades, through: :assignments
+  has_many :grades
 end
